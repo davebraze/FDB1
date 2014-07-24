@@ -4,11 +4,13 @@
 ##' Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer contained within block,
 ##' (2) index pointing to beginning of block, (3) length of block
 ##' @title FDB1::blocks()
-##' @param v: a numeric
+##' @param v: a numeric vector containing only whole numbers
 ##' @return numeric matrix with 3 columns and 1 row for each block.
-##' @author David Braze
+##' @author David Braze <davebraze@gmail.com>
 ##' @export
 blocks <- function(v) {
+    ## add functionality for character and factor vectors as well:
+    ## cv <- rep(letters[1:3],each=3); as.integer(as.factor(cv))
     if ( any( is.na(v) )) {
         warning("Missing values removed from v.")
         v <- v[!is.na(v)]

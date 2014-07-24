@@ -2,7 +2,7 @@
 ##'
 ##' @param v: a numeric vector
 ##' @return TRUE if n is an integer and is odd, FALSE if n is an integer and not odd, NA otherwise.
-##' @author David Braze
+##' @author David Braze  <davebraze@gmail.com>
 ##' @export
 is.odd <-
     function(v) {

@@ -8,7 +8,7 @@
 ##' @param x Object to compute SEMs for. Can be vector, matrix or data.frame.
 ##' @param na.rm Specify how to handle missing values.
 ##' @return Standard error of the mean for x, or each column of x.
-##' @author David Braze
+##' @author David Braze  <davebraze@gmail.com>
 ##' @export
 se <-
     function(x, na.rm=FALSE) {

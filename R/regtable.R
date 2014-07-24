@@ -2,7 +2,7 @@
 ##'
 ##' No details yet...
 ##' @return A formatted regression table.
-##' @author David Braze
+##' @author David Braze  <davebraze@gmail.com>
 regtable <-
 function (lmobj, intercept = FALSE, ...)
 {

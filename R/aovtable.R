@@ -8,7 +8,7 @@
 ##' @param dbg enable verbose output for debugging
 ##' @param ... additional arguments passed to aov()
 ##' @return an anova table (data.frame)
-##' @author David Braze
+##' @author David Braze  <davebraze@gmail.com>
 aovtable <-
 function(formula=NULL, unit=NULL, cv=NULL, data=NULL, dbg=FALSE, ...) {
 

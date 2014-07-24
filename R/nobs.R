@@ -3,7 +3,7 @@
 ##' nobs() returns the number of non-missing values in vector x.
 ##' @param v a vector
 ##' @return integer, length of x minus the number of NAs in x.
-##' @author David Braze
+##' @author David Braze  <davebraze@gmail.com>
 ##' @export
 nobs <-
     function (v){
