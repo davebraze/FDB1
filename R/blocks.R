@@ -6,7 +6,7 @@
 ##' @title FDB1::blocks()
 ##' @param v: a numeric vector containing only whole numbers
 ##' @return numeric matrix with 3 columns and 1 row for each block.
-##' @author David Braze <davebraze@gmail.com>
+##' @author David Braze
 ##' @export
 blocks <- function(v) {
     ## add functionality for character and factor vectors as well:

@@ -10,7 +10,7 @@
 ##' @param n2 n for correlation 2
 ##' @param r2 r for correlation 2
 ##' @return list containing diff(Z1, Z2) and pval for difference.
-##' @author Dave Braze  <davebraze@gmail.com>
+##' @author Dave Braze
 ##' @export
 compcorr <- function(n1, r1, n2, r2){
 # Fisher Z-transform

@@ -6,7 +6,7 @@
 ##' @title series()
 ##' @param v
 ##' @return numeric matrix with 3 columns and 1 row for each series.
-##' @author David Braze  <davebraze@gmail.com>
+##' @author David Braze
 ##' @export
 series <- function(v){
     if (any(is.na(v))) {

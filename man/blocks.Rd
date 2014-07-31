@@ -6,7 +6,7 @@
 blocks(v)
 }
 \arguments{
-\item{v:}{a numeric}
+\item{v:}{a numeric vector containing only whole numbers}
 }
 \value{
 numeric matrix with 3 columns and 1 row for each block.

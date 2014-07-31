@@ -4,7 +4,7 @@
 ##' (betas) from an lm() object. This function fills that gap.
 ##' @param lm: an lm object
 ##' @return A vector of standardized coefficients.
-##' @author David Braze  <davebraze@gmail.com>
+##' @author David Braze
 ##' @export
 betas = function(lm) {
   if(!(class(lm) %in% 'lm'))

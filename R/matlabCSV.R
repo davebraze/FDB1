@@ -9,7 +9,7 @@
 ##' @param name: A basename to be used in constructing filenames for key and data files. Defaults to
 ##' name of dataframe.
 ##' @return None. Used for its side effects.
-##' @author David Braze  <davebraze@gmail.com>
+##' @author David Braze
 ##' @export
 matlabCSV <-
 function(DF, name=deparse(substitute(DF))) {
