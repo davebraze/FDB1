@@ -1,3 +1,5 @@
+##' @include be.numeric.R
+
 library(stringr)
 
 if(FALSE) {
@@ -5,20 +7,37 @@ if(FALSE) {
     file <- fname
 }
 
+##' Used by readELascii(). Not intended for end-users.
+##'
+##' Used by readELascii(). Not intended for end-users.
+##' @title getEyeEvents()
+##' @param bounds A numeric tuple. e1 is index marking beginning of trial. e2 is index indicating
+##' end of trial.
+##' @param lines A vector of strings, each corresponding to 1 line of the EL ASCII file.
+##' @return List with one element for the file header and one element for each trial. Each trial
+##' element is itself a list of 3 elements: data.frames enumerating fixations, saccades, and blinks
+##' for the trial.
+##' @author Dave Braze
 getEyeEvents <- function(bounds, lines) {
     fix <- grep("^EFIX", lines[bounds[1]:bounds[2]], value=TRUE)
     fix <- str_split(fix, pattern="[ \t]+")
     fix <- data.frame(matrix(unlist(fix), ncol=length(fix[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
+    toN <- sapply(fix, function(v) all(be.numeric(v)))
+    fix <- data.frame(sapply(fix[!toN], as.factor, simplify=FALSE), sapply(fix[toN], as.numeric, simplify=FALSE))
 
     sacc <- grep("^ESACC", lines[bounds[1]:bounds[2]], value=TRUE)
     sacc <- str_split(sacc, pattern="[ \t]+")
     sacc <- data.frame(matrix(unlist(sacc), ncol=length(sacc[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
+    toN <- sapply(sacc, function(v) all(be.numeric(v)))
+    sacc <- data.frame(sapply(sacc[!toN], as.factor, simplify=FALSE), sapply(sacc[toN], as.numeric, simplify=FALSE))
 
     blink <- grep("^EBLINK", lines[bounds[1]:bounds[2]], value=TRUE)
     blink <- str_split(blink, pattern="[ \t]+")
     blink <- data.frame(matrix(unlist(blink), ncol=length(blink[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
+    toN <- sapply(blink, function(v) all(be.numeric(v)))
+    blink <- data.frame(sapply(blink[!toN], as.factor, simplify=FALSE), sapply(blink[toN], as.numeric, simplify=FALSE))
 
-    retval <- list(fix, sacc, blink)
+    retval <- list(fix=fix, sacc=sacc, blink=blink)
     retval
 }
 
@@ -34,8 +53,8 @@ getEyeEvents <- function(bounds, lines) {
 ##' @param tendre string containing regular expression that uniquely identifies end of trial
 ##' @param eye indicates which eye ("R"|"L") to get events from. Currently unused.
 ##' @return List with one element for the file header and one element for each trial. Each trial
-##' element is itself a list containing elements (matrices) for fixations, saccades, and blinks as
-##' separate items.
+##' element is itself a list of 3 elements: data.frames enumerating fixations, saccades, and blinks
+##' for the trial.
 ##' @author Dave Braze
 ##' @export
 readELascii <- function(file="", tstartre="TRIALID", tendre="TRIAL_RESULT", eye=NA) {
