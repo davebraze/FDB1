@@ -3,7 +3,7 @@
 ##'
 ##' Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer at beginning of series,
 ##' (2) index pointing to beginning of series, (3) length of series
-##' @title series()
+##' @title FDB1::series()
 ##' @param v
 ##' @return numeric matrix with 3 columns and 1 row for each series.
 ##' @author David Braze

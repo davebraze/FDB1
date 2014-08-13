@@ -2,6 +2,7 @@
 ##'
 ##' There is no built in method for extracting standardized regression coefficients
 ##' (betas) from an lm() object. This function fills that gap.
+##' @title FDB1::betas()
 ##' @param lm: an lm object
 ##' @return A vector of standardized coefficients.
 ##' @author David Braze

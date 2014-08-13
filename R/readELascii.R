@@ -5,12 +5,13 @@ library(stringr)
 if(FALSE) {
     fname <- "../data/195bj006-RAN.asc"
     file <- fname
+    bounds <- trialidx[1,]
 }
 
 ##' Used by readELascii(). Not intended for end-users.
 ##'
 ##' Used by readELascii(). Not intended for end-users.
-##' @title getEyeEvents()
+##' @title FDB1::getEyeEvents()
 ##' @param bounds A numeric tuple. e1 is index marking beginning of trial. e2 is index indicating
 ##' end of trial.
 ##' @param lines A vector of strings, each corresponding to 1 line of the EL ASCII file.
@@ -18,7 +19,7 @@ if(FALSE) {
 ##' element is itself a list of 3 elements: data.frames enumerating fixations, saccades, and blinks
 ##' for the trial.
 ##' @author Dave Braze
-getEyeEvents <- function(bounds, lines) {
+getTrialData <- function(bounds, lines) {
     fix <- grep("^EFIX", lines[bounds[1]:bounds[2]], value=TRUE)
     fix <- str_split(fix, pattern="[ \t]+")
     fix <- data.frame(matrix(unlist(fix), ncol=length(fix[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
@@ -37,7 +38,16 @@ getEyeEvents <- function(bounds, lines) {
     toN <- sapply(blink, function(v) all(be.numeric(v)))
     blink <- data.frame(sapply(blink[!toN], as.factor, simplify=FALSE), sapply(blink[toN], as.numeric, simplify=FALSE))
 
-    retval <- list(fix=fix, sacc=sacc, blink=blink)
+    trialvar <- grep("TRIAL_VAR", lines[bounds[1]:bounds[2]], value=TRUE)
+    trialvar <- str_split(trialvar, pattern="[ \t]+")
+    trialvar <- t(matrix(unlist(trialvar), ncol=length(trialvar[[1]]), byrow=TRUE)[,5:6])
+    hdr <- trialvar[1,]
+    trialvar <- data.frame(rbind(trialvar[2,]), stringsAsFactors=FALSE)
+    names(trialvar) <- hdr
+    toN <- sapply(trialvar, function(v) all(be.numeric(v)))
+    trialvar <- data.frame(sapply(trialvar[!toN], as.factor, simplify=FALSE), sapply(trialvar[toN], as.numeric, simplify=FALSE))
+
+    retval <- list(fix=fix, sacc=sacc, blink=blink, trialvar=trialvar)
     retval
 }
 
@@ -63,12 +73,20 @@ readELascii <- function(file="", tstartre="TRIALID", tendre="TRIAL_RESULT", eye=
     close(f)
 
     header <- grep("^[*][*] ", lines, value=TRUE)
+    script <- unlist(str_split(grep("RECORDED BY", header, value=TRUE), "[ \t]+"))[4]
+    sessdate <- unlist(str_split(grep("DATE:", header, value=TRUE), ": "))[2]
+    srcfile <- unlist(str_split(grep("CONVERTED FROM", header, value=TRUE), " (FROM|using) "))[2]
+    srcfile <- basename(srcfile)
 
     tstart <- grep(tstartre, lines)
     tend <- grep(tendre, lines)
     stopifnot (length(tstart) == length(tend))
     trialidx <- cbind(tstart, tend)
 
-    retval <- apply(trialidx, 1, getEyeEvents, lines=lines)
+    trialids <- unlist(str_split(grep("TRIALID", lines, value=TRUE), " TRIALID "))
+    trialids <- trialids[seq(2, length(trialids), 2)]
+
+    retval <- apply(trialidx, 1, getTrialData, lines=lines)
+    names(retval) <- trialids
     retval
 }

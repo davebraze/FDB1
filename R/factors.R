@@ -1,7 +1,7 @@
 ##' Coerce a factor to numeric
 ##'
 ##' Preserves underlying integer level associated with each element ....
-##' @title fact2num()
+##' @title FDB1::fact2num()
 ##' @param f, a factor
 ##' @return a vector of class "numeric"
 ##' @author Dave Braze
