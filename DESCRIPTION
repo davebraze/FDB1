@@ -22,6 +22,7 @@ Collate:
     'matlabCSV.R'
     'nobs.R'
     'print.aovtable.R'
+    'qqplot.R'
     'readELascii.R'
     'regtable.R'
     'se.R'
