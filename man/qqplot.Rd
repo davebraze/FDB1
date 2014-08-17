@@ -25,6 +25,6 @@ sample means and slopes equal to sample standard deviations.
 Dave Braze
 }
 \seealso{
-\code{\link{qpp}}
+\code{\link{qqp}}
 }
 

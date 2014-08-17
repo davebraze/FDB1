@@ -3,10 +3,11 @@
 ##'
 ##' Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer contained within block,
 ##' (2) index pointing to beginning of block, (3) length of block
-##' @title FDB1::blocks()
+##' @title Find contiguous blocks of identical integers in a numeric vector.
 ##' @param v: a numeric vector containing only whole numbers
 ##' @return numeric matrix with 3 columns and 1 row for each block.
-##' @author David Braze
+##' @seealso \code{\link{series}}
+##' ##' @author David Braze
 ##' @export
 blocks <- function(v) {
     ## add functionality for character and factor vectors as well:
@@ -32,3 +33,6 @@ if (FALSE) {
     blocks(v2)
     blocks(v3)
 }
+
+
+

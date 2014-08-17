@@ -24,4 +24,7 @@ equal to sample standard deviation.
 \author{
 Dave Braze
 }
+\seealso{
+\code{\link{qqplot}}
+}
 

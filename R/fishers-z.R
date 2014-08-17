@@ -4,7 +4,7 @@
 ##'   http://ftp.sas.com/techsup/download/stat/compcorr.html
 ##' and implemented in R:
 ##'
-##' @title compcorr()
+##' @title Fishers Z for comparing two correllation coefficients.
 ##' @param n1 n for correlation 1
 ##' @param r1 r for correlation 1
 ##' @param n2 n for correlation 2

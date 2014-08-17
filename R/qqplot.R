@@ -10,6 +10,7 @@ library(gridExtra)
 ##' @param v a character string naming a variable in data.frame 'dat'
 ##' @param dat a data.frame containing at least 1 variable 'v'
 ##' @return a ggplot2 object
+##' @seealso \code{\link{qqplot}}
 ##' @author Dave Braze
 ##' @export
 qqp <- function(v, dat) {
@@ -33,7 +34,7 @@ qqp <- function(v, dat) {
 ##' @param vars a character vector specifying variables with data.frame 'dat' to plot.
 ##' @param dat a data.frame containing variables to be plotted.
 ##' @return a grid grob created by applying grid.arrange to list of ggplot2 objects
-##' @seealso \code{\link{qpp}}
+##' @seealso \code{\link{qqp}}
 ##' @author Dave Braze
 ##' @export
 qqplot <- function(vars, dat) {

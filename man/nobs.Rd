@@ -12,7 +12,7 @@ nobs(v)
 integer, length of x minus the number of NAs in x.
 }
 \description{
-FDB1::nobs() returns the number of non-missing values in vector x.
+returns the number of non-missing values in vector x.
 }
 \author{
 David Braze
