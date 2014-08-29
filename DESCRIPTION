@@ -7,16 +7,19 @@ Author: David Braze
 Maintainer: <davebraze@gmail.com>
 Description: Assorted utility and convenience functions.
 License: Use permitted only with explicit permission of the author.
-Copyright: Copyright 2012-14, David Braze, unless otherwise attributed for
-    individual functions.
+Copyright: Copyright 2012-14, David Braze, unless otherwise attributed.
 Collate:
     'aovtable.R'
     'be.numeric.R'
     'betas.R'
     'is.wholenumber.R'
     'blocks.R'
+    'corrTable.R'
+    'cosineDist.R'
+    'distributionPlots.R'
     'factors.R'
     'fishers-z.R'
+    'invBoxCox.R'
     'iplot.R'
     'is.odd.R'
     'matlabCSV.R'

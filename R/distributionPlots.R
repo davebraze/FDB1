@@ -4,7 +4,7 @@ require(plyr)
 ##' Plot histograms of two samples drawn from different Normal distributions.
 ##'
 ##' Plot histograms of two samples drawn from different Normal distributions, given Mean, SD and N for each.
-##' @title
+##' @title Histograms for two samples drawn from Normal distributions.
 ##' @param mn1 Mean for sample 1
 ##' @param sd1 SD for sample 1
 ##' @param n1 N for sample 1
@@ -45,13 +45,13 @@ normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2)
 ##' TODO: optionally draw rectangles around mean+-Xsd for each distribution
 ##' TODO: optionally specify colors of histograms
 ##'       p1 + geom_vline(aes(xposition=weighted.mean(score, count, na.rm=T), color='black'))
-##' @title
+##' @title Histograms for two theoretical normal distributions
 ##' @param mn1 Mean for Distribution 1
 ##' @param sd1 SD for Distribution 1
-##' @param n1 N for scaling Histogram 1
+##' @param n1 N for scaling Histogram 1 (convert density to count)
 ##' @param mn2 Mean for Distribution 1
 ##' @param sd2 SD for Distribution 1
-##' @param n2 N for scaling Histogram 1
+##' @param n2 N for scaling Histogram 1 (convert density to count)
 ##' @param stack stack plots vertically or no; defaults to FALSE (side-by-side plots)
 ##' @param aspect aspect ratio for plots; defaults to 2/5
 ##' @return used for its side-effect of creating a plot
@@ -82,13 +82,23 @@ normalDistHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, stack=FALSE, aspect=2/5)
     p1
 }
 
-###########################################################################
-##### histogram of skewed (gamma) distribution and its reverse
-##### TODO: use geom_histogram() instead of geom_bar() for consistency with other functions
-##### TODO: label with (mean, median, mode)
+##' Histogram of gamma distribution and its reverse.
+##'
+##' Histogram of gamma distribution and its reverse.
+##' TODO: use geom_histogram() instead of geom_bar() for consistency with other functions
+##' TODO: label with (mean, median, mode)
+##' @title Histogram of gamma distribution.
+##' @param x 'x' vector argument to dgamma()
+##' @param df1 'shape' argument to dgamma()
+##' @param df2 'rate' argument to dgamma()
+##' @param mult multiplier used to convert density to counts
+##' @param aspect aspect ratio of plots; defaults to 2/5
+##' @param stack stack plots or no; defaults to FALSE (side-by-side plots)
+##' @return used for side effect of creating a plot
+##' @author Dave Braze
+##' @export
 gammaDistHist <- function(x=seq(0,.7,by=.01), df1=6, df2=25, mult=20, aspect=2/5, stack=TRUE) {
     dgamma1 <- dgamma(x, df1, df2, log = FALSE)
-    ## plot(dgamma1, type='l', lwd=3, col='red');
     freq1 <- round(dgamma1*mult)
     dat1 <- unlist(mapply(rep, 1:length(freq1), freq1))
     print(mean(dat1))
@@ -103,12 +113,22 @@ gammaDistHist <- function(x=seq(0,.7,by=.01), df1=6, df2=25, mult=20, aspect=2/5
     p1 <- p1 + geom_bar(stat='identity', width=.1, color='black')
     if(!stack) p1 <- p1 + facet_wrap(~dist)
     else p1 <- p1 + facet_wrap(~dist, ncol=1)
-    p1 <- p1 + theme(aspect.ratio = aspect, legend.position="none")
+    p1 <- p1 + coord_fixed(ratio=aspect)
     p1
 }
 
-###########################################################################
-### two normal curves with (pontentially) different MNs and/or SDs
+##' Two normal curves with (pontentially) different means and SDs.
+##'
+##' Plot two normal curves with (pontentially) different means and SDs.
+##' @title Normal curve plot
+##' @param mn1 Mean for curve 1
+##' @param sd1 SD for curve 1
+##' @param mn2 Mean for curve 2
+##' @param sd2 SD for curve 2
+##' @param expanse multiplier for scaling plot x dimension
+##' @param xlim 'xlim' argument to plot()
+##' @return used for side effect of creating a plot.
+##' @author Dave Braze
 normal2 <- function(mn1, sd1, mn2, sd2, expanse=3.5, xlim=NA){
     range1 <- c(mn1-sd1*expanse, mn1+sd1*expanse)
     range2 <- c(mn2-sd2*expanse, mn2+sd2*expanse)
@@ -180,24 +200,24 @@ normalProps <- function(vlines=TRUE, colors=c("gray", "orange", "blue"), xlab="z
     if (vlines) abline(v=c(-2,-1,0,1,2), lwd=2)
 }
 
-###########################################################################
-### paint region of standard normal dist. below a specified z value
-stdnormal1 <- function(z=FALSE, region.col="green", line.col="black", lwd=3, ...) {
-    mean=0
-    sd=1
-    lb <- -(3.5*sd)
-    ub <- (3.5*sd)
-    x1=seq(lb, ub, length=200)
-    y1=dnorm(x1,mean=mean,sd=sd)
-    par(cex=1.2, fin=c(6.375, 5), bg=NA)
-    plot(x1, y1, type="n", main="", xlab="X", ylab="Proportion", ...)
-    if(z){
-        x2=seq(lb, z, length=200)
-        y2=dnorm(x2)
-        polygon(c(lb, x2, z),c(0, y2, 0),col=region.col, border=NA, ...)
-    }
-    lines(x1, y1, type="l", lwd=lwd, col=line.col, ...)
-}
+## ###########################################################################
+## ### paint region of standard normal dist. below a specified z value
+## stdnormal1 <- function(z=FALSE, region.col="green", line.col="black", lwd=3, ...) {
+##     mean=0
+##     sd=1
+##     lb <- -(3.5*sd)
+##     ub <- (3.5*sd)
+##     x1=seq(lb, ub, length=200)
+##     y1=dnorm(x1,mean=mean,sd=sd)
+##     par(cex=1.2, fin=c(6.375, 5), bg=NA)
+##     plot(x1, y1, type="n", main="", xlab="X", ylab="Proportion", ...)
+##     if(z){
+##         x2=seq(lb, z, length=200)
+##         y2=dnorm(x2)
+##         polygon(c(lb, x2, z),c(0, y2, 0),col=region.col, border=NA, ...)
+##     }
+##     lines(x1, y1, type="l", lwd=lwd, col=line.col, ...)
+## }
 
 ###########################################################################
 ##### Build a histogram matrix of random samples from normal dist.

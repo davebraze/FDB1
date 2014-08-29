@@ -19,6 +19,5 @@ David Braze
 }
 \seealso{
 \code{\link{series}}
-##'
 }
 

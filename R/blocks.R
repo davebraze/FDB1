@@ -7,7 +7,7 @@
 ##' @param v: a numeric vector containing only whole numbers
 ##' @return numeric matrix with 3 columns and 1 row for each block.
 ##' @seealso \code{\link{series}}
-##' ##' @author David Braze
+##' @author David Braze
 ##' @export
 blocks <- function(v) {
     ## add functionality for character and factor vectors as well:
