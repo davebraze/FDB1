@@ -7,7 +7,7 @@ Author: David Braze
 Maintainer: David Braze <davebraze@gmail.com>
 Description: A brew of utility and convenience functions. Some may even be
     useful.
-License: MIT license.txt
+License: MIT + file LICENSE
 Copyright: Copyright 2012-14, David Braze, unless otherwise attributed.
 Imports:
     Hmisc,
