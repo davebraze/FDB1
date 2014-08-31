@@ -6,7 +6,10 @@
 ##' @param digits
 ##' @param print.mod
 ##' @return None. Used for its side effect.
-##' @author David Braze
+##' @author David Braze \email{davebraze@@gmail.com}
+##' @family aovtable
+##' @seealso \code{\link[stats]{aov}}
+##' @seealso \code{\link[base]{print}}
 print.aovtable <-
 function(x, quote=FALSE, digits=3, print.mod=FALSE) {
   if (is.null(x$table) || is.null(x$model))

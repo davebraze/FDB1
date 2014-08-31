@@ -12,6 +12,6 @@ A formatted regression table.
 No details yet...
 }
 \author{
-David Braze
+David Braze \email{davebraze@gmail.com}
 }
 

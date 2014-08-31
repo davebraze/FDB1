@@ -1,9 +1,9 @@
-##' Checks whether each element in a vector of strings can be interpreted as a number.
+##' Checks element-wise if character vector can be coerced to numeric.
 ##'
-##' Checks whether a (vector of) strings can be interpreted as a number.
-##' @title Checks whether each element in a vector of strings can be interpreted as a number.
-##' @param c a vector of strings
-##' @return a vector of bool
+##' Checks whether each element in a vector of strings can be coerced to numeric.
+##' @title Checks element-wise if character vector can be coerced to numeric.
+##' @param c : a vector of strings
+##' @return a vector of logicals
 ##' @author cribbed from \url{http://rosettacode.org/wiki/Determine_if_a_string_is_numeric#R}
 ##' @export
 be.numeric <- function(c) {

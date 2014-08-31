@@ -28,6 +28,6 @@ Two normal curves with (pontentially) different means and SDs.
 Plot two normal curves with (pontentially) different means and SDs.
 }
 \author{
-Dave Braze
+Dave Braze \email{davebraze@gmail.com}
 }
 

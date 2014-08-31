@@ -6,7 +6,7 @@
 blocks(v)
 }
 \arguments{
-\item{v:}{a numeric vector containing only whole numbers}
+\item{v}{: a numeric vector containing only whole numbers}
 }
 \value{
 numeric matrix with 3 columns and 1 row for each block.
@@ -14,8 +14,12 @@ numeric matrix with 3 columns and 1 row for each block.
 \description{
 Find contiguous blocks of identical integers in a numeric vector.
 }
+\details{
+Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer contained within block,
+(2) index pointing to beginning of block, (3) length of block
+}
 \author{
-David Braze
+David Braze \email{davebraze@gmail.com}
 }
 \seealso{
 \code{\link{series}}

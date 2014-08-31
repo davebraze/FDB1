@@ -1,14 +1,14 @@
-##' Cosine Distance
-##'
+##' Compute Cosine Distance
 ##'
 ##' Takes a numeric matrix (M) of arbitrary dimension, treats rows of M as vectors and computes the
 ##' pairwise cosine distances among the rows of M. Return a matrix of pairwise distances with vector
 ##' magnitudes on the diagonal.
-##' @title Cosine Distance
-##' @param M a numeric matrix
+##' @title Compute cosine distance
+##' @param M : a numeric matrix
 ##' @return A matrix of pairwise distances in the lower triangle and vector magnitudes on the
 ##' diagonal.
-##' @author Dave Braze
+##' @author
+##' Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 cosinedist <- function(M) {
   origin <- rep(0, dim(M)[2])
@@ -36,7 +36,7 @@ if(FALSE){
 
   M1j <- jitter(cbind(M1, 0))
 
-  require(gplots)
+  library(gplots)
   col <- rich.colors(dim(M1)[1])
   plot(NULL, xlim=c(0,2), ylim=c(0,2), type='n', xlab="x", ylab="y")
   for (ii in 1:dim(M1)[1]) {
@@ -45,7 +45,7 @@ if(FALSE){
   legend(1.8,1.5, paste("v", as.character(1:dim(M1)[1]), sep=""),
          text.col=col)
 
-  require(gplots)
+  library(gplots)
   col <- rich.colors(dim(M1j)[1])
   plot(NULL, xlim=c(0,2), ylim=c(0,2), type='n', xlab="x", ylab="y")
   for (ii in 1:dim(M1j)[1]) {
@@ -62,7 +62,7 @@ if(FALSE){
   M4 <- M1*-1
   M5 <- rbind(M1,M4)
 
-  require(gplots)
+  library(gplots)
   plot(NULL, xlim=c(-2,2), ylim=c(-2,2), type='n', xlab="x", ylab="y")
   col <- rich.colors(dim(M5)[1])
   for (ii in 1:dim(M5)[1]) {

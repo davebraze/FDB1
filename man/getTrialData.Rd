@@ -6,10 +6,10 @@
 getTrialData(bounds, lines)
 }
 \arguments{
-\item{bounds}{A numeric tuple. e1 is index marking beginning of trial. e2 is index indicating
+\item{:}{bounds A numeric tuple. e1 is index marking beginning of trial. e2 is index indicating
 end of trial.}
 
-\item{lines}{A vector of strings, each corresponding to 1 line of the EL ASCII file.}
+\item{:}{lines A vector of strings, each corresponding to 1 line of the EL ASCII file.}
 }
 \value{
 List with one element for the file header and one element for each trial. Each trial
@@ -23,6 +23,6 @@ Used by readELascii(). Not intended for end-users.
 Used by readELascii(). Not intended for end-users.
 }
 \author{
-Dave Braze
+Dave Braze \email{davebraze@gmail.com}
 }
 

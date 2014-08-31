@@ -6,7 +6,7 @@
 fact2num(f)
 }
 \arguments{
-\item{f}{a vector of class "factor"}
+\item{f}{: a vector of class "factor"}
 }
 \value{
 a vector of class "numeric"
@@ -19,7 +19,7 @@ Coerces a vector of class factor to numeric. This function preserves underlying 
 associated with each element of f.
 }
 \author{
-Dave Braze
+Dave Braze \email{davebraze@gmail.com}
 }
 \seealso{
 \code{\link{fact2char}}

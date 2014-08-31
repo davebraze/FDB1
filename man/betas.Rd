@@ -6,7 +6,7 @@
 betas(lm)
 }
 \arguments{
-\item{lm:}{an lm object}
+\item{lm}{: an lm object}
 }
 \value{
 A vector of standardized coefficients.
@@ -16,9 +16,12 @@ Extract betas from an lm object.
 }
 \details{
 There is no built in method for extracting standardized regression coefficients
-(betas) from an lm() object. This function fills that gap.
+(betas) from an \code{\link[stats]{lm}} object. This function fills that gap.
 }
 \author{
-David Braze
+David Braze \email{davebraze@gmail.com}
+}
+\seealso{
+\code{\link[stats]{lm}}
 }
 

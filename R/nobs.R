@@ -1,9 +1,9 @@
-##' A convenience wrapper around sum(!is.na(x)).
+##' Number of non-missing values.
 ##'
-##' returns the number of non-missing values in vector x.
-##' @param v a vector
+##' Returns the number of non-missing values in vector x. A convenience wrapper around sum(!is.na(x)).
+##' @param v : a vector
 ##' @return integer, length of x minus the number of NAs in x.
-##' @author David Braze
+##' @author David Braze \email{davebraze@@gmail.com}
 ##' @export
 nobs <-
     function (v){

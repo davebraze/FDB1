@@ -6,9 +6,9 @@
 is.wholenumber(v, tol = .Machine$double.eps^0.5)
 }
 \arguments{
-\item{v:}{a numeric vector}
+\item{v}{: a numeric vector}
 
-\item{tol:}{what counts as close enough to 0? Defaults to .Machine$double.eps^0.5}
+\item{tol}{: what counts as close enough to 0? Defaults to .Machine$double.eps^0.5}
 }
 \value{
 a vector of Logicals
@@ -20,6 +20,6 @@ Can each element of numeric vector x reasonably be interpreted as a whole number
 Takes a numeric vector and returns a Logical vector the same length
 }
 \author{
-Cribbed from R example for base::integer().
+Cribbed from example in \code{\link[base]{integer}}
 }
 

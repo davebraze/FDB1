@@ -1,13 +1,20 @@
 Package: FDB1
 Type: Package
-Title: Dave Braze's miscellaneous utility functions
-Version: 0.03
-Date: 2014-08-11
+Title: A brew of utility and convenience functions. Some may even be useful.
+Version: 0.04
+Date: 2014-08-29
 Author: David Braze
-Maintainer: <davebraze@gmail.com>
-Description: Assorted utility and convenience functions.
-License: Use permitted only with explicit permission of the author.
+Maintainer: David Braze <davebraze@gmail.com>
+Description: A brew of utility and convenience functions. Some may even be
+    useful.
+License: MIT license.txt
 Copyright: Copyright 2012-14, David Braze, unless otherwise attributed.
+Imports:
+    Hmisc,
+    gplots,
+    ggplot2,
+    plyr,
+    stringr
 Collate:
     'aovtable.R'
     'be.numeric.R'
@@ -22,7 +29,7 @@ Collate:
     'invBoxCox.R'
     'iplot.R'
     'is.odd.R'
-    'matlabCSV.R'
+    'matlabDelim.R'
     'nobs.R'
     'print.aovtable.R'
     'qqplot.R'

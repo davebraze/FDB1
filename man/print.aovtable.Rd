@@ -21,6 +21,13 @@ None. Used for its side effect.
 No details yet...
 }
 \author{
-David Braze
+David Braze \email{davebraze@gmail.com}
+}
+\seealso{
+\code{\link[stats]{aov}}
+
+\code{\link[base]{print}}
+
+Other aovtable: \code{\link{aovtable}}
 }
 

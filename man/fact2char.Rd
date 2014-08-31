@@ -6,7 +6,7 @@
 fact2char(f)
 }
 \arguments{
-\item{f}{a vector of class factor}
+\item{f}{: a vector of class factor}
 }
 \value{
 a vector of class "character"
@@ -19,10 +19,9 @@ Coerces a vector of class factor to numeric. This function preserves level label
 with each element of f.
 }
 \author{
-Dave Braze
+Dave Braze \email{davebraze@gmail.com}
 }
 \seealso{
 \code{\link{fact2num}}
-##'
 }
 

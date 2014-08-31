@@ -7,13 +7,13 @@ readELascii(file = "", tstartre = "TRIALID", tendre = "TRIAL_RESULT",
   eye = NA)
 }
 \arguments{
-\item{file}{string giving path/fname to input file (ELalscii file)}
+\item{:}{file string giving path/fname to input file (ELalscii file)}
 
-\item{tstartre}{string containing regular expression that uniquely identifies beginning of trial}
+\item{:}{tstartre string containing regular expression that uniquely identifies beginning of trial}
 
-\item{tendre}{string containing regular expression that uniquely identifies end of trial}
+\item{:}{tendre string containing regular expression that uniquely identifies end of trial}
 
-\item{eye}{indicates which eye ("R"|"L") to get events from. Currently unused.}
+\item{:}{eye indicates which eye ("R"|"L") to get events from. Currently unused.}
 }
 \value{
 List with one element for the file header and one element for each trial. Each trial
@@ -30,6 +30,6 @@ EDF data file format. This function reads those ASCII files and extracts eye-mov
 from them (fixations, saccades, blinks).
 }
 \author{
-Dave Braze
+Dave Braze \email{davebraze@gmail.com}
 }
 

@@ -20,11 +20,11 @@ Inverse Box-Cox transform.
 Compute the inverse Box-Cox transformation of a variable. Requires arguments x and lambda.
 }
 \author{
-Dave Braze
+Dave Braze \email{davebraze@gmail.com}
 }
 \seealso{
-\code{\link{car::bcPower}}
+\code{\link[car]{bcPower}}
 
-\code{\link{car::powerTransform}}
+\code{\link[car]{powerTransform}}
 }
 

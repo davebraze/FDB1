@@ -1,14 +1,17 @@
-##' Wrapper around aov() for repeated measures anova.
+##' Wrapper around \code{\link[stats]{aov}} with better output.
 ##'
-##' No details yet...
-##' @param formula rhs of formula should be in partheses, () between any predictor and unit: y~(x1+x2)
-##' @param unit factor for stratification units, typicall subject or item, used to build error term
-##' @param cv say something here
-##' @param data data.frame passed to aov()
-##' @param dbg enable verbose output for debugging
-##' @param ... additional arguments passed to aov()
+##' Wrapper around \code{\link[stats]{aov}} for repeated measures anova.
+##' @title Wrapper around \code{\link[stats]{aov}} with better output.
+##' @param formula : rhs of formula should be in partheses, () between any predictor and unit: y~(x1+x2)
+##' @param unit : factor for stratification units, typicall subject or item, used to build error term
+##' @param cv : say something here
+##' @param data : data.frame passed to \code{\link[stats]{aov}}
+##' @param dbg : enable verbose output for debugging
+##' @param ... : additional arguments passed to \code{\link[stats]{aov}}
 ##' @return an anova table (data.frame)
-##' @author David Braze
+##' @author David Braze \email{davebraze@@gmail.com}
+##' @seealso \code{\link[stats]{aov}}
+##' @family aovtable
 aovtable <-
 function(formula=NULL, unit=NULL, cv=NULL, data=NULL, dbg=FALSE, ...) {
 

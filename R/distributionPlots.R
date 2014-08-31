@@ -1,5 +1,5 @@
-require(ggplot2)
-require(plyr)
+## library(ggplot2)
+## library(plyr)
 
 ##' Plot histograms of two samples drawn from different Normal distributions.
 ##'
@@ -15,7 +15,7 @@ require(plyr)
 ##' @param stack stack plots vertically or no; defaults to FALSE (side-by-side plots)
 ##' @param aspect set aspect ratio of plot; defaults to 2/5
 ##' @return used for side-effect of creating a plot
-##' @author Dave Braze
+##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2))/2, stack=FALSE, aspect=2/5){
     a=rnorm(n1, mn1, sd1)
@@ -38,13 +38,15 @@ normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2)
 ##'
 ##' Plot histograms of two different theoretical normal distributions, given Mean, SD and N for each.
 ##'
-##' TODO: print parameters on each facet. See largeNumbers() below.
-##' TODO: allow for overlaid histograms (single facet).
-##' TODO: add label (geom_text()) for parameters and N to each facet.
-##' TODO: add a vlines for means
-##' TODO: optionally draw rectangles around mean+-Xsd for each distribution
-##' TODO: optionally specify colors of histograms
-##'       p1 + geom_vline(aes(xposition=weighted.mean(score, count, na.rm=T), color='black'))
+##' ToDo:
+##' \enumerate{
+##'     \item print parameters on each facet. See largeNumbers() below.
+##'     \item allow for overlaid histograms (single facet).
+##'     \item add label (geom_text()) for parameters and N to each facet.
+##'     \item add a vlines for means
+##'     \item optionally draw rectangles around mean+-Xsd for each distribution
+##'     \item optionally specify colors of histograms
+##' }
 ##' @title Histograms for two theoretical normal distributions
 ##' @param mn1 Mean for Distribution 1
 ##' @param sd1 SD for Distribution 1
@@ -55,7 +57,7 @@ normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2)
 ##' @param stack stack plots vertically or no; defaults to FALSE (side-by-side plots)
 ##' @param aspect aspect ratio for plots; defaults to 2/5
 ##' @return used for its side-effect of creating a plot
-##' @author Dave Braze
+##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 normalDistHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, stack=FALSE, aspect=2/5){
     range1 <- c(mn1-sd1*3.5, mn1+sd1*3.5)
@@ -88,14 +90,14 @@ normalDistHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, stack=FALSE, aspect=2/5)
 ##' TODO: use geom_histogram() instead of geom_bar() for consistency with other functions
 ##' TODO: label with (mean, median, mode)
 ##' @title Histogram of gamma distribution.
-##' @param x 'x' vector argument to dgamma()
-##' @param df1 'shape' argument to dgamma()
-##' @param df2 'rate' argument to dgamma()
+##' @param x 'x' vector argument to \code{\link[stats]{dgamma}}
+##' @param df1 'shape' argument to \code{\link[stats]{dgamma}}
+##' @param df2 'rate' argument to \code{\link[stats]{dgamma}}
 ##' @param mult multiplier used to convert density to counts
 ##' @param aspect aspect ratio of plots; defaults to 2/5
 ##' @param stack stack plots or no; defaults to FALSE (side-by-side plots)
 ##' @return used for side effect of creating a plot
-##' @author Dave Braze
+##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 gammaDistHist <- function(x=seq(0,.7,by=.01), df1=6, df2=25, mult=20, aspect=2/5, stack=TRUE) {
     dgamma1 <- dgamma(x, df1, df2, log = FALSE)
@@ -128,7 +130,8 @@ gammaDistHist <- function(x=seq(0,.7,by=.01), df1=6, df2=25, mult=20, aspect=2/5
 ##' @param expanse multiplier for scaling plot x dimension
 ##' @param xlim 'xlim' argument to plot()
 ##' @return used for side effect of creating a plot.
-##' @author Dave Braze
+##' @author Dave Braze \email{davebraze@@gmail.com}
+##' @export
 normal2 <- function(mn1, sd1, mn2, sd2, expanse=3.5, xlim=NA){
     range1 <- c(mn1-sd1*expanse, mn1+sd1*expanse)
     range2 <- c(mn2-sd2*expanse, mn2+sd2*expanse)
@@ -143,9 +146,22 @@ normal2 <- function(mn1, sd1, mn2, sd2, expanse=3.5, xlim=NA){
     lines(dnormal2~x, col='black', lty=2, lwd=3)
 }
 
-###########################################################################
-## normal curve with middle region painted
-## note that this handles plots as per function stdnormal1() as a special case.
+##' Plot normal curve with middle region painted.
+##'
+##' Note that this handles plots as per function stdnormal1() as a special case.
+##' @title Plot normal curve with middle region painted.
+##' @param mn the mean
+##' @param sd standard deviation
+##' @param expanse distance from mean for upper and lower plot limits in sd units. Defaults to 3.5.
+##' @param min lower bound of painted region
+##' @param max upper bound of painted region
+##' @param region.col painted region color
+##' @param line.col line color
+##' @param label label for painted region
+##' @param lwd line width
+##' @return Used for side effect.
+##' @author Dave Braze \email{davebraze@@gmail.com}
+##' @export
 normalRegion <- function(mn=100, sd=10, expanse=3.5, min, max, region.col="grey", line.col="black", label=FALSE, lwd=3) {
     ## case 1: draw a curve without a painted region, set min=max.
     ## case 2: draw curve with painted mid region, set min>(mn-sd*expanse) and (max>min)&(max<mn+sd*expanse)
@@ -177,8 +193,16 @@ normalRegion <- function(mn=100, sd=10, expanse=3.5, min, max, region.col="grey"
     }
 }
 
-###########################################################################
-### Build figure showing 68%-95%-99.7% Rule
+##' Figure showing 68\%-95\%-99.7\% Rule for normal curve.
+##'
+##' @details nothing yet
+##' @title Figure showing 68\%-95\%-99.7\% Rule for normal curve.
+##' @param vlines logical. Use vertical lines to demarcate regions. Default=TRUE
+##' @param colors character. A vector of 3 color names for each region.
+##' @param xlab label for horizontal axis. Default = 'z'
+##' @return used for side-effect of creating a plot
+##' @author Dave Braze \email{davebraze@@gmail.com}
+##' @export
 normalProps <- function(vlines=TRUE, colors=c("gray", "orange", "blue"), xlab="z") {
     x1=seq(-3.5,3.5,length=200)
     y1=dnorm(x1,mean=0,sd=1)
@@ -199,25 +223,6 @@ normalProps <- function(vlines=TRUE, colors=c("gray", "orange", "blue"), xlab="z
     lines(x1,y1,type="l",lwd=3,col="black")
     if (vlines) abline(v=c(-2,-1,0,1,2), lwd=2)
 }
-
-## ###########################################################################
-## ### paint region of standard normal dist. below a specified z value
-## stdnormal1 <- function(z=FALSE, region.col="green", line.col="black", lwd=3, ...) {
-##     mean=0
-##     sd=1
-##     lb <- -(3.5*sd)
-##     ub <- (3.5*sd)
-##     x1=seq(lb, ub, length=200)
-##     y1=dnorm(x1,mean=mean,sd=sd)
-##     par(cex=1.2, fin=c(6.375, 5), bg=NA)
-##     plot(x1, y1, type="n", main="", xlab="X", ylab="Proportion", ...)
-##     if(z){
-##         x2=seq(lb, z, length=200)
-##         y2=dnorm(x2)
-##         polygon(c(lb, x2, z),c(0, y2, 0),col=region.col, border=NA, ...)
-##     }
-##     lines(x1, y1, type="l", lwd=lwd, col=line.col, ...)
-## }
 
 ###########################################################################
 ##### Build a histogram matrix of random samples from normal dist.
@@ -258,12 +263,19 @@ sampling <- function(nplots=12, nsamp=100, pop.mean=100, pop.sd=15, binwidth=pop
                          size=2.5, hjust=1)
     p1
 }
-
+##' Translate relative coordinates (pos) to data coords.
+##'
+##' This is a utility function for a translating relative coordinates (pos) to data coordinates. min and max
+##' are values specifiying the full range of a plotting region on the data scale. pos is a
+##' proportion. retval is data-scaled coordinate corresponding to pos.
+##' @seealso See \code{\link[scales]{rescale}} as a possible alternative.
+##' @title Translate relative coordinates (pos) to data coords.
+##' @param min minimum bound of plotting region
+##' @param max maximum bound of plotting region
+##' @param pos a proportion to be located within min/max
+##' @return used for side-effect of creating a plot
+##' @author Dave Braze \email{davebraze@@gmail.com}
 locate <- function(min, max, pos){
-    ## This is a utility function for a translating relative coord (pos) to data coords. min and max
-    ## are values specifiying the full range of a plotting region on the data scale. pos is a
-    ## proportion. retval is data-scaled coordinate corresponding to pos.  See scales::rescale() as
-    ## a possible alternative.
     pos*(max-min)+min
 }
 

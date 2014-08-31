@@ -7,11 +7,11 @@ gammaDistHist(x = seq(0, 0.7, by = 0.01), df1 = 6, df2 = 25, mult = 20,
   aspect = 2/5, stack = TRUE)
 }
 \arguments{
-\item{x}{'x' vector argument to dgamma()}
+\item{x}{'x' vector argument to \code{\link[stats]{dgamma}}}
 
-\item{df1}{'shape' argument to dgamma()}
+\item{df1}{'shape' argument to \code{\link[stats]{dgamma}}}
 
-\item{df2}{'rate' argument to dgamma()}
+\item{df2}{'rate' argument to \code{\link[stats]{dgamma}}}
 
 \item{mult}{multiplier used to convert density to counts}
 
@@ -31,6 +31,6 @@ TODO: use geom_histogram() instead of geom_bar() for consistency with other func
 TODO: label with (mean, median, mode)
 }
 \author{
-Dave Braze
+Dave Braze \email{davebraze@gmail.com}
 }
 

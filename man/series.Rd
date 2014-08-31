@@ -6,7 +6,7 @@
 series(v)
 }
 \arguments{
-\item{v}{a numeric vector.}
+\item{v}{: a numeric vector.}
 }
 \value{
 numeric matrix with 3 columns and 1 row for each series.
@@ -14,8 +14,12 @@ numeric matrix with 3 columns and 1 row for each series.
 \description{
 Find sequences of positive integers in numeric vector v.
 }
+\details{
+Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer at beginning of
+series, (2) index pointing to beginning of series, (3) length of series
+}
 \author{
-David Braze
+David Braze \email{davebraze@gmail.com}
 }
 \seealso{
 \code{\link{blocks}}

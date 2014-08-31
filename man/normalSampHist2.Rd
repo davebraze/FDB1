@@ -35,6 +35,6 @@ Plot histograms of two samples drawn from different Normal distributions.
 Plot histograms of two samples drawn from different Normal distributions, given Mean, SD and N for each.
 }
 \author{
-Dave Braze
+Dave Braze \email{davebraze@gmail.com}
 }
 

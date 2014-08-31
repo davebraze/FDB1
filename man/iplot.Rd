@@ -75,6 +75,6 @@ iplot() is based on interaction.plot(). Be careful of missing values in "respons
 that "fun" does the right thing with them.
 }
 \author{
-David Braze
+David Braze \email{davebraze@gmail.com}
 }
 

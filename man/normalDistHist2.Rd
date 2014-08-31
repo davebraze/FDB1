@@ -31,15 +31,17 @@ Plot histograms of two different theoretical normal distributions.
 \details{
 Plot histograms of two different theoretical normal distributions, given Mean, SD and N for each.
 
-TODO: print parameters on each facet. See largeNumbers() below.
-TODO: allow for overlaid histograms (single facet).
-TODO: add label (geom_text()) for parameters and N to each facet.
-TODO: add a vlines for means
-TODO: optionally draw rectangles around mean+-Xsd for each distribution
-TODO: optionally specify colors of histograms
-      p1 + geom_vline(aes(xposition=weighted.mean(score, count, na.rm=T), color='black'))
+ToDo:
+\enumerate{
+    \item print parameters on each facet. See largeNumbers() below.
+    \item allow for overlaid histograms (single facet).
+    \item add label (geom_text()) for parameters and N to each facet.
+    \item add a vlines for means
+    \item optionally draw rectangles around mean+-Xsd for each distribution
+    \item optionally specify colors of histograms
+}
 }
 \author{
-Dave Braze
+Dave Braze \email{davebraze@gmail.com}
 }
 
