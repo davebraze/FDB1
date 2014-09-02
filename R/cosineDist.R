@@ -1,9 +1,7 @@
-##' Compute Cosine Distance
-##'
 ##' Takes a numeric matrix (M) of arbitrary dimension, treats rows of M as vectors and computes the
 ##' pairwise cosine distances among the rows of M. Return a matrix of pairwise distances with vector
 ##' magnitudes on the diagonal.
-##' @title Compute cosine distance
+##' @title Compute cosine distance.
 ##' @param M : a numeric matrix
 ##' @return A matrix of pairwise distances in the lower triangle and vector magnitudes on the
 ##' diagonal.

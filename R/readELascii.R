@@ -8,16 +8,13 @@ if(FALSE) {
     bounds <- trialidx[1,]
 }
 
-##' Used by readELascii(). Not intended for end-users.
-##'
-##' Used by readELascii(). Not intended for end-users.
-##' @title FDB1::getEyeEvents()
-##' @param : bounds A numeric tuple. e1 is index marking beginning of trial. e2 is index indicating
+##' Used by readELascii(). Not intended for end-users. Extract fixations, saccades, and blinks from a trial.
+##' @title Used by readELascii(). Not intended for end-users.
+##' @param bounds A numeric tuple. e1 is index marking beginning of trial. e2 is index indicating
 ##' end of trial.
-##' @param : lines A vector of strings, each corresponding to 1 line of the EL ASCII file.
-##' @return List with one element for the file header and one element for each trial. Each trial
-##' element is itself a list of 3 elements: data.frames enumerating fixations, saccades, and blinks
-##' for the trial.
+##' @param lines A vector of strings, each corresponding to 1 line of the EL ASCII file.
+##' @return A list of 3 elements, data.frames enumerating fixations, saccades, and blinks for the
+##' trial.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 getTrialData <- function(bounds, lines) {
     fix <- grep("^EFIX", lines[bounds[1]:bounds[2]], value=TRUE)
@@ -51,13 +48,10 @@ getTrialData <- function(bounds, lines) {
     retval
 }
 
-##' 'readELascii' takes an ASCII data file created by SR Research's EDF2ASC utility and extracts
-##' 'eye' events for each trial contained within that file.
-##'
 ##' SR Research provides a utility (EDF2ASC.exe) that dumps ASCII renderings of their proprietary
 ##' EDF data file format. This function reads those ASCII files and extracts eye-movement events
 ##' from them (fixations, saccades, blinks).
-##' @title Get events from SR Research ASCII data files
+##' @title Get events from SR Research ASCII data files.
 ##' @param : file string giving path/fname to input file (ELalscii file)
 ##' @param : tstartre string containing regular expression that uniquely identifies beginning of trial
 ##' @param : tendre string containing regular expression that uniquely identifies end of trial

@@ -1,8 +1,6 @@
 ## library(ggplot2)
 ## library(gridExtra)
 
-##' Create a QQ plot for a variable within a data.frame.
-##'
 ##' Given a data.frame and the name of a variable within it create a quantile-quantile plot based on
 ##' the normal distribution. Also plot a 'fit' line with intercept equal to sample mean and slope
 ##' equal to sample standard deviation.
@@ -25,12 +23,10 @@ qqp <- function(v, dat) {
     return(p)
 }
 
-##' Create and plot a QQ plot matrix
-##'
 ##' Given a data.frame and vector of variable names within it, create a matrix of quantile-quantile
 ##' plots based on the normal distribution and include 'fit' lines on each with intercepts equal to
 ##' sample means and slopes equal to sample standard deviations.
-##' @title Create and plot a QQ plot matrix
+##' @title Create and plot a QQ plot matrix.
 ##' @param vars : a character vector specifying variables with data.frame 'dat' to plot.
 ##' @param dat : a data.frame containing variables to be plotted.
 ##' @return a grid grob created by applying grid.arrange to list of ggplot2 objects

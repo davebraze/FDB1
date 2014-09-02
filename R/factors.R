@@ -1,8 +1,6 @@
-##' Coerce a vector of class "factor" to numeric
-##'
 ##' Coerces a vector of class factor to numeric. This function preserves underlying integer level
 ##' associated with each element of f.
-##' @title Coerce a vector of class "factor" to numeric
+##' @title Coerce a vector of class "factor" to numeric.
 ##' @param f : a vector of class "factor"
 ##' @return a vector of class "numeric"
 ##' @author Dave Braze \email{davebraze@@gmail.com}

@@ -1,6 +1,4 @@
 
-##' Get correlation table for numerical matrix M.
-##'
 ##' This is wrapper around \code{[Hmisc]{rcor2}} that aims to return a reasonably formatted table of
 ##' correlations. R values are in the lower triangle with NAs elsewhere, including the diagonal.
 ##'

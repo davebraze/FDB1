@@ -1,5 +1,3 @@
-##' Wrapper around \code{\link[stats]{aov}} with better output.
-##'
 ##' Wrapper around \code{\link[stats]{aov}} for repeated measures anova.
 ##' @title Wrapper around \code{\link[stats]{aov}} with better output.
 ##' @param formula : rhs of formula should be in partheses, () between any predictor and unit: y~(x1+x2)

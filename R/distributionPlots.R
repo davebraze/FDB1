@@ -1,10 +1,8 @@
 ## library(ggplot2)
 ## library(plyr)
 
-##' Plot histograms of two samples drawn from different Normal distributions.
-##'
 ##' Plot histograms of two samples drawn from different Normal distributions, given Mean, SD and N for each.
-##' @title Histograms for two samples drawn from Normal distributions.
+##' @title Plot histograms for two samples drawn from Normal distributions.
 ##' @param mn1 Mean for sample 1
 ##' @param sd1 SD for sample 1
 ##' @param n1 N for sample 1

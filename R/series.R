@@ -1,9 +1,7 @@
 ##' @include is.wholenumber.R
-##' Find sequences of positive integers in vector v.
-##'
-##' @details
-##' Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer at beginning of
-##' series, (2) index pointing to beginning of series, (3) length of series
+
+##' @details Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer at
+##' beginning of series, (2) index pointing to beginning of series, (3) length of series
 ##' @title Find sequences of positive integers in numeric vector v.
 ##' @param v : a numeric vector.
 ##' @return numeric matrix with 3 columns and 1 row for each series.
