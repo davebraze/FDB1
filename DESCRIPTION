@@ -31,6 +31,7 @@ Collate:
     'is.odd.R'
     'matlabDelim.R'
     'nobs.R'
+    'outliers.R'
     'print.aovtable.R'
     'qqplot.R'
     'readELascii.R'
