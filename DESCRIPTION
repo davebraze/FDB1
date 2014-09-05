@@ -8,9 +8,11 @@ Maintainer: David Braze <davebraze@gmail.com>
 Description: A brew of utility and convenience functions. Some may even be
     useful.
 License: MIT + file LICENSE
-Copyright: Copyright 2012-14, David Braze, unless otherwise attributed.
+Copyright: Copyright 2012-14, David Braze, unless otherwise attributed in
+    individual functions or source files.
 Imports:
     Hmisc,
+    car,
     gplots,
     ggplot2,
     plyr,
@@ -29,6 +31,7 @@ Collate:
     'invBoxCox.R'
     'iplot.R'
     'is.odd.R'
+    'mahalDist.R'
     'matlabDelim.R'
     'nobs.R'
     'outliers.R'
