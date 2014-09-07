@@ -15,11 +15,11 @@ name of dataframe.}
 None. Used for its side effect.
 }
 \description{
-matlabDelim generates 2 ascii files. The first is a tab delimited ascii data file that contains only
-numerical values, or the missing value code 'NaN' (factors in DF are converted to integer
-vectors). The second file is a  'key' file that lists all of the variables included (columnwise)
-in the data file. For those variables/columns that should be interpreted as factors, gives a list
-of the 'levels/labels' that the numerical values in the data file correspond to.
+matlabDelim generates 2 ascii files. The first is a tab delimited ascii data file that contains
+only numerical values, or the missing value code 'NaN' (factors in DF are converted to integer
+vectors). The second file is a 'key' file that lists all of the variables included (columnwise)
+in the data file. For those variables/columns that should be interpreted as factors, gives a
+list of the 'levels/labels' that the numerical values in the data file correspond to.
 }
 \author{
 David Braze \email{davebraze@gmail.com}

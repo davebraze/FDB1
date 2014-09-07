@@ -18,12 +18,10 @@ compcorr(n1, r1, n2, r2)
 list containing diff(Z1, Z2) and pval for difference.
 }
 \description{
-Fisher's Z test for comparing two correllation coefficients.
-}
-\details{
 Test whether two correlation coefficients are statistically different using the difference
 between Fisher's Z transforms.
-
+}
+\details{
 Method cribbed from:
 \enumerate{
     \item \url{http://www.fon.hum.uva.nl/Service/Statistics/Two_Correlations.html}

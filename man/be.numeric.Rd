@@ -12,9 +12,6 @@ be.numeric(c)
 a vector of logicals
 }
 \description{
-Checks element-wise if character vector can be coerced to numeric.
-}
-\details{
 Checks whether each element in a vector of strings can be coerced to numeric.
 }
 \author{

@@ -23,9 +23,6 @@ aovtable(formula = NULL, unit = NULL, cv = NULL, data = NULL,
 an anova table (data.frame)
 }
 \description{
-Wrapper around \code{\link[stats]{aov}} with better output.
-}
-\details{
 Wrapper around \code{\link[stats]{aov}} for repeated measures anova.
 }
 \author{
