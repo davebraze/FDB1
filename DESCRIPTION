@@ -5,8 +5,8 @@ Version: 0.04
 Date: 2014-08-29
 Author: David Braze
 Maintainer: David Braze <davebraze@gmail.com>
-Description: A brew of utility and convenience functions. Some may even be
-    useful.
+Description: A dabbler's brew of utility and convenience functions. Some may
+    even be useful.
 License: MIT + file LICENSE
 Copyright: Copyright 2012-14, David Braze, unless otherwise attributed in
     individual functions or source files.

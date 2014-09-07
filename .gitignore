@@ -7,4 +7,5 @@
 # Documentation generated files #
 #################################
 man/*.Rd
+man/*
 

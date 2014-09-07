@@ -1,12 +1,12 @@
 
-##' This is wrapper around \code{[Hmisc]{rcor2}} that aims to return a reasonably formatted table of
+##' This is wrapper around \code{\link[Hmisc]{rcor2}} that aims to return a reasonably formatted table of
 ##' correlations. R values are in the lower triangle with NAs elsewhere. Diagonal is NA by default,
 ##' but may be set to standard deviations or variances.
 ##'
 ##' TODO: put means or SDs on the diagonal; put Ns or pvals in the upper.tri
 ##' @title Get correlation table for numerical matrix M.
 ##' @param M : a numeric matrix with at least 2 columns
-##' @param type : passed to Hmisc::rcor2
+##' @param type : passed to \code{\link[Hmisc]{rcor2}}
 ##' @param file : a string. If not empty, then save the matrix to file with the given name.
 ##' @param diag : values to put in diagonal of corrTable: NA (default), standard deviation, variance
 ##' @return A matrix with R values in the lower triangle and NAs elsewhere
