@@ -50,7 +50,7 @@ mahalDist <- function(m, scale=TRUE, use="complete.obs", center="mean") {
 ##' @seealso \code{\link[car]{qqPlot}}
 ##' @export
 mahalPlot <- function(X, envp=.95, col.point="blue", ...) {
-    stopifnot("mahalDist" %in% class(m))
+    stopifnot("mahalDist" %in% class(X))
     qqPlot(X$D2, line="robust",
            distribution="chisq", df=X$dim,
            envelope=envp,
