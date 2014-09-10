@@ -1,8 +1,8 @@
 Package: FDB1
 Type: Package
 Title: A brew of utility and convenience functions. Some may even be useful.
-Version: 0.04
-Date: 2014-08-29
+Version: 0.05
+Date: 2014-09-08
 Author: David Braze
 Maintainer: David Braze <davebraze@gmail.com>
 Description: A dabbler's brew of utility and convenience functions. Some may
@@ -12,11 +12,11 @@ Copyright: Copyright 2012-14, David Braze, unless otherwise attributed in
     individual functions or source files.
 Imports:
     Hmisc,
-    car,
     gplots,
     ggplot2,
     plyr,
-    stringr
+    stringr,
+    car
 Collate:
     'aovtable.R'
     'be.numeric.R'

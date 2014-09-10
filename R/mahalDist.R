@@ -51,15 +51,15 @@ mahalDist <- function(m, scale=TRUE, use="complete.obs", center="mean") {
 ##' @export
 mahalPlot <- function(X, envp=.95, col.point="blue", ...) {
     stopifnot("mahalDist" %in% class(X))
-    qqPlot(X$D2, line="robust",
-           distribution="chisq", df=X$dim,
-           envelope=envp,
-           xlab=bquote('Quantiles of ' * chi[.(X$dim)]^2),
-           ylab=expression(D^2),
-           col=col.point,
-           main = bquote("Q-Q plot of Mahalanobis" * ~D^2 *
-               " vs. quantiles of" * ~ chi[.(X$dim)]^2),
-           ...)
+    car::qqPlot(X$D2, line="robust",
+                distribution="chisq", df=X$dim,
+                envelope=envp,
+                xlab=bquote('Quantiles of ' * chi[.(X$dim)]^2),
+                ylab=expression(D^2),
+                col=col.point,
+                main = bquote("Q-Q plot of Mahalanobis" * ~D^2 *
+                    " vs. quantiles of" * ~ chi[.(X$dim)]^2),
+                ...)
     abline(h=c(2,10), v=c(2,10), lty=3, col="grey")
     ypos=15
     text(x=2.5, y=ypos, adj=c(0,0), bquote(.(dim) * "D space:"))
