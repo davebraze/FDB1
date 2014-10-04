@@ -3,11 +3,11 @@
 ##' @details Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer at
 ##' beginning of series, (2) index pointing to beginning of series, (3) length of series
 ##' @title Find sequences of integers in numeric vector v.
-##' @param v : a numeric vector containing only whole numbers.
-##' @param step : The step size and direction (distance between adjacent items) for identifying
+##' @param v A numeric vector containing only whole numbers.
+##' @param step The step size and direction (distance between adjacent items) for identifying
 ##' series. Note that the sign of the step matters. Use positive values for monotonically increasing
 ##' series and negative values for monotonically decreasing series. Defaults to 1.
-##' @param minseries : The minimimum series length. Defaults to 2.
+##' @param minseries The minimimum series length. Defaults to 2.
 ##' @return numeric matrix with 3 columns and 1 row for each series.
 ##' @author
 ##' David Braze \email{davebraze@@gmail.com}

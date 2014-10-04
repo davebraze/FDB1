@@ -2,7 +2,7 @@
 ##' (betas) from an \code{\link[stats]{lm}} object. This function fills that gap.
 ##'
 ##' @title Extract betas from an lm object.
-##' @param lm : an lm object
+##' @param lm An lm object.
 ##' @return A vector of standardized coefficients.
 ##' @author David Braze \email{davebraze@@gmail.com}
 ##' @seealso  \code{\link[stats]{lm}}

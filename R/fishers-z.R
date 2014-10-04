@@ -9,10 +9,10 @@
 ##' and implemented in R.
 ##'
 ##' @title Fisher's Z test for comparing two correllation coefficients.
-##' @param n1 : n for correlation 1
-##' @param r1 : r for correlation 1
-##' @param n2 : n for correlation 2
-##' @param r2 : r for correlation 2
+##' @param n1 n for correlation 1.
+##' @param r1 r for correlation 1.
+##' @param n2 n for correlation 2.
+##' @param r2 r for correlation 2.
 ##' @return list containing diff(Z1, Z2) and pval for difference.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export

@@ -5,8 +5,8 @@
 ##' vectors). The second file is a 'key' file that lists all of the variables included (columnwise)
 ##' in the data file. For those variables/columns that should be interpreted as factors, gives a
 ##' list of the 'levels/labels' that the numerical values in the data file correspond to.
-##' @param DF : A dataframe to be exported
-##' @param name : A basename to be used in constructing filenames for key and data files. Defaults to
+##' @param DF A dataframe to be exported.
+##' @param name A basename to be used in constructing filenames for key and data files. Defaults to
 ##' name of dataframe.
 ##' @return None. Used for its side effect.
 ##' @author David Braze \email{davebraze@@gmail.com}

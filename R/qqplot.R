@@ -5,8 +5,8 @@
 ##' the normal distribution. Also plot a 'fit' line with intercept equal to sample mean and slope
 ##' equal to sample standard deviation.
 ##' @title Create a QQ plot for a variable within a data.frame.
-##' @param v : a character string naming a variable in data.frame 'dat'
-##' @param dat : a data.frame containing at least 1 variable 'v'
+##' @param v A character string naming a variable in data.frame 'dat'.
+##' @param dat A data.frame containing at least 1 variable 'v'.
 ##' @return a \pkg{ggplot2} object
 ##' @seealso \code{\link{qqplot}}
 ##' @author Dave Braze \email{davebraze@@gmail.com}
@@ -27,9 +27,9 @@ qqp <- function(v, dat) {
 ##' plots based on the normal distribution and include 'fit' lines on each with intercepts equal to
 ##' sample means and slopes equal to sample standard deviations.
 ##' @title Create and plot a QQ plot matrix.
-##' @param vars : a character vector specifying variables with data.frame 'dat' to plot.
-##' @param dat : a data.frame containing variables to be plotted.
-##' @return a grid grob created by applying grid.arrange to list of ggplot2 objects
+##' @param vars A character vector specifying variables with data.frame 'dat' to plot.
+##' @param dat A data.frame containing variables to be plotted.
+##' @return A grid grob created by applying grid.arrange to list of ggplot2 objects.
 ##' @seealso \code{\link{qqp}}
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
