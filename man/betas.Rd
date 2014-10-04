@@ -6,7 +6,7 @@
 betas(lm)
 }
 \arguments{
-\item{lm}{: an lm object}
+\item{lm}{An lm object.}
 }
 \value{
 A vector of standardized coefficients.

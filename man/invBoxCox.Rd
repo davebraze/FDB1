@@ -6,9 +6,9 @@
 invBoxCox(x, lambda)
 }
 \arguments{
-\item{x}{: a numerical vector}
+\item{x}{A numerical vector.}
 
-\item{lambda}{: lambda to use for the inverse Box-Cox transform}
+\item{lambda}{Lambda to use for the inverse Box-Cox transform.}
 }
 \value{
 a numerical vector

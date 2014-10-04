@@ -2,7 +2,7 @@
 
 export(be.numeric)
 export(betas)
-export(blocks)
+export(char2int)
 export(compcorr)
 export(corrTable)
 export(cosinedist)

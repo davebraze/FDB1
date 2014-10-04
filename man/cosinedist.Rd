@@ -6,7 +6,7 @@
 cosinedist(M)
 }
 \arguments{
-\item{M}{: a numeric matrix}
+\item{M}{A numeric matrix.}
 }
 \value{
 A matrix of pairwise distances in the lower triangle and vector magnitudes on the

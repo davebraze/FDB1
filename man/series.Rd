@@ -6,13 +6,13 @@
 series(v, step = 1, minseries = 2)
 }
 \arguments{
-\item{v}{: a numeric vector containing only whole numbers.}
+\item{v}{A numeric vector containing only whole numbers.}
 
-\item{step}{: The step size and direction (distance between adjacent items) for identifying
+\item{step}{The step size and direction (distance between adjacent items) for identifying
 series. Note that the sign of the step matters. Use positive values for monotonically increasing
 series and negative values for monotonically decreasing series. Defaults to 1.}
 
-\item{minseries}{: The minimimum series length. Defaults to 2.}
+\item{minseries}{The minimimum series length. Defaults to 2.}
 }
 \value{
 numeric matrix with 3 columns and 1 row for each series.

@@ -6,9 +6,9 @@
 matlabDelim(DF, name = deparse(substitute(DF)))
 }
 \arguments{
-\item{DF}{: A dataframe to be exported}
+\item{DF}{A dataframe to be exported.}
 
-\item{name}{: A basename to be used in constructing filenames for key and data files. Defaults to
+\item{name}{A basename to be used in constructing filenames for key and data files. Defaults to
 name of dataframe.}
 }
 \value{

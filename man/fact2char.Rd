@@ -6,10 +6,10 @@
 fact2char(f)
 }
 \arguments{
-\item{f}{: a vector of class factor}
+\item{f}{A vector of class factor.}
 }
 \value{
-a vector of class "character"
+A vector of class "character".
 }
 \description{
 Coerce a vector of class "factor" to character

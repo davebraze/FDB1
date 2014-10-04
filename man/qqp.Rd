@@ -6,9 +6,9 @@
 qqp(v, dat)
 }
 \arguments{
-\item{v}{: a character string naming a variable in data.frame 'dat'}
+\item{v}{A character string naming a variable in data.frame 'dat'.}
 
-\item{dat}{: a data.frame containing at least 1 variable 'v'}
+\item{dat}{A data.frame containing at least 1 variable 'v'.}
 }
 \value{
 a \pkg{ggplot2} object

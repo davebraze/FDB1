@@ -6,10 +6,10 @@
 fact2num(f)
 }
 \arguments{
-\item{f}{: a vector of class "factor"}
+\item{f}{A vector of class "factor".}
 }
 \value{
-a vector of class "numeric"
+A vector of class "numeric".
 }
 \description{
 Coerces a vector of class factor to numeric. This function preserves underlying integer level
