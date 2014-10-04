@@ -2,33 +2,61 @@
 
 ##' @details Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer at
 ##' beginning of series, (2) index pointing to beginning of series, (3) length of series
-##' @title Find sequences of positive integers in numeric vector v.
-##' @param v : a numeric vector.
+##' @title Find sequences of integers in numeric vector v.
+##' @param v : a numeric vector containing only whole numbers.
+##' @param step : The step size and direction (distance between adjacent items) for identifying
+##' series. Note that the sign of the step matters. Use positive values for monotonically increasing
+##' series and negative values for monotonically decreasing series. Defaults to 1.
+##' @param minseries : The minimimum series length. Defaults to 2.
 ##' @return numeric matrix with 3 columns and 1 row for each series.
 ##' @author
 ##' David Braze \email{davebraze@@gmail.com}
 ##' @seealso \code{\link{blocks}}
 ##' @export
-series <- function(v){
+series <- function(v, step=1, minseries=2){
     if (any(is.na(v))) {
         warning("Missing values removed from v.")
         v <- v[!is.na(v)]
     }
     if (!is.numeric(v)) stop("v must be numeric.")
-    if (!all(sign(v)==1)) stop("v must contain only positive numbers.")
+#    if (!all(sign(v)==1)) stop("v must contain only positive numbers.")
     if (!all(is.wholenumber(v))) stop("v must contain only whole numbers.")
-    runs <- (c(-1, diff(v)!=1, NA))
-    runlocs <- which(runs!=0)
+#    browser()
+    diffs <- diff(v)
+    breaks <- (c(FALSE, diffs==step))
+    runlocs <- which(!breaks)
     int <- v[runlocs]
     runlens <- diff(c(runlocs, length(v)+1))
-    cbind(int, runlocs, runlens)
+    retval <- cbind(int, runlocs, runlens)
+    retval <- retval[retval[,3]>=minseries,]
+    retval
 }
 
 if (FALSE) {
-    v4 <- c(2:5, 7:11, 13, 4:9, 11:13, 1:6, 101:105)
-    v5 <- v2; v5[3] <- NA
-    series(v4)
-    series(-v4)
-    series(v5)
+    v1 <- c(2:5, 7:11, 13, 4:9, 11:13, 1:6, 101:105)
+    o1 <- series(v1)
+
+    v2 <- v1; v2[3] <- NA
+    o2 <- series(v2)
+
+    v3 <- -3:3
+    o3 <- series(v3)
+
+    v4 <- v3; v4[4] <- 12
+    o4 <- series(v4)
+
+    v5 <- c(rep(1,5), 100, rep(21, 5), 200)
+    o5a <- series(v5, step=0)
+    o5b <- series(v5)
+
+    v6 <- c(seq(1,20,4), 100, seq(100, 121,3), 200)
+    o6a <- series(v6)
+    o6b <- series(v6, step=0)
+    o6c <- series(v6, step=3)
+    o6d <- series(v6, step=4)
+
+    v7 <- 3:-3
+    o7a <- series(v7)
+    o7b <- series(v7, step=-1)
 }
 

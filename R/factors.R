@@ -5,6 +5,7 @@
 ##' @return a vector of class "numeric"
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @seealso \code{\link{fact2char}}
+##' @export
 fact2num <- function(f) {
     as.numeric(f)
 }
@@ -18,6 +19,7 @@ fact2num <- function(f) {
 ##' @return a vector of class "character"
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @seealso \code{\link{fact2num}}
+##' @export
 fact2char <- function(f) {
     as.character(f)
 }
