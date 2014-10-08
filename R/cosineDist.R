@@ -7,6 +7,8 @@
 ##' diagonal.
 ##' @author
 ##' Dave Braze \email{davebraze@@gmail.com}
+##' @seealso
+##' \code{\link{dist}}
 ##' @export
 cosinedist <- function(M) {
   origin <- rep(0, dim(M)[2])

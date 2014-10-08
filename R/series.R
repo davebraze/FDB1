@@ -21,7 +21,6 @@ series <- function(v, step=1, minseries=2){
     if (!is.numeric(v)) stop("v must be numeric.")
 #    if (!all(sign(v)==1)) stop("v must contain only positive numbers.")
     if (!all(is.wholenumber(v))) stop("v must contain only whole numbers.")
-#    browser()
     diffs <- diff(v)
     breaks <- (c(FALSE, diffs==step))
     runlocs <- which(!breaks)
@@ -29,6 +28,11 @@ series <- function(v, step=1, minseries=2){
     runlens <- diff(c(runlocs, length(v)+1))
     retval <- cbind(int, runlocs, runlens)
     retval <- retval[retval[,3]>=minseries,]
+    if(!is.matrix(retval)) {
+        cnames <- names(retval)
+        dim(retval) <- c(1,3)
+        colnames(retval) <- cnames
+    }
     retval
 }
 

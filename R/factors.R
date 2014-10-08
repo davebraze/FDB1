@@ -4,23 +4,42 @@
 ##' @param f A vector of class "factor".
 ##' @return A vector of class "numeric".
 ##' @author Dave Braze \email{davebraze@@gmail.com}
-##' @seealso \code{\link{fact2char}}
+##' @seealso
+##' \code{\link{fact2char}}
+##' \code{\link{as.numeric}}
 ##' @export
 fact2num <- function(f) {
     as.numeric(f)
 }
 
-##' Coerce a vector of class "factor" to character
-##'
 ##' Coerces a vector of class factor to numeric. This function preserves level labels associated
 ##' with each element of f.
 ##' @title Coerce a vector of class "factor" to character
 ##' @param f A vector of class factor.
 ##' @return A vector of class "character".
 ##' @author Dave Braze \email{davebraze@@gmail.com}
-##' @seealso \code{\link{fact2num}}
+##' @seealso
+##' \code{\link{fact2num}}
+##' \code{\link{as.character}}
 ##' @export
 fact2char <- function(f) {
     as.character(f)
 }
 
+##' Reorders the levels of factor f as specified in new.order, which must contain all and only the
+##' existing levels of f, but in the desired order. If new.order and levels(f) do not contain
+##' exactly the same elements, then do nothing.
+##' @title Reorder factor levels.
+##' @param f A factor.
+##' @param new.order A character vector containing all and only the levels of f, in the desired order.
+##' @return A factor.
+##' @author Dave Braze \email{davebraze@@gmail.com}
+##' @seealso
+##' \code{\link{factor}}
+##' \code{\link{levels}}
+##' @export
+levelOrder <- function(f, new.order) {
+    stopifnot(all(levels(f) %in% new.order) & all(new.order %in% levels(f)))
+    retval <- factor(f, levels = new.order)
+    retval
+}

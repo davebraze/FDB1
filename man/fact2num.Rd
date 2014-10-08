@@ -20,5 +20,6 @@ Dave Braze \email{davebraze@gmail.com}
 }
 \seealso{
 \code{\link{fact2char}}
+\code{\link{as.numeric}}
 }
 

@@ -20,4 +20,7 @@ magnitudes on the diagonal.
 \author{
 Dave Braze \email{davebraze@gmail.com}
 }
+\seealso{
+\code{\link{dist}}
+}
 
