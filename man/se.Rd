@@ -6,9 +6,9 @@
 se(x, na.rm = FALSE)
 }
 \arguments{
-\item{x}{: Object to compute SEMs for. Can be vector, matrix or data.frame.}
+\item{x}{Object to compute SEMs for. Can be vector, matrix or data.frame.}
 
-\item{na.rm}{: Specify how to handle missing values.}
+\item{na.rm}{Specify how to handle missing values.}
 }
 \value{
 Standard error of the mean for x, or each column of x.

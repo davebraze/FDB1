@@ -6,13 +6,13 @@
 corrTable(M, type = "pearson", file = "", diag = FALSE)
 }
 \arguments{
-\item{M}{: a numeric matrix with at least 2 columns}
+\item{M}{A numeric matrix with at least 2 columns.}
 
-\item{type}{: passed to \code{\link[Hmisc]{rcor2}}}
+\item{type}{Passed to \code{\link[Hmisc]{rcor2}}.}
 
-\item{file}{: a string. If not empty, then save the matrix to file with the given name.}
+\item{file}{A string. If not empty, then save the matrix to file with the given name.}
 
-\item{diag}{: values to put in diagonal of corrTable: NA (default), standard deviation, variance}
+\item{diag}{Values to put in diagonal of corrTable: NA (default), standard deviation, variance}
 }
 \value{
 A matrix with R values in the lower triangle and NAs elsewhere

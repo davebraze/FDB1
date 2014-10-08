@@ -6,13 +6,13 @@
 compcorr(n1, r1, n2, r2)
 }
 \arguments{
-\item{n1}{: n for correlation 1}
+\item{n1}{n for correlation 1.}
 
-\item{r1}{: r for correlation 1}
+\item{r1}{r for correlation 1.}
 
-\item{n2}{: n for correlation 2}
+\item{n2}{n for correlation 2.}
 
-\item{r2}{: r for correlation 2}
+\item{r2}{r for correlation 2.}
 }
 \value{
 list containing diff(Z1, Z2) and pval for difference.

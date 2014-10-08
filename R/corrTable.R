@@ -5,10 +5,10 @@
 ##'
 ##' TODO: put means or SDs on the diagonal; put Ns or pvals in the upper.tri
 ##' @title Get correlation table for numerical matrix M.
-##' @param M : a numeric matrix with at least 2 columns
-##' @param type : passed to \code{\link[Hmisc]{rcor2}}
-##' @param file : a string. If not empty, then save the matrix to file with the given name.
-##' @param diag : values to put in diagonal of corrTable: NA (default), standard deviation, variance
+##' @param M A numeric matrix with at least 2 columns.
+##' @param type Passed to \code{\link[Hmisc]{rcor2}}.
+##' @param file A string. If not empty, then save the matrix to file with the given name.
+##' @param diag Values to put in diagonal of corrTable: NA (default), standard deviation, variance
 ##' @return A matrix with R values in the lower triangle and NAs elsewhere
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export

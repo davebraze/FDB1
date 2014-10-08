@@ -4,10 +4,10 @@
 ##' around \code{\link[stats]{mahalanobis}}, which see. Variables are optionally scaled before
 ##' distances are computed. Incomplete observations will return NA.
 ##' @title Get squared Mahalanobis distances for N observations in M dimensions.
-##' @param m : A data.frame or matrix. Observations in rows.
-##' @param scale : If TRUE, scale variables before getting mahalanobis distances.
-##' @param use : Observations to use in computing covariance matrix. Gets passed to \code{\link[stats]{cov}}.
-##' @param center : Type of univariate center for each variable in \code{m}; "mean" or "median"
+##' @param m A data.frame or matrix. Observations in rows.
+##' @param scale If TRUE, scale variables before getting mahalanobis distances.
+##' @param use Observations to use in computing covariance matrix. Gets passed to \code{\link[stats]{cov}}.
+##' @param center Type of univariate center for each variable in \code{m}; "mean" or "median"
 ##' @return
 ##' A list with additional class "mahalDist" containing elements:
 ##' \enumerate{

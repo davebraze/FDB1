@@ -6,12 +6,12 @@
 is.wholenumber(v, tol = .Machine$double.eps^0.5)
 }
 \arguments{
-\item{v}{: a numeric vector}
+\item{v}{A numeric vector.}
 
-\item{tol}{: what counts as close enough to 0? Defaults to .Machine$double.eps^0.5}
+\item{tol}{What counts as close enough to 0? Defaults to .Machine$double.eps^0.5.}
 }
 \value{
-a vector of Logicals
+A vector of Logicals.
 }
 \description{
 Takes a numeric vector and returns a Logical vector the same length

@@ -6,12 +6,12 @@
 qqplot(vars, dat)
 }
 \arguments{
-\item{vars}{: a character vector specifying variables with data.frame 'dat' to plot.}
+\item{vars}{A character vector specifying variables with data.frame 'dat' to plot.}
 
-\item{dat}{: a data.frame containing variables to be plotted.}
+\item{dat}{A data.frame containing variables to be plotted.}
 }
 \value{
-a grid grob created by applying grid.arrange to list of ggplot2 objects
+A grid grob created by applying grid.arrange to list of ggplot2 objects.
 }
 \description{
 Given a data.frame and vector of variable names within it, create a matrix of quantile-quantile

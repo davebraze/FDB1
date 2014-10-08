@@ -6,7 +6,7 @@
 is.odd(n)
 }
 \arguments{
-\item{n}{: a numeric vector}
+\item{n}{A numeric vector.}
 }
 \value{
 TRUE if n is an integer and is odd, FALSE if n is an integer and not odd, NA otherwise.

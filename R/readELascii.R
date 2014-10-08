@@ -52,10 +52,10 @@ getTrialData <- function(bounds, lines) {
 ##' EDF data file format. This function reads those ASCII files and extracts eye-movement events
 ##' from them (fixations, saccades, blinks).
 ##' @title Get events from SR Research ASCII data files.
-##' @param : file string giving path/fname to input file (ELalscii file)
-##' @param : tstartre string containing regular expression that uniquely identifies beginning of trial
-##' @param : tendre string containing regular expression that uniquely identifies end of trial
-##' @param : eye indicates which eye ("R"|"L") to get events from. Currently unused.
+##' @param file A string giving path/fname to input file (ELalscii file).
+##' @param tstartre A string containing regular expression that uniquely identifies beginning of trial.
+##' @param tendre A string containing regular expression that uniquely identifies end of trial.
+##' @param eye Indicates which eye ("R"|"L") to get events from. Currently unused.
 ##' @return List with one element for the file header and one element for each trial. Each trial
 ##' element is itself a list of 3 elements: data.frames enumerating fixations, saccades, and blinks
 ##' for the trial.

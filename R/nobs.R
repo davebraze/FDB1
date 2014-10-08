@@ -1,7 +1,7 @@
 ##' Number of non-missing values.
 ##'
 ##' Returns the number of non-missing values in vector x. A convenience wrapper around sum(!is.na(x)).
-##' @param v : a vector
+##' @param v A vector.
 ##' @return integer, length of x minus the number of NAs in x.
 ##' @author David Braze \email{davebraze@@gmail.com}
 ##' @export

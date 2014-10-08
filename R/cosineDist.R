@@ -2,11 +2,13 @@
 ##' pairwise cosine distances among the rows of M. Return a matrix of pairwise distances with vector
 ##' magnitudes on the diagonal.
 ##' @title Compute cosine distance.
-##' @param M : a numeric matrix
+##' @param M A numeric matrix.
 ##' @return A matrix of pairwise distances in the lower triangle and vector magnitudes on the
 ##' diagonal.
 ##' @author
 ##' Dave Braze \email{davebraze@@gmail.com}
+##' @seealso
+##' \code{\link{dist}}
 ##' @export
 cosinedist <- function(M) {
   origin <- rep(0, dim(M)[2])

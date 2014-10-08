@@ -6,7 +6,7 @@
 nobs(v)
 }
 \arguments{
-\item{v}{: a vector}
+\item{v}{A vector.}
 }
 \value{
 integer, length of x minus the number of NAs in x.
