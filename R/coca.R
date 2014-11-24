@@ -14,7 +14,7 @@
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @seealso \code{\link{read.table}}
 ##' @export
-readCocaFreq <- function(file, sep="\t", na.strings="  ", quote = "\"", header=TRUE, simpleWC=TRUE, ...) {
+cocaReadFreq <- function(file, sep="\t", na.strings="  ", quote = "\"", header=TRUE, simpleWC=TRUE, ...) {
     D <- read.table(file, sep=sep, na.strings=na.strings, quote = quote, header=header, ...)
     if (simpleWC) {
         WC <- sapply(D$w1, simpleWordClass)
@@ -31,7 +31,7 @@ readCocaFreq <- function(file, sep="\t", na.strings="  ", quote = "\"", header=T
 ##' @return A string containing the simplified wordclass tag.
 ##' @author  Dave Braze \email{davebraze@@gmail.com}
 ##' @export
-simpleWordClass <- function(wordclass) {
+cocaSimpleWordClass <- function(wordclass) {
     stopifnot(is.character(wordclass))
     stopifnot(length(wordclass)==1)
     trans <- matrix(c( "appge", "posspron", "at", "det", "at1", "det", "cc", "conj", "cs", "conj", "da",
@@ -57,7 +57,7 @@ simpleWordClass <- function(wordclass) {
 ##' @return A data.frame with columns w1, L1, WC.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
-form2lemmas <- function(word, data) {
+cocaForm2lemmas <- function(word, data) {
     d <- grep(paste("^", word, "$", sep=""), data$w1)
     lset <- data[d, c("w1", "L1", "WC")]
     retval <- unique(lset)
@@ -74,7 +74,7 @@ form2lemmas <- function(word, data) {
 ##' @return A character vector containing wordforms.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
-lemma2forms <- function(lemma, data) {
+cocaLemma2forms <- function(lemma, data) {
     ii <- grep(paste("^", lemma$form, "$", sep=""), data$L1); retval <- data[ii,]
     ii <- grep(paste("^", lemma$class, "$", sep=""), retval$WC); retval <- retval[ii,]
     unique(as.character(retval$w1))
