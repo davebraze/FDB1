@@ -21,6 +21,7 @@ Collate:
     'be.numeric.R'
     'betas.R'
     'blocks.R'
+    'coca.R'
     'corrTable.R'
     'cosineDist.R'
     'distributionPlots.R'
