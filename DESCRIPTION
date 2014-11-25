@@ -20,7 +20,7 @@ Collate:
     'aovtable.R'
     'be.numeric.R'
     'betas.R'
-    'blocks.R'
+    'char2int.R'
     'coca.R'
     'corrTable.R'
     'cosineDist.R'

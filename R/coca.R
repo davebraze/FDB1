@@ -26,7 +26,7 @@ cocaReadFreq <- function(file, sep="\t", na.strings="  ", quote = "\"", header=T
 
 ##' CoCA uses a subset of wordclass tags from the CLAWS7 tagset
 ##' (http://ucrel.lancs.ac.uk/claws7tags.html). This function reduces those to a simplified set
-##' @title Simplify CoCA (CLAWS7) part-of-speech tag.
+##' @title Simplify CoCA (CLAWS7) part-of-speech tags.
 ##' @param wordclass One of the CLAWS7 tags used in CoCA
 ##' @return A string containing the simplified wordclass tag.
 ##' @author  Dave Braze \email{davebraze@@gmail.com}
@@ -53,7 +53,7 @@ cocaSimpleWordClass <- function(wordclass) {
 ##' containing wordform/lemma/wordclass.
 ##' @title Get lemmas for the specified wordform.
 ##' @param word A character string holding the wordform
-##' @param data A data.frame containing CoCA lexical statistics. See \code{\link{readCocaFreq}}.
+##' @param data A data.frame containing CoCA lexical statistics. See \code{\link{cocaReadFreq}}.
 ##' @return A data.frame with columns w1, L1, WC.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
@@ -70,7 +70,7 @@ cocaForm2lemmas <- function(word, data) {
 ##' @title Get attested wordforms for the specified lemma.
 ##' @param lemma A 2 element list with named elements "form" (the lemma form) and "class" (the
 ##' simple word class). For acceptable class values see \code{\link{simpleWordClass}}.
-##' @param data A data.frame containing CoCA lexical statistics. See \code{\link{readCocaFreq}}.
+##' @param data A data.frame containing CoCA lexical statistics. See \code{\link{cocaReadFreq}}.
 ##' @return A character vector containing wordforms.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export

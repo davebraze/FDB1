@@ -11,7 +11,6 @@
 ##' @return numeric matrix with 3 columns and 1 row for each series.
 ##' @author
 ##' David Braze \email{davebraze@@gmail.com}
-##' @seealso \code{\link{blocks}}
 ##' @export
 series <- function(v, step=1, minseries=2){
     if (any(is.na(v))) {
