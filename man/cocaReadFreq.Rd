@@ -4,21 +4,27 @@
 \title{Read CoCA word frequency table.}
 \usage{
 cocaReadFreq(file, sep = "\\t", na.strings = "  ",
-  quote = "\\"", header = TRUE, simpleWC = TRUE, ...)
+  quote = "\\"", header = TRUE, fill = TRUE, skip = 2, simpleWC = TRUE, ...)
 }
 \arguments{
-\item{file}{per \code{\link{read.table}}}
+\item{file}{Sent to \code{\link{read.table}}.}
 
-\item{sep}{per \code{\link{read.table}}}
+\item{sep}{The CoCA lexical frequency file is tab delimited. Value sent to \code{\link{read.table}}.}
 
-\item{na.strings}{per \code{\link{read.table}}}
+\item{na.strings}{Sent to \code{\link{read.table}}.}
 
-\item{quote}{per \code{\link{read.table}}}
+\item{quote}{Some fields in CoCA file contain "'". So remove that character from the
+\code{read.table} default for this parameter. Sent to \code{\link{read.table}}.}
 
-\item{header}{per \code{\link{read.table}}}
+\item{header}{The CoCA file includes a header. Value sent to \code{\link{read.table}}.}
 
-\item{simpleWC}{If TRUE then add vector of simplified wordclasses to data.frame. See
-\code{\link{simpleWordClass}}.}
+\item{fill}{Over-ride default value because the end of the header row in the CoCA frequency file
+has a stray tab, at least in my copy.}
+
+\item{skip}{Skip 2 comment rows at the top of the file.}
+
+\item{simpleWC}{If TRUE (the default) then add vector of simplified wordclasses to data.frame. See
+\code{\link{cocaSimpleWordClass}}.}
 
 \item{...}{additional arguments will be passed to \code{\link{read.table}}.}
 }
@@ -26,9 +32,51 @@ cocaReadFreq(file, sep = "\\t", na.strings = "  ",
 a data.frame
 }
 \description{
-A convenience wrapper around \code{\link{read.table}} with reasonable defaults for reading the
+Read CoCA word frequency table.
+}
+\details{
+Mostly a convenience wrapper around \code{\link{read.table}} with reasonable defaults for reading the
 Corpus of Contemporary American English word frequency file (\url{corpus.byu.edu}). The file
 contains tab delimited text, with some idiosynchracies.
+
+Contents of data.frame as documented in CoCA itself.
+
+The following information is adapted from the spreadsheet version of the lexical frequency table
+that is distributed with CoCA itself.
+
+This spreadsheet contains the 100,000 word list (http://www.wordfrequency.info/100k.asp) that is
+based on the Corpus of Contemporary American English (COCA; http://corpus.byu.edu/coca/) and
+other corpora (http://corpus.byu.edu).
+
+This copy of the data cannot be shared with others. Note also that a small change has been made
+to the data in this spreadsheet to indentify you as the source of the spreadsheet.
+
+The file includes a great deal of data from several different corpora. Column contents are
+listed below, by column name.
+
+Column
+\itemize{
+  \item \code{WC}        Simplified word class, if requested. See \code{simpleWC} argument to this function.
+  \item \code{ID}        Numerical word ID (rank order), 1-100,000
+  \item \code{w1}        Word form
+  \item \code{L1}        Lemma/stem (e.g. go for the words gone or went, or book for the word books, or quick for the word quicker)
+  \item \code{c1}        Part of speech. This is the first letter from the codes at \url{http://ucrel.lancs.ac.uk/claws7tags.html}
+  \item \code{pc}        Percent of tokens that are capitalized. This lets you see whether the word occurs mainly in proper noun-like contexts, like Ravens (the Baltimore Ravens team v the actual animal), March (the month vs. a walk), Brown (the surname vs the adjective), Beach (in place names like Daytona Beach), AIDS (the disease vs e.g. visual aids), or Rice (the university or surname vs the food). Note that some words have a high degree of capitalization simply because they occur primarily at the beginning of sentences, e.g. Hello or Unfortunately.
+  \item \code{spelling}  Whether the word is an American or British spelling
+  \item \code{coca}      Raw frequency (# tokens) in the 450 million word Corpus of Contemporary American English (\url{http://corpus.byu.edu/coca})
+  \item \code{pcoca}     Frequency (per million words) in the 450 million word Corpus of Contemporary American English (\url{http://corpus.byu.edu/coca})
+  \item \code{pbnc}      Frequency (per million words) in the 100 million word British National Corpus (\url{http://corpus.byu.edu/bnc})
+  \item \code{psoap}     Frequency (per million words) in the 100 million word Corpus of American Soap Operas (\url{http://corpus2.byu.edu/soap})
+  \item \code{ph3-ph1}   Frequency (per million words) in the Corpus of Historical American English (\url{http://corpus.byu.edu/coha}): 1950-1989, 1900-1949, and 1810-1899
+  \item \code{pc1-pc5}   Frequency (per million words) in COCA genres: spoken, fiction, popular magazines, newspapers, and academic journals
+  \item \code{pb1-pb7}   Frequency (per million words) in BNC genres: spoken, fiction, popular magazines, newspapers, non-academic journals, academic journals, and miscellaneous
+  \item \code{tpcoca}    Percentage of COCA texts (0.00-1.00) that contain the word at least once.
+  \item \code{tpbnc}     Percentage of BNC texts (0.00-1.00) that contain the word at least once.
+  \item \code{tpsoap}    Percentage of SOAP texts (0.00-1.00) that contain the word at least once.
+  \item \code{tph3-tpb7} Percentage of texts (0.00-1.00) that contain the word at least once: 1) COHA time periods   3) COCA genres   4) BNC genres
+  \item \code{bnc-fb7}   Raw token frequency in BNC, SOAP, COHA, COCA genres and BNC genres: the basis for Columns pcoca through pb7
+  \item \code{tcoca-tb7} Raw number of texts in COCA, BNC, SOAP, COHA, COCA genres and BNC genres: the basis for Columns tpcoca through tpb7
+}
 }
 \author{
 Dave Braze \email{davebraze@gmail.com}

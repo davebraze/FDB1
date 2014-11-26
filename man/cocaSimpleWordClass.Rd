@@ -6,14 +6,15 @@
 cocaSimpleWordClass(wordclass)
 }
 \arguments{
-\item{wordclass}{One of the CLAWS7 tags used in CoCA}
+\item{wordclass}{One of the CLAWS7 tags used in CoCA.}
 }
 \value{
 A string containing the simplified wordclass tag.
 }
 \description{
-CoCA uses a subset of wordclass tags from the CLAWS7 tagset
-(http://ucrel.lancs.ac.uk/claws7tags.html). This function reduces those to a simplified set
+CoCA uses a subset of 54 wordclass tags from the CLAWS7 tagset
+(\url{http://ucrel.lancs.ac.uk/claws7tags.html}). This function reduces those to a simplified set of
+15 tags. Not all will be useful.
 }
 \author{
 Dave Braze \email{davebraze@gmail.com}
