@@ -131,3 +131,69 @@ cocaLemma2words <- function(lemma, data) {
     retval
 }
 
+##' Return the set of wordforms associated with a lemma.
+##'
+##' @details Return the set of wordforms associated with a lemma. If wordclass (WC) is specified,
+##' then the set is restricted to that wordclass.
+##' @title Return the set of wordforms associated with a lemma.
+##' @param lemma Character string indicating the lemma (form).
+##' @param WC Character string indicating the wordclass of the lemma.
+##' @param data A data.frame containing CoCA lexical statistics. See \code{\link{cocaReadFreq}}.
+##' @return A data.frame containing columns for lemma (L1), simpleWC (WC), CLAWS7 tag (c1), wordform
+##' (w1), coca frequency (coca).
+##' @author Dave Braze \email{davebraze@@gmail.com}
+##' @export
+cocaLemmaSet <- function(lemma="run", WC=NA, data) {
+    if(is.na(WC)) {
+        lset <- data[data$L1==lemma, c("L1", "WC", "c1", "w1", "coca")]
+    } else {
+        lset <- data[data$L1==lemma & data$WC==WC, c("L1", "WC", "c1", "w1", "coca")]
+    }
+    retval <- lset[order(lset$WC, lset$c1),]
+    retval
+}
+
+if (FALSE) {
+    lemmas <- c("run", "hunt", "race")
+    ldply(lemmas, cocaLemmaSet, WC="verb", data=D)
+    ldply(lemmas, cocaLemmaSet, data=D)
+}
+
+##' Summed wordform frequencies for a lemma.
+##'
+##' @details Return the summed wordform frequencies for a lemma. If wordclass (WC) is specified,
+##' then the set is restricted to that wordclass.
+##'
+##' TODO: Fix content of WC in case of multiple WC (WC=NA). Should be concatenation of actual
+##' values.
+##' @title Summed wordform frequencies for a lemma.
+##' @param lemma Character string indicating the lemma (form).
+##' @param WC Character string indicating the wordclass of the lemma.
+##' @param data A data.frame containing CoCA lexical statistics. See \code{\link{cocaReadFreq}}.
+##' @return A data.frame containing columns for lemma (L1), simpleWC (WC), number of simpleWC
+##' included in summary (nWC), number of wordforms included in summary (nforms), summed coca
+##' frequencies for wordforms (coca).
+##' @author Dave Braze \email{davebraze@@gmail.com}
+##' @export
+cocaLemmaFreq <- function(lemma="run", WC=NA, data) {
+    lset <- cocaLemmaSet(lemma, WC, data)
+    nforms <- dim(lset)[1]
+    nWC <- length(unique(lset$WC))
+    freq <- sum(lset$coca, na.rm=TRUE)
+
+    if (!is.na(WC)) {
+        retval <- data.frame(lemma, WC, nWC, nforms, freq)
+    } else {
+        retval <- data.frame(lemma, WC, nWC, nforms, freq)
+    }
+    retval
+}
+
+if(FALSE) {
+    cocaLemmaFreq("run", WC="verb", data=D)
+    cocaLemmaFreq("run", WC=NA, data=D)
+    lemmas <- c("run", "hunt", "race")
+    ldply(lemmas, cocaLemmaFreq, WC="verb", data=D)
+    ldply(lemmas, cocaLemmaFreq, WC=NA, data=D)
+}
+
