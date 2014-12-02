@@ -3,7 +3,7 @@
 ## library(stringr)
 
 if(FALSE) {
-    fname <- "../data/195bj006-RAN.asc"
+    fname <- "../inst/extdata/19500006-RAN.asc"
     file <- fname
     bounds <- trialidx[1,]
 }
@@ -61,7 +61,7 @@ getTrialData <- function(bounds, lines) {
 ##' for the trial.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
-readELascii <- function(file="", tstartre="TRIALID", tendre="TRIAL_RESULT", eye=NA) {
+readELascii <- function(file, tstartre="TRIALID", tendre="TRIAL_RESULT", eye=NA) {
     f <- file(file, "r", blocking=FALSE)
     lines <- readLines(f, warn=TRUE, n=-1)
     close(f)

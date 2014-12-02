@@ -31,6 +31,7 @@ Collate:
     'iplot.R'
     'is.odd.R'
     'is.wholenumber.R'
+    'lme4extra.R'
     'mahalDist.R'
     'matlabDelim.R'
     'nobs.R'

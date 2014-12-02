@@ -3,8 +3,7 @@
 \alias{readELascii}
 \title{Get events from SR Research ASCII data files.}
 \usage{
-readELascii(file = "", tstartre = "TRIALID", tendre = "TRIAL_RESULT",
-  eye = NA)
+readELascii(file, tstartre = "TRIALID", tendre = "TRIAL_RESULT", eye = NA)
 }
 \arguments{
 \item{file}{A string giving path/fname to input file (ELalscii file).}
