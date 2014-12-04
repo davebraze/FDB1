@@ -6,7 +6,7 @@
 ##'     \item \url{http://www.fon.hum.uva.nl/Service/Statistics/Two_Correlations.html}
 ##'     \item \url{http://ftp.sas.com/techsup/download/stat/compcorr.html}
 ##' }
-##' and implemented in R.
+##' Implemented in R by me.
 ##'
 ##' @title Fisher's Z test for comparing two correllation coefficients.
 ##' @param n1 n for correlation 1.
@@ -17,13 +17,13 @@
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 compcorr <- function(n1, r1, n2, r2){
-# Fisher Z-transforms
-        zf1 <- 0.5*log((1 + r1)/(1 - r1))
-        zf2 <- 0.5*log((1 + r2)/(1 - r2))
-# difference
-        dz <- (zf1 - zf2)/sqrt(1/(n1 - 3) + (1/(n2 - 3)))
- # p-value
-        pv <- 2*(1 - pnorm(abs(dz)))
-
-        return(list(diff=dz, pval=pv))
+    ## Fisher Z-transforms
+    zf1 <- 0.5*log((1 + r1)/(1 - r1))
+    zf2 <- 0.5*log((1 + r2)/(1 - r2))
+    ## difference
+    dz <- (zf1 - zf2)/sqrt(1/(n1 - 3) + (1/(n2 - 3)))
+    ## p-value
+    pv <- 2*(1 - pnorm(abs(dz)))
+    retval <- list(diff=dz, pval=pv)
+    retval
 }

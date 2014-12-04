@@ -197,3 +197,84 @@ if(FALSE) {
     ldply(lemmas, cocaLemmaFreq, WC=NA, data=D)
 }
 
+##' Find lexical neighbors.
+##'
+##' @details Find all neighbors for \code{word} in data (assumes coca data.frame). Neighbors are defined as words
+##' differing from \code{word} by a single letter substitution, deletion or insertion.
+##' @title Find lexical neighbors.
+##' @param word A character string indicating the word defining the neighborhood.
+##' @param data  A data.frame containing CoCA lexical statistics. See \code{\link{cocaReadFreq}}.
+##' @return Returns a data.frame containing 1 row for each neighbor found in \code{data},
+##' specifying: index (ID), wordform (w1), lemma (L1), simple wordclass (WC), CLAWS7 tag (c1), raw
+##' CoCA frequency (coca).
+##' @author Dave Braze \email{davebraze@@gmail.com}
+##' @export
+cocaNeighbors <- function(word, data) {
+    ## Find all neighbors for _word_ in data (assumes coca data.frame).
+    s <- strsplit(word, "")[[1]]
+    slen <- length(s)
+
+    ## find neighbors by substitution
+    substRE <- matrix(s, nrow=slen, ncol=slen, byrow=TRUE)
+    diag(substRE) <- "."
+    substRE <- apply(substRE, 1, paste0, collapse="")
+    substRE <- paste0("^", substRE, "$", collapse="|")
+    substID <- grep(substRE, D$w1)
+
+    ## find neighbors by deletion
+    delRE <- matrix(s, nrow=slen, ncol=slen, byrow=TRUE)
+    keep <- sort(c(which(upper.tri(delRE)), which(lower.tri(delRE))))
+    delRE <- matrix(delRE[keep], nrow=slen)
+    delRE <- apply(delRE, 1, paste0, collapse="")
+    delRE <- paste0("^", delRE, "$", collapse="|")
+    delID <- grep(delRE, D$w1)
+
+    ## find neighbors by insertion
+    insRE <- matrix(nrow=slen+1, ncol=slen+1)
+    tmp <- matrix(s, nrow=slen, ncol=slen, byrow=TRUE)
+    diag(insRE) <- "."
+    insRE[upper.tri(insRE)] <- tmp[upper.tri(tmp, diag=T)]
+    insRE[lower.tri(insRE)] <- tmp[lower.tri(tmp, diag=T)]
+    insRE <- apply(insRE, 1, paste0, collapse="")
+    insRE <- paste0("^", insRE, "$", collapse="|")
+    insID <- grep(insRE, D$w1)
+
+    nHoodID <- unique(c(substID, delID, insID))
+    neighbors <- D[nHoodID, c("ID", "w1", "L1", "WC", "c1", "coca")]
+    neighbors
+}
+
+if(FALSE){
+    cocaNeighbors("sand", D)
+}
+
+##' Get lexical cohort.
+##'
+##' @details Find all orthographic cohort members for \code{word} in data (assumes coca
+##' data.frame). Cohort members share \code{onset.len} initial characters.
+##' @title Get lexical cohort.
+##' @param word A character string indicating the word defining the cohort.
+##' @param data  A data.frame containing CoCA lexical statistics. See \code{\link{cocaReadFreq}}.
+##' @param onset.len The number of onset letters that must cohort members share.
+##' @return Returns a data.frame containing 1 row for each neighbor found in \code{data},
+##' specifying: index (ID), wordform (w1), lemma (L1), simple wordclass (WC), CLAWS7 tag (c1), raw
+##' CoCA frequency (coca).
+##' @author Dave Braze \email{davebraze@@gmail.com}
+##' @export
+cocaCohort <- function(word, data, onset.len=1) {
+## Find all orthographic cohort members for _word_ in data (assumes coca
+## data.frame). Cohort members share \code{onset.len} initial characters.
+##
+## Returns a data.frame containing 1 row for each cohort member found in _data_, specifying:  index (ID),
+## wordform (w1), lemma (L1), simple wordclass (WC), CLAWS7 tag (c1), raw CoCA frequency (coca).
+    s <- paste0(strsplit(word, "")[[1]][1:onset.len], collapse="")
+    coh1re <- paste0("^", s)
+    cohort1idx <- grep(coh1re, data$w1)
+    cohort1 <- data[cohort1idx,c("ID", "w1", "L1", "WC", "c1", "coca")]
+    cohort1
+}
+
+if(FALSE){
+    coh1 <- cocaCohort("sand", D)
+    coh2 <- cocaCohort("sand", D, onset.len=2)
+}

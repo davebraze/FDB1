@@ -14,14 +14,14 @@ qqp(v, dat)
 a \pkg{ggplot2} object
 }
 \description{
-Given a data.frame and the name of a variable within it create a quantile-quantile plot based on
-the normal distribution. Also plot a 'fit' line with intercept equal to sample mean and slope
-equal to sample standard deviation.
+Given a data.frame and the name of a variable within it use ggplot2 to create a
+quantile-quantile plot based on the normal distribution. Also plot a 'fit' line with intercept
+equal to sample mean and slope equal to sample standard deviation.
 }
 \author{
 Dave Braze \email{davebraze@gmail.com}
 }
 \seealso{
-\code{\link{qqplot}}
+\code{\link{ggQQplot}}
 }
 

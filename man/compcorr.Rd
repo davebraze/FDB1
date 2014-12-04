@@ -27,7 +27,7 @@ Method cribbed from:
     \item \url{http://www.fon.hum.uva.nl/Service/Statistics/Two_Correlations.html}
     \item \url{http://ftp.sas.com/techsup/download/stat/compcorr.html}
 }
-and implemented in R.
+Implemented in R by me.
 }
 \author{
 Dave Braze \email{davebraze@gmail.com}

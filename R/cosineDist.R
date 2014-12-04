@@ -3,8 +3,8 @@
 ##' magnitudes on the diagonal.
 ##' @title Compute cosine distance.
 ##' @param M A numeric matrix.
-##' @return A matrix of pairwise distances in the lower triangle and vector magnitudes on the
-##' diagonal.
+##' @return A matrix with pairwise cosine distances in the lower triangle and vector magnitudes on
+##' the diagonal.
 ##' @author
 ##' Dave Braze \email{davebraze@@gmail.com}
 ##' @seealso

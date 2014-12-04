@@ -9,8 +9,8 @@ cosinedist(M)
 \item{M}{A numeric matrix.}
 }
 \value{
-A matrix of pairwise distances in the lower triangle and vector magnitudes on the
-diagonal.
+A matrix with pairwise cosine distances in the lower triangle and vector magnitudes on
+the diagonal.
 }
 \description{
 Takes a numeric matrix (M) of arbitrary dimension, treats rows of M as vectors and computes the
