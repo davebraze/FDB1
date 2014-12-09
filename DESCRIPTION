@@ -1,6 +1,6 @@
 Package: FDB1
 Type: Package
-Title: A brew of utility and convenience functions. Some may even be useful.
+Title: A brew of utility and convenience functions.
 Version: 0.6.3
 Date: 2014-12-04
 Author: David Braze
@@ -20,6 +20,7 @@ Collate:
     'aovtable.R'
     'be.numeric.R'
     'betas.R'
+    'blockRandomLists.R'
     'char2int.R'
     'coca.R'
     'corrTable.R'

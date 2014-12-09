@@ -2,6 +2,7 @@
 
 export(be.numeric)
 export(betas)
+export(blockRandomLists)
 export(char2int)
 export(cocaCohort)
 export(cocaLemma2words)
