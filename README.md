@@ -2,7 +2,7 @@ FDB1
 ====
 A dubious brew of R functions. 
 
-Install with devtools::github_install()
+Install with devtools::install_github()
 ```R
 install.packages("devtools")
 library(devtools)
