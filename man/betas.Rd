@@ -12,8 +12,11 @@ betas(lm)
 A vector of standardized coefficients.
 }
 \description{
-There is no built in method for extracting standardized regression coefficients
-(betas) from an \code{\link[stats]{lm}} object. This function fills that gap.
+Extract betas from an lm object.
+}
+\details{
+There is no built in method for extracting standardized regression coefficients (betas)
+from an \code{\link[stats]{lm}} object. This function fills that gap.
 }
 \author{
 David Braze \email{davebraze@gmail.com}

@@ -17,6 +17,7 @@ Imports:
     stringr,
     car
 Collate:
+    'A195.R'
     'aovtable.R'
     'be.numeric.R'
     'betas.R'
