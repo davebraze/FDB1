@@ -1,13 +1,13 @@
 Package: FDB1
 Type: Package
 Title: A brew of utility and convenience functions.
-Version: 0.6.3
+Version: 0.6.4
 Date: 2014-12-04
 Author: David Braze
 Maintainer: David Braze <davebraze@gmail.com>
 Description: A dubious brew of R functions. Some may even be useful.
 License: MIT + file LICENSE
-Copyright: Copyright 2012-14, David Braze, unless otherwise attributed in
+Copyright: Copyright 2012-15, David Braze, unless otherwise attributed in
     individual functions or source files.
 Imports:
     Hmisc,
