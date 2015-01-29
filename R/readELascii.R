@@ -8,15 +8,15 @@ if(FALSE) {
     bounds <- trialidx[1,]
 }
 
-##' Used by readELascii(). Not intended for end-users. Extract fixations, saccades, and blinks from a trial.
-##' @title Used by readELascii(). Not intended for end-users.
+##' Used by read.ELascii(). Not intended for end-users. Extract fixations, saccades, and blinks from a trial.
+##' @title Used by read.ELascii(). Not intended for end-users.
 ##' @param bounds A numeric tuple. e1 is index marking beginning of trial. e2 is index indicating
 ##' end of trial.
 ##' @param lines A vector of strings, each corresponding to 1 line of the EL ASCII file.
-##' @return A list of 3 elements, data.frames enumerating fixations, saccades, and blinks for the
+##' @return A list of 4 elements, data.frames enumerating fixations, saccades, blinks and TRIAL_VARs for the
 ##' trial.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
-getTrialData <- function(bounds, lines) {
+getEyelinkTrialData <- function(bounds, lines) {
     fix <- grep("^EFIX", lines[bounds[1]:bounds[2]], value=TRUE)
     fix <- str_split(fix, pattern="[ \t]+")
     fix <- data.frame(matrix(unlist(fix), ncol=length(fix[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
@@ -44,43 +44,62 @@ getTrialData <- function(bounds, lines) {
     toN <- sapply(trialvar, function(v) all(be.numeric(v)))
     trialvar <- data.frame(sapply(trialvar[!toN], as.factor, simplify=FALSE), sapply(trialvar[toN], as.numeric, simplify=FALSE))
 
+    ## TODO: Pick up events flagged in MSG lines like the following.
+    ## MSG	15334285 52 !V ARECSTART 0 1950006-letters2.wav
+    ## critical information is
+    ## o timestamp (15334285)
+    ## o offset (52)
+    ## o event type (ARECSTART)
+    ## o modifier (1950006-letters2.wav)
+    ##
+    ## To make this work will need to pass in a list of regexp, each of which uniquely identifies an
+    ## event of interest.
+    ##
+    ## Should these events be placed with trialvars, or in their own structure?
+
+    ## TODO: Get sample level data put in separate list item.
+
     retval <- list(fix=fix, sacc=sacc, blink=blink, trialvar=trialvar)
     retval
 }
 
 ##' SR Research provides a utility (EDF2ASC.exe) that dumps ASCII renderings of their proprietary
 ##' EDF data file format. This function reads those ASCII files and extracts eye-movement events
-##' from them (fixations, saccades, blinks).
+##' (fixations, saccades, blinks) and TRIAL_VARs from them.
 ##' @title Get events from SR Research ASCII data files.
 ##' @param file A string giving path/fname to input file (ELalscii file).
 ##' @param tstartre A string containing regular expression that uniquely identifies beginning of trial.
 ##' @param tendre A string containing regular expression that uniquely identifies end of trial.
 ##' @param eye Indicates which eye ("R"|"L") to get events from. Currently unused.
 ##' @return List with one element for the file header and one element for each trial. Each trial
-##' element is itself a list of 3 elements: data.frames enumerating fixations, saccades, and blinks
-##' for the trial.
+##' element is itself a list of 4 elements: data.frames enumerating fixations, saccades, blinks and
+##' TRIAL_VARs for the trial.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
-readELascii <- function(file, tstartre="TRIALID", tendre="TRIAL_RESULT", eye=NA) {
+read.ELascii <- function(file, tstartre="TRIALID", tendre="TRIAL_RESULT", eye=NA) {
     f <- file(file, "r", blocking=FALSE)
     lines <- readLines(f, warn=TRUE, n=-1)
     close(f)
 
+    ## get session information from file header
     header <- grep("^[*][*] ", lines, value=TRUE)
     script <- unlist(str_split(grep("RECORDED BY", header, value=TRUE), "[ \t]+"))[4]
     sessdate <- unlist(str_split(grep("DATE:", header, value=TRUE), ": "))[2]
     srcfile <- unlist(str_split(grep("CONVERTED FROM", header, value=TRUE), " (FROM|using) "))[2]
     srcfile <- basename(srcfile)
 
+    ## get start and end lines for each trial block
     tstart <- grep(tstartre, lines)
     tend <- grep(tendre, lines)
     stopifnot (length(tstart) == length(tend))
     trialidx <- cbind(tstart, tend)
 
+    ## get trial IDs
     trialids <- unlist(str_split(grep("TRIALID", lines, value=TRUE), " TRIALID "))
     trialids <- trialids[seq(2, length(trialids), 2)]
 
-    retval <- apply(trialidx, 1, getTrialData, lines=lines)
+    ## get events for each trial
+    retval <- apply(trialidx, 1, getEyelinkTrialData, lines=lines)
     names(retval) <- trialids
     retval
 }
