@@ -4,6 +4,6 @@
 ##' @return a vector of logicals
 ##' @author cribbed from \url{http://rosettacode.org/wiki/Determine_if_a_string_is_numeric#R}
 ##' @export
-be.numeric <- function(c) {
+is.numeral <- function(c) {
     suppressWarnings(!is.na(as.numeric(c)))
 }

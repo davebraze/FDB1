@@ -31,6 +31,7 @@
 ##' @param ... other parameters that will be passed to matplot()
 ##' @return None. Used for its side effects.
 ##' @author David Braze \email{davebraze@@gmail.com}
+##' @export
 iplot <-
 function (x.factor, trace.factor, response, fun = function(x){mean(x, na.rm=TRUE)}, type =
 c("l", "p", "b", "o"), legend = TRUE, leg.title = deparse(substitute(trace.factor)), trace.labels =
