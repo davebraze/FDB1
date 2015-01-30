@@ -278,3 +278,5 @@ if(FALSE){
     coh1 <- cocaCohort("sand", D)
     coh2 <- cocaCohort("sand", D, onset.len=2)
 }
+
+

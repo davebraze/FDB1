@@ -1,12 +1,6 @@
 ##' @include be.numeric.R
 
-## library(stringr)
-
-if(FALSE) {
-    fname <- "../inst/extdata/19500006-RAN.asc"
-    file <- fname
-    bounds <- trialidx[1,]
-}
+library(stringr)
 
 ##' Used by read.ELascii(). Not intended for end-users. Extract fixations, saccades, and blinks from a trial.
 ##' @title Used by read.ELascii(). Not intended for end-users.
@@ -22,18 +16,24 @@ getEyelinkTrialData <- function(bounds, lines) {
     fix <- data.frame(matrix(unlist(fix), ncol=length(fix[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
     toN <- sapply(fix, function(v) all(be.numeric(v)))
     fix <- data.frame(sapply(fix[!toN], as.factor, simplify=FALSE), sapply(fix[toN], as.numeric, simplify=FALSE))
+    names(fix) <- c('event', 'eye', 'stime', 'etime', 'dur', 'xpos', 'ypos', 'pupil')
+    fix$event <- gsub("^E", "", fix$event)
 
     sacc <- grep("^ESACC", lines[bounds[1]:bounds[2]], value=TRUE)
     sacc <- str_split(sacc, pattern="[ \t]+")
     sacc <- data.frame(matrix(unlist(sacc), ncol=length(sacc[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
     toN <- sapply(sacc, function(v) all(be.numeric(v)))
     sacc <- data.frame(sapply(sacc[!toN], as.factor, simplify=FALSE), sapply(sacc[toN], as.numeric, simplify=FALSE))
+    names(sacc) <- c('event', 'eye', 'stime', 'etime', 'dur', 'xpos1', 'ypos1', 'xpos2', 'ypos2', 'amp', 'QpupilQ')
+    sacc$event <- gsub("^E", "", sacc$event)
 
     blink <- grep("^EBLINK", lines[bounds[1]:bounds[2]], value=TRUE)
     blink <- str_split(blink, pattern="[ \t]+")
     blink <- data.frame(matrix(unlist(blink), ncol=length(blink[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
     toN <- sapply(blink, function(v) all(be.numeric(v)))
     blink <- data.frame(sapply(blink[!toN], as.factor, simplify=FALSE), sapply(blink[toN], as.numeric, simplify=FALSE))
+    names(blink) <- c('event', 'eye', 'stime', 'etime', 'dur')
+    blink$event <- gsub("^E", "", blink$event)
 
     trialvar <- grep("TRIAL_VAR", lines[bounds[1]:bounds[2]], value=TRUE)
     trialvar <- str_split(trialvar, pattern="[ \t]+")
@@ -59,9 +59,13 @@ getEyelinkTrialData <- function(bounds, lines) {
 
     ## TODO: Get sample level data put in separate list item.
 
+    ## TODO: store trial start time, timestamp for START event (as a TRIAL_VAR?)
+
     retval <- list(fix=fix, sacc=sacc, blink=blink, trialvar=trialvar)
     retval
 }
+
+
 
 ##' SR Research provides a utility (EDF2ASC.exe) that dumps ASCII renderings of their proprietary
 ##' EDF data file format. This function reads those ASCII files and extracts eye-movement events
@@ -102,4 +106,21 @@ read.ELascii <- function(file, tstartre="TRIALID", tendre="TRIAL_RESULT", eye=NA
     retval <- apply(trialidx, 1, getEyelinkTrialData, lines=lines)
     names(retval) <- trialids
     retval
+}
+
+
+if(FALSE) {
+    fname <- "../inst/extdata/1950006-RAN.asc"
+
+    debug(read.ELascii)
+    e <- read.ELascii(fname)
+    undebug(read.ELascii)
+
+    names(e$'2')
+    head(e$'2'$fix)
+    head(e$'2'$sacc)
+    head(e$'2'$blink)
+    dim(e$'2'$trialvar)
+    names(e$'2'$trialvar)
+
 }
