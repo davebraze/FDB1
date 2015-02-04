@@ -44,6 +44,21 @@ getEyelinkTrialData <- function(bounds, lines) {
     toN <- sapply(trialvar, function(v) all(is.numeral(v)))
     trialvar <- data.frame(sapply(trialvar[!toN], as.factor, simplify=FALSE), sapply(trialvar[toN], as.numeric, simplify=FALSE))
 
+    ## TODO: Get sample level data put in separate list item (data.frame).
+    ## browser()
+    samp <- grep("^[0-9]+", lines[bounds[1]:bounds[2]], value=TRUE)
+    samp <- str_split(samp, pattern="[ \t]+")
+    samp <- data.frame(matrix(unlist(samp), ncol=length(samp[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
+    ## NEED SOME ADDITIONAL HANDLING here to take care of '...' (when either left or right eye is
+    ## not tracked) and similar composite fields
+    ## Problem: fields in sample lines are different depending on
+    ## o recording mode is 'remote' or 'head mounted'
+    ## o eye being recorded is 'left', 'right' or 'binocular'
+    ## o crossing those paramenters leads to 6 different configurations
+    ##
+    ## toN <- sapply(samp, function(v) all(is.numeral(v)))
+    ## samp <- data.frame(sapply(fix[!toN], as.factor, simplify=FALSE), sapply(samp[toN], as.numeric, simplify=FALSE))
+
     ## TODO: Pick up events flagged in MSG lines like the following.
     ## MSG	15334285 52 !V ARECSTART 0 1950006-letters2.wav
     ## critical information is
@@ -52,12 +67,11 @@ getEyelinkTrialData <- function(bounds, lines) {
     ## o event type (ARECSTART)
     ## o modifier (1950006-letters2.wav)
     ##
-    ## To make this work will need to pass in a list of regexp, each of which uniquely identifies an
-    ## event of interest.
+    ## To make this work will need to pass in a list of regexp, each of which uniquely identifies
+    ## each MSG of interest. If there are multiple instances of a MSG type, might need to make
+    ## decisions about which to capture: first only? last only? all?
     ##
     ## Should these events be placed with trialvars, or in their own structure?
-
-    ## TODO: Get sample level data put in separate list item.
 
     ## TODO: store trial start time, timestamp for START event (as a TRIAL_VAR?)
 
@@ -105,6 +119,7 @@ read.ELascii <- function(file, tstartre="TRIALID", tendre="TRIAL_RESULT", eye=NA
     ## get events for each trial
     retval <- apply(trialidx, 1, getEyelinkTrialData, lines=lines)
     names(retval) <- trialids
+    class(retval) <- c("ELascii", class(retval))
     retval
 }
 
@@ -112,9 +127,9 @@ read.ELascii <- function(file, tstartre="TRIALID", tendre="TRIAL_RESULT", eye=NA
 if(FALSE) {
     fname <- "../inst/extdata/1950006-RAN.asc"
 
-    debug(read.ELascii)
+#    debug(read.ELascii)
     e <- read.ELascii(fname)
-    undebug(read.ELascii)
+#    undebug(read.ELascii)
 
     names(e$'2')
     head(e$'2'$fix)
@@ -124,3 +139,44 @@ if(FALSE) {
     names(e$'2'$trialvar)
 
 }
+
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title
+##' @param gaze An object of class "ELascii".
+##' @param type Which type of base report to generate. Ranges over c("FIX", "SACC", "TRIALVAR").
+##' @return A data.frame containing the requested report.
+##' @author Dave Braze \email{davebraze@@gmail.com}
+makeReport <- function(gaze, type=c("FIX", "SACC", "TRIALVAR")) {
+    type <- match.arg(type)
+    if (!("ELascii" %in% class(gaze))) {
+        stop("Argument 'gaze' must have class 'ELascii'.")
+    }
+
+    if ("FIX" == type) {
+        fixLists <- lapply (gaze, function(ll) {ll$fix})
+        trials <- names(fixLists)
+        for (ff in fixLists) {
+            if(!exists("retval")) retval <- ff
+            else retval <- rbind(retval, ff)
+        }
+    } else if ("SACC" == type) {
+    } else if ("TRIALVAR" == type) {
+    } else {
+        retval <- NULL
+    }
+    retval
+}
+
+##' .. content for \description{} (no empty lines) ..
+##'
+##' .. content for \details{} ..
+##' @title
+##' @param files A character vector listing file names to be converted.
+##' @return A character vector listing output files.
+##' @author Dave Braze \email{davebraze@@gmail.com}
+edf2asc <- function(files) {
+    ## call SR Research "edf2asc.exe" utility to convert files, with appropriate output options
+}
+
