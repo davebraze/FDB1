@@ -22,6 +22,9 @@ element is itself a list of 4 elements: data.frames enumerating fixations, sacca
 TRIAL_VARs for the trial.
 }
 \description{
+Get events from SR Research ASCII data files.
+}
+\details{
 SR Research provides a utility (EDF2ASC.exe) that dumps ASCII renderings of their proprietary
 EDF data file format. This function reads those ASCII files and extracts eye-movement events
 (fixations, saccades, blinks) and TRIAL_VARs from them.

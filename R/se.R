@@ -1,8 +1,10 @@
 ##' @title Standard error of the mean.
 ##'
+##' @details
 ##' Returns the standard error of the mean of x, which can be either a vector, matrix or data.frame.
 ##' In the latter two cases, SEM is computed column-wise and a vector of values is returned. When x is
 ##' a vector, a single value is returned.
+##'
 ##' @include nobs.R
 ##' @param x Object to compute SEMs for. Can be vector, matrix or data.frame.
 ##' @param na.rm Specify how to handle missing values.

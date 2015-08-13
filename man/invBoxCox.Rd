@@ -2,8 +2,7 @@
 % Please edit documentation in R/invBoxCox.R
 \name{invBoxCox}
 \alias{invBoxCox}
-\title{Inverse Box-Cox transform.
-Compute the inverse Box-Cox transformation of a variable. Requires arguments x and lambda.}
+\title{Inverse Box-Cox transform.}
 \usage{
 invBoxCox(x, lambda)
 }
@@ -17,6 +16,8 @@ a numerical vector
 }
 \description{
 Inverse Box-Cox transform.
+}
+\details{
 Compute the inverse Box-Cox transformation of a variable. Requires arguments x and lambda.
 }
 \author{

@@ -2,10 +2,7 @@
 % Please edit documentation in R/lme4extra.R
 \name{ggCaterpillar}
 \alias{ggCaterpillar}
-\title{Plot random effects from lmer fit.
-
-Create ggplot based QQ plot or caterpillar plot for \code{\link{ranef}} from \code{\link{mer}}
-object.}
+\title{Plot random effects from lmer fit.}
 \usage{
 ggCaterpillar(re, QQ = TRUE, likeDotplot = TRUE)
 }
@@ -21,7 +18,8 @@ A \code{\link{ggplot2}} object.
 }
 \description{
 Plot random effects from lmer fit.
-
+}
+\details{
 Create ggplot based QQ plot or caterpillar plot for \code{\link{ranef}} from \code{\link{mer}}
 object.
 }

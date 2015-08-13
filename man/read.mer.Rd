@@ -17,11 +17,9 @@ read.mer(filename, columns, ...)
 A data.frame
 }
 \description{
-Read a 'merge' file (*.mer), as might be exported from filemaker.
+Read a 'merge' file (*.mer), as might be exported from Filemaker.
 }
 \details{
-Read a 'merge' file (*.mer), as might be exported from Filemaker.
-
 This is a wrapper around \code{\link{read.csv}} to simplify reading tables exported from
 Filemaker as 'merge' files.
 }

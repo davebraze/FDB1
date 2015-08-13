@@ -1,4 +1,8 @@
 ##' @title Get correlation table for numerical matrix M.
+##'
+##' @description Wrapper around \code{\link[Hmisc]{rcorr}}
+##'
+##' @details
 ##' This is wrapper around \code{\link[Hmisc]{rcorr}} that aims to return a reasonably formatted table of
 ##' correlations. R values are in the lower triangle with NAs elsewhere. Diagonal is NA by default,
 ##' but may be set to standard deviations or variances.

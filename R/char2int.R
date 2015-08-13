@@ -1,4 +1,7 @@
 ##' @title Map character elements to integer elements.
+##'
+##' @description Map character to integer.
+##'
 ##' @details Maps a character vector to an integer vector. Strings are mapped to integers in the
 ##' order that they are encountered, as enumerated from the beginning of the input vector. All
 ##' occurances of a given string are mapped to the same integer. Integer enumeration spans

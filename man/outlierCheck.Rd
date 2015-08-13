@@ -2,8 +2,7 @@
 % Please edit documentation in R/outliers.R
 \name{outlierCheck}
 \alias{outlierCheck}
-\title{Outlier summary.
-Given a numerical vector, indicate number of outliers, and numbers in lower and upper tails.}
+\title{Outlier summary.}
 \usage{
 outlierCheck(x, cut = 2.5)
 }
@@ -18,6 +17,8 @@ total number of outliers, outliers in the lower tail and outliers in the upper t
 }
 \description{
 Outlier summary.
+}
+\details{
 Given a numerical vector, indicate number of outliers, and numbers in lower and upper tails.
 }
 \author{

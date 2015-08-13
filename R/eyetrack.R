@@ -1,8 +1,10 @@
 ##' @include is.numeral.R
 
-
-##' Used by read.ELascii(). Not intended for end-users. Extract fixations, saccades, and blinks from a trial.
 ##' @title Used by read.ELascii(). Not intended for end-users.
+##'
+##' @details
+##' Used by read.ELascii(). Not intended for end-users. Extract fixations, saccades, and blinks from a trial.
+##'
 ##' @param bounds A numeric tuple. e1 is index marking beginning of trial. e2 is index indicating
 ##' end of trial.
 ##' @param lines A vector of strings, each corresponding to 1 line of the EL ASCII file.
@@ -84,10 +86,13 @@ getEyelinkTrialData <- function(bounds, lines) {
     retval
 }
 
+##' @title Get events from SR Research ASCII data files.
+##'
+##' @details
 ##' SR Research provides a utility (EDF2ASC.exe) that dumps ASCII renderings of their proprietary
 ##' EDF data file format. This function reads those ASCII files and extracts eye-movement events
 ##' (fixations, saccades, blinks) and TRIAL_VARs from them.
-##' @title Get events from SR Research ASCII data files.
+##'
 ##' @param file A string giving path/fname to input file (ELalscii file).
 ##' @param tStartRE A string containing regular expression that uniquely identifies beginning of trial.
 ##' @param tEndRE A string containing regular expression that uniquely identifies end of trial.

@@ -2,10 +2,7 @@
 % Please edit documentation in R/ggQQplot.R
 \name{qqp}
 \alias{qqp}
-\title{Create a QQ plot for a variable within a data.frame.
-Given a data.frame and the name of a variable within it use ggplot2 to create a
-quantile-quantile plot based on the normal distribution. Also plot a 'fit' line with intercept
-equal to sample mean and slope equal to sample standard deviation.}
+\title{Quantile-Quantile plot for a variable within a data.frame.}
 \usage{
 qqp(v, dat)
 }
@@ -18,7 +15,9 @@ qqp(v, dat)
 a \pkg{ggplot2} object
 }
 \description{
-Create a QQ plot for a variable within a data.frame.
+Quantile-Quantile plot for a variable within a data.frame.
+}
+\details{
 Given a data.frame and the name of a variable within it use ggplot2 to create a
 quantile-quantile plot based on the normal distribution. Also plot a 'fit' line with intercept
 equal to sample mean and slope equal to sample standard deviation.

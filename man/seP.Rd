@@ -2,11 +2,7 @@
 % Please edit documentation in R/seP.R
 \name{seP}
 \alias{seP}
-\title{Standard Error of a Proportion.
-
-Returns the standard error of the proportion of 1s in a vector of 1s and 0s. The vector must
-contain only 1s and 0s. Missing values are silently dropped. If x is a matrix or data.frame then
-seP is applied column-wise and a vector of values is returned.}
+\title{Standard Error of a Proportion.}
 \usage{
 seP(x)
 }
@@ -18,7 +14,8 @@ The standard error of a proportion.
 }
 \description{
 Standard Error of a Proportion.
-
+}
+\details{
 Returns the standard error of the proportion of 1s in a vector of 1s and 0s. The vector must
 contain only 1s and 0s. Missing values are silently dropped. If x is a matrix or data.frame then
 seP is applied column-wise and a vector of values is returned.

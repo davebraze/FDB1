@@ -1,4 +1,6 @@
 ##' @title Fisher's Z test for comparing two correllation coefficients.
+##'
+##' @details
 ##' Test whether two correlation coefficients are statistically different using the difference
 ##' between Fisher's Z transforms.
 ##'

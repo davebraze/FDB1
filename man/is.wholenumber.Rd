@@ -2,8 +2,7 @@
 % Please edit documentation in R/is.wholenumber.R
 \name{is.wholenumber}
 \alias{is.wholenumber}
-\title{Can each element of x reasonably be interpreted as a whole number?
-Takes a numeric vector and returns a Logical vector the same length}
+\title{Can each element of x reasonably be interpreted as a whole number?}
 \usage{
 is.wholenumber(v, tol = .Machine$double.eps^0.5)
 }
@@ -17,6 +16,8 @@ A vector of Logicals.
 }
 \description{
 Can each element of x reasonably be interpreted as a whole number?
+}
+\details{
 Takes a numeric vector and returns a Logical vector the same length
 }
 \author{

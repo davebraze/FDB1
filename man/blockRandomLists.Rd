@@ -19,11 +19,9 @@ blockRandomLists(nLists = 4, repBlock = 2, nCond, data)
 A list of data.frames
 }
 \description{
-Block randomize a set of trials.
+Generate a specified number of uniquely block randomized copies of a stimulus list.
 }
 \details{
-Generate a specified number of uniquely block randomized copies of a stimulus list.
-
 TODO: this function assumes an equal number of items per condition. extend it to work with a
 specified number of items per condition.
 }

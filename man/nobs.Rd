@@ -2,8 +2,7 @@
 % Please edit documentation in R/nobs.R
 \name{nobs}
 \alias{nobs}
-\title{Number of non-missing values.
-Returns the number of non-missing values in vector x. A convenience wrapper around sum(!is.na(x)).}
+\title{Number of non-missing values.}
 \usage{
 nobs(v)
 }
@@ -15,6 +14,8 @@ integer, length of x minus the number of NAs in x.
 }
 \description{
 Number of non-missing values.
+}
+\details{
 Returns the number of non-missing values in vector x. A convenience wrapper around sum(!is.na(x)).
 }
 \author{

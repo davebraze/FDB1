@@ -13,7 +13,7 @@ char2int(v)
 A vector of class integer.
 }
 \description{
-Map character elements to integer elements.
+Map character to integer.
 }
 \details{
 Maps a character vector to an integer vector. Strings are mapped to integers in the

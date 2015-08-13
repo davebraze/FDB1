@@ -1,4 +1,6 @@
 ##' @title Coerce a vector of class "factor" to numeric.
+##'
+##' @details
 ##' Coerces a vector of class factor to numeric. This function preserves underlying integer level
 ##' associated with each element of f.
 ##'

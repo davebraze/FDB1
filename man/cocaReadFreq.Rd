@@ -33,7 +33,7 @@ has a stray tab, at least in my copy.}
 a data.frame
 }
 \description{
-Read CoCA word frequency table.
+Use read.table to get COCA word frequency table.
 }
 \details{
 Mostly a convenience wrapper around \code{\link{read.table}} with reasonable defaults for reading the

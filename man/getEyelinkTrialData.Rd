@@ -19,6 +19,9 @@ trial.
 \description{
 Used by read.ELascii(). Not intended for end-users.
 }
+\details{
+Used by read.ELascii(). Not intended for end-users. Extract fixations, saccades, and blinks from a trial.
+}
 \author{
 Dave Braze \email{davebraze@gmail.com}
 }

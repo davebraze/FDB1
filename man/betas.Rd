@@ -13,7 +13,7 @@ betas(lm)
 A vector of standardized coefficients.
 }
 \description{
-Extract betas from an lm object.
+Get standardized estimates from an lm object.
 }
 \details{
 There is no built in method for extracting standardized regression coefficients (betas)

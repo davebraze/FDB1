@@ -1,4 +1,6 @@
 ##' @title Number of non-missing values.
+##'
+##' @details
 ##' Returns the number of non-missing values in vector x. A convenience wrapper around sum(!is.na(x)).
 ##'
 ##' @param v A vector.

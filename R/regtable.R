@@ -1,6 +1,9 @@
 ##' @title Customized regression table.
 ##'
+##'
+##' @details
 ##' No details yet...
+##'
 ##' @return A formatted regression table.
 ##' @author David Braze \email{davebraze@@gmail.com}
 regtable <-

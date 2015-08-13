@@ -1,7 +1,9 @@
 ##' @title Plot random effects from lmer fit.
 ##'
+##' @details
 ##' Create ggplot based QQ plot or caterpillar plot for \code{\link{ranef}} from \code{\link{mer}}
 ##' object.
+##'
 ##' @param re An object of class ranef.mer.
 ##' @param QQ If TRUE, create QQ plot. If FALSE create caterpillar plot.
 ##' @param likeDotplot Imitate dotplot() -> same scales for random effects.

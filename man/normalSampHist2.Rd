@@ -30,6 +30,9 @@ normalSampHist2(mn1, sd1, n1, mn2, sd2, n2, binwidth = mean(c(sd1, sd2))/2,
 used for side-effect of creating a plot
 }
 \description{
+Plot a pair of histograms.
+}
+\details{
 Plot histograms of two samples drawn from different Normal distributions, given Mean, SD and N for each.
 }
 \author{

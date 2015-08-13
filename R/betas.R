@@ -1,4 +1,7 @@
 ##' @title Extract betas from an lm object.
+##'
+##' @description Get standardized estimates from an lm object.
+##'
 ##' @details There is no built in method for extracting standardized regression coefficients (betas)
 ##' from an \code{\link[stats]{lm}} object. This function fills that gap.
 ##'

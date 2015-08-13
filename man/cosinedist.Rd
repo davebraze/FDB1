@@ -2,10 +2,7 @@
 % Please edit documentation in R/cosineDist.R
 \name{cosinedist}
 \alias{cosinedist}
-\title{Compute cosine distance.
-Takes a numeric matrix (M) of arbitrary dimension, treats rows of M as vectors and computes the
-pairwise cosine distances among the rows of M. Return a matrix of pairwise distances with vector
-magnitudes on the diagonal.}
+\title{Compute cosine distance.}
 \usage{
 cosinedist(M)
 }
@@ -17,7 +14,9 @@ A matrix with pairwise cosine distances in the lower triangle and vector magnitu
 the diagonal.
 }
 \description{
-Compute cosine distance.
+Get cosine distance values for a set of vectors.
+}
+\details{
 Takes a numeric matrix (M) of arbitrary dimension, treats rows of M as vectors and computes the
 pairwise cosine distances among the rows of M. Return a matrix of pairwise distances with vector
 magnitudes on the diagonal.

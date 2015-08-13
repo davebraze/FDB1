@@ -1,4 +1,6 @@
 ##' @title Locate outliers.
+##'
+##' @details
 ##' Given a numerical vector, locate values of \code{cut} or more standard deviations from the mean.
 ##'
 ##' @param x A numerical vector.
@@ -13,6 +15,8 @@ outlierID <- function(x, cut=2.5) {
 }
 
 ##' @title Replace outliers with NA.
+##'
+##' @details
 ##' Given a numerical vector, replace values of \code{cut} or more standard deviations from the mean with NAs.
 ##'
 ##' @param x A numerical vector.
@@ -26,6 +30,8 @@ outlierTrim <- function(x, cut=2.5) {
 }
 
 ##' @title Outlier summary.
+##'
+##' @details
 ##' Given a numerical vector, indicate number of outliers, and numbers in lower and upper tails.
 ##'
 ##' @param x A numerical vector.

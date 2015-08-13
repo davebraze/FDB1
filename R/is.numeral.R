@@ -1,4 +1,6 @@
 ##' @title Can vector be coerced to numeric?
+##'
+##' @details
 ##' Checks element-wise as to whether each item in a vector of strings can be coerced to numeric.
 ##'
 ##' @param c : a vector of strings

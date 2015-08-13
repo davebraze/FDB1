@@ -1,6 +1,10 @@
-
-##' Plot histograms of two samples drawn from different Normal distributions, given Mean, SD and N for each.
 ##' @title Plot histograms for two samples drawn from Normal distributions.
+##'
+##' @description Plot a pair of histograms.
+##'
+##' @details
+##' Plot histograms of two samples drawn from different Normal distributions, given Mean, SD and N for each.
+##'
 ##' @param mn1 Mean for sample 1
 ##' @param sd1 SD for sample 1
 ##' @param n1 N for sample 1

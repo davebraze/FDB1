@@ -1,5 +1,9 @@
 ##' @title Wrapper around \code{\link[stats]{aov}} with better output.
-##' Wrapper around \code{\link[stats]{aov}} for repeated measures anova.
+##'
+##' @description Wrapper around \code{\link[stats]{aov}} for repeated measures anova.
+##'
+##' @details
+##' No details yet.
 ##'
 ##' @param formula : rhs of formula should be in partheses, () between any predictor and unit: y~(x1+x2)
 ##' @param unit : factor for stratification units, typicall subject or item, used to build error term

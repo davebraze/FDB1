@@ -1,4 +1,6 @@
-##' @title Returns TRUE where n is odd.
+##' @title Is n odd?
+##'
+##' @details
 ##' Test whether elements of numeric vector are odd. For whole numbers return TRUE or FALSE. For decimals return NA.
 ##'
 ##' @param n A numeric vector.
