@@ -1,5 +1,6 @@
-##' Compute the inverse Box-Cox transformation of a variable. Requires arguments x and lambda.
 ##' @title Inverse Box-Cox transform.
+##' Compute the inverse Box-Cox transformation of a variable. Requires arguments x and lambda.
+##'
 ##' @param x A numerical vector.
 ##' @param lambda Lambda to use for the inverse Box-Cox transform.
 ##' @return a numerical vector

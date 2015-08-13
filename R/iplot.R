@@ -1,4 +1,4 @@
-##' Function for plotting eye-movement summaries by sentence region.
+##' @title Function for plotting eye-movement summaries by sentence region.
 ##'
 ##' iplot() is based on interaction.plot(). Be careful of missing values in "response"; make sure
 ##' that "fun" does the right thing with them.

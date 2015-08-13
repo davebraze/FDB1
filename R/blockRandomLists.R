@@ -1,8 +1,9 @@
+##' @title Block randomize a set of trials.
 ##' @details Generate a specified number of uniquely block randomized copies of a stimulus list.
 ##'
 ##' TODO: this function assumes an equal number of items per condition. extend it to work with a
 ##' specified number of items per condition.
-##' @title Block randomize a set of trials.
+##'
 ##' @param nLists Number of randomized lists to create (default=4).
 ##' @param repBlock Number of repetitions/condition within each block (default=2).
 ##' @param nCond Number of conditions in data.

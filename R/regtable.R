@@ -1,4 +1,4 @@
-##' Customized regression table.
+##' @title Customized regression table.
 ##'
 ##' No details yet...
 ##' @return A formatted regression table.

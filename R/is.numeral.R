@@ -1,5 +1,6 @@
-##' Checks whether each element in a vector of strings can be coerced to numeric.
-##' @title Checks element-wise if character vector can be coerced to numeric.
+##' @title Can vector be coerced to numeric?
+##' Checks element-wise as to whether each item in a vector of strings can be coerced to numeric.
+##'
 ##' @param c : a vector of strings
 ##' @return a vector of logicals, NA where is.na(c)
 ##' @author Basics cribbed from \url{http://rosettacode.org/wiki/Determine_if_a_string_is_numeric#R}

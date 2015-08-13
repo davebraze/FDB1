@@ -2,7 +2,8 @@
 % Please edit documentation in R/aovtable.R
 \name{aovtable}
 \alias{aovtable}
-\title{Wrapper around \code{\link[stats]{aov}} with better output.}
+\title{Wrapper around \code{\link[stats]{aov}} with better output.
+Wrapper around \code{\link[stats]{aov}} for repeated measures anova.}
 \usage{
 aovtable(formula = NULL, unit = NULL, cv = NULL, data = NULL,
   dbg = FALSE, ...)
@@ -24,6 +25,7 @@ aovtable(formula = NULL, unit = NULL, cv = NULL, data = NULL,
 an anova table (data.frame)
 }
 \description{
+Wrapper around \code{\link[stats]{aov}} with better output.
 Wrapper around \code{\link[stats]{aov}} for repeated measures anova.
 }
 \author{

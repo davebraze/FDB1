@@ -1,3 +1,4 @@
+##' @title Fisher's Z test for comparing two correllation coefficients.
 ##' Test whether two correlation coefficients are statistically different using the difference
 ##' between Fisher's Z transforms.
 ##'
@@ -8,7 +9,6 @@
 ##' }
 ##' Implemented in R by me.
 ##'
-##' @title Fisher's Z test for comparing two correllation coefficients.
 ##' @param n1 n for correlation 1.
 ##' @param r1 r for correlation 1.
 ##' @param n2 n for correlation 2.

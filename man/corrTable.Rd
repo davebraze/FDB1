@@ -2,7 +2,12 @@
 % Please edit documentation in R/corrTable.R
 \name{corrTable}
 \alias{corrTable}
-\title{Get correlation table for numerical matrix M.}
+\title{Get correlation table for numerical matrix M.
+This is wrapper around \code{\link[Hmisc]{rcorr}} that aims to return a reasonably formatted table of
+correlations. R values are in the lower triangle with NAs elsewhere. Diagonal is NA by default,
+but may be set to standard deviations or variances.
+
+TODO: put means or SDs on the diagonal; put Ns or pvals in the upper.tri}
 \usage{
 corrTable(M, type = "pearson", file = "", diag = FALSE)
 }
@@ -19,11 +24,11 @@ corrTable(M, type = "pearson", file = "", diag = FALSE)
 A matrix with R values in the lower triangle and NAs elsewhere
 }
 \description{
+Get correlation table for numerical matrix M.
 This is wrapper around \code{\link[Hmisc]{rcorr}} that aims to return a reasonably formatted table of
 correlations. R values are in the lower triangle with NAs elsewhere. Diagonal is NA by default,
 but may be set to standard deviations or variances.
-}
-\details{
+
 TODO: put means or SDs on the diagonal; put Ns or pvals in the upper.tri
 }
 \author{

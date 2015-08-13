@@ -2,7 +2,13 @@
 % Please edit documentation in R/matlabDelim.R
 \name{matlabDelim}
 \alias{matlabDelim}
-\title{Function for exporting data.frame to matlab-suitable tab delimited text file.}
+\title{Function for exporting data.frame to matlab-suitable tab delimited text file.
+
+matlabDelim generates 2 ascii files. The first is a tab delimited ascii data file that contains
+only numerical values, or the missing value code 'NaN' (factors in DF are converted to integer
+vectors). The second file is a 'key' file that lists all of the variables included (columnwise)
+in the data file. For those variables/columns that should be interpreted as factors, gives a
+list of the 'levels/labels' that the numerical values in the data file correspond to.}
 \usage{
 matlabDelim(DF, name = deparse(substitute(DF)))
 }
@@ -16,6 +22,8 @@ name of dataframe.}
 None. Used for its side effect.
 }
 \description{
+Function for exporting data.frame to matlab-suitable tab delimited text file.
+
 matlabDelim generates 2 ascii files. The first is a tab delimited ascii data file that contains
 only numerical values, or the missing value code 'NaN' (factors in DF are converted to integer
 vectors). The second file is a 'key' file that lists all of the variables included (columnwise)

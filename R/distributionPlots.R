@@ -30,7 +30,7 @@ normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2)
     p0
 }
 
-##' Plot histograms of two different theoretical normal distributions.
+##' @title Plot histograms of two different theoretical normal distributions.
 ##'
 ##' Plot histograms of two different theoretical normal distributions, given Mean, SD and N for each.
 ##'
@@ -43,7 +43,7 @@ normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2)
 ##'     \item optionally draw rectangles around mean+-Xsd for each distribution
 ##'     \item optionally specify colors of histograms
 ##' }
-##' @title Histograms for two theoretical normal distributions
+##'
 ##' @param mn1 Mean for Distribution 1
 ##' @param sd1 SD for Distribution 1
 ##' @param n1 N for scaling Histogram 1 (convert density to count)

@@ -1,14 +1,17 @@
-##' @include nobs.R
-
+##' @title Standard error of the mean.
+##'
 ##' Returns the standard error of the mean of x, which can be either a vector, matrix or data.frame.
 ##' In the latter two cases, SEM is computed column-wise and a vector of values is returned. When x is
 ##' a vector, a single value is returned.
-##' @title Standard error of the mean.
+##' @include nobs.R
 ##' @param x Object to compute SEMs for. Can be vector, matrix or data.frame.
 ##' @param na.rm Specify how to handle missing values.
 ##' @return Standard error of the mean for x, or each column of x.
 ##' @author David Braze \email{davebraze@@gmail.com}
 ##' @aliases se seM
+##' @usage
+##' se(x, na.rm = FALSE)
+##' seM(x, na.rm = FALSE)
 ##' @export
 se <-
     function(x, na.rm=FALSE) {

@@ -2,7 +2,9 @@
 % Please edit documentation in R/regtable.R
 \name{regtable}
 \alias{regtable}
-\title{Customized regression table.}
+\title{Customized regression table.
+
+No details yet...}
 \usage{
 regtable(lmobj, intercept = FALSE, ...)
 }
@@ -10,6 +12,8 @@ regtable(lmobj, intercept = FALSE, ...)
 A formatted regression table.
 }
 \description{
+Customized regression table.
+
 No details yet...
 }
 \author{

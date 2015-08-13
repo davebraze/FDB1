@@ -1,6 +1,6 @@
-##'
-##' Takes a numeric vector and returns a Logical vector the same length
 ##' @title Can each element of x reasonably be interpreted as a whole number?
+##' Takes a numeric vector and returns a Logical vector the same length
+##'
 ##' @param v A numeric vector.
 ##' @param tol What counts as close enough to 0? Defaults to .Machine$double.eps^0.5.
 ##' @return A vector of Logicals.

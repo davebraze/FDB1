@@ -2,7 +2,8 @@
 % Please edit documentation in R/is.numeral.R
 \name{is.numeral}
 \alias{is.numeral}
-\title{Checks element-wise if character vector can be coerced to numeric.}
+\title{Can vector be coerced to numeric?
+Checks element-wise as to whether each item in a vector of strings can be coerced to numeric.}
 \usage{
 is.numeral(c)
 }
@@ -13,7 +14,8 @@ is.numeral(c)
 a vector of logicals, NA where is.na(c)
 }
 \description{
-Checks whether each element in a vector of strings can be coerced to numeric.
+Can vector be coerced to numeric?
+Checks element-wise as to whether each item in a vector of strings can be coerced to numeric.
 }
 \author{
 Basics cribbed from \url{http://rosettacode.org/wiki/Determine_if_a_string_is_numeric#R}

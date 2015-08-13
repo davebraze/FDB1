@@ -2,7 +2,9 @@
 % Please edit documentation in R/factors.R
 \name{fact2num}
 \alias{fact2num}
-\title{Coerce a vector of class "factor" to numeric.}
+\title{Coerce a vector of class "factor" to numeric.
+Coerces a vector of class factor to numeric. This function preserves underlying integer level
+associated with each element of f.}
 \usage{
 fact2num(f)
 }
@@ -13,6 +15,7 @@ fact2num(f)
 A vector of class "numeric".
 }
 \description{
+Coerce a vector of class "factor" to numeric.
 Coerces a vector of class factor to numeric. This function preserves underlying integer level
 associated with each element of f.
 }

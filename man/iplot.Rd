@@ -2,7 +2,10 @@
 % Please edit documentation in R/iplot.R
 \name{iplot}
 \alias{iplot}
-\title{Function for plotting eye-movement summaries by sentence region.}
+\title{Function for plotting eye-movement summaries by sentence region.
+
+iplot() is based on interaction.plot(). Be careful of missing values in "response"; make sure
+that "fun" does the right thing with them.}
 \usage{
 iplot(x.factor, trace.factor, response, fun = function(x) {     mean(x, na.rm
   = TRUE) }, type = c("l", "p", "b", "o"), legend = TRUE,
@@ -72,6 +75,8 @@ iplot(x.factor, trace.factor, response, fun = function(x) {     mean(x, na.rm
 None. Used for its side effects.
 }
 \description{
+Function for plotting eye-movement summaries by sentence region.
+
 iplot() is based on interaction.plot(). Be careful of missing values in "response"; make sure
 that "fun" does the right thing with them.
 }

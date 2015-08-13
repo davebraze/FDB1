@@ -2,7 +2,10 @@
 % Please edit documentation in R/mahalDist.R
 \name{mahalDist}
 \alias{mahalDist}
-\title{Get squared Mahalanobis distances for N observations in M dimensions.}
+\title{Get squared Mahalanobis distances for N observations in M dimensions.
+Get squared Mahalanobis distances for N observations in M dimensions. This is a convenience wrapper
+around \code{\link[stats]{mahalanobis}}, which see. Variables are optionally scaled before
+distances are computed. Incomplete observations will return NA.}
 \usage{
 mahalDist(m, scale = TRUE, use = "complete.obs", center = "mean")
 }
@@ -25,6 +28,7 @@ A list with additional class "mahalDist" containing elements:
 }
 }
 \description{
+Get squared Mahalanobis distances for N observations in M dimensions.
 Get squared Mahalanobis distances for N observations in M dimensions. This is a convenience wrapper
 around \code{\link[stats]{mahalanobis}}, which see. Variables are optionally scaled before
 distances are computed. Incomplete observations will return NA.

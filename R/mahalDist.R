@@ -1,8 +1,8 @@
-
+##' @title Get squared Mahalanobis distances for N observations in M dimensions.
 ##' Get squared Mahalanobis distances for N observations in M dimensions. This is a convenience wrapper
 ##' around \code{\link[stats]{mahalanobis}}, which see. Variables are optionally scaled before
 ##' distances are computed. Incomplete observations will return NA.
-##' @title Get squared Mahalanobis distances for N observations in M dimensions.
+##'
 ##' @param m A data.frame or matrix. Observations in rows.
 ##' @param scale If TRUE, scale variables before getting mahalanobis distances.
 ##' @param use Observations to use in computing covariance matrix. Gets passed to \code{\link[stats]{cov}}.
@@ -36,8 +36,9 @@ mahalDist <- function(m, scale=TRUE, use="complete.obs", center="mean") {
     retval
 }
 
-##' QQplot of squared mahalanobis distance against Chi-square distribution.
 ##' @title QQplot of squared mahalanobis distance against Chi-square distribution.
+##' QQplot of squared mahalanobis distance against Chi-square distribution.
+##'
 ##' @param D2 Vector of squared mahalanobis distances as calculated, for example, by \code{\link{mahalDist}}.
 ##' @param dim Number of variables (dimensions) entering into D2.
 ##' @param envp Width of confidence envelope passed to \code{\link[car]{qqPlot}}. Defaults to .95.

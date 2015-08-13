@@ -2,7 +2,8 @@
 % Please edit documentation in R/mahalDist.R
 \name{mahalPlot}
 \alias{mahalPlot}
-\title{QQplot of squared mahalanobis distance against Chi-square distribution.}
+\title{QQplot of squared mahalanobis distance against Chi-square distribution.
+QQplot of squared mahalanobis distance against Chi-square distribution.}
 \usage{
 mahalPlot(X, envp = 0.95, col.point = "blue", ...)
 }
@@ -19,6 +20,7 @@ mahalPlot(X, envp = 0.95, col.point = "blue", ...)
 Used for the side effect of creating a plot.
 }
 \description{
+QQplot of squared mahalanobis distance against Chi-square distribution.
 QQplot of squared mahalanobis distance against Chi-square distribution.
 }
 \author{

@@ -2,7 +2,8 @@
 % Please edit documentation in R/is.odd.R
 \name{is.odd}
 \alias{is.odd}
-\title{Returns TRUE where n is odd.}
+\title{Returns TRUE where n is odd.
+Test whether elements of numeric vector are odd. For whole numbers return TRUE or FALSE. For decimals return NA.}
 \usage{
 is.odd(n)
 }

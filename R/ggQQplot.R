@@ -1,8 +1,8 @@
-
+##' @title Create a QQ plot for a variable within a data.frame.
 ##' Given a data.frame and the name of a variable within it use ggplot2 to create a
 ##' quantile-quantile plot based on the normal distribution. Also plot a 'fit' line with intercept
 ##' equal to sample mean and slope equal to sample standard deviation.
-##' @title Create a QQ plot for a variable within a data.frame.
+##'
 ##' @param v A character string naming a variable in data.frame 'dat'.
 ##' @param dat A data.frame containing at least 1 variable 'v'.
 ##' @return a \pkg{ggplot2} object

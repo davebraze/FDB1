@@ -1,5 +1,6 @@
-##' Given a numerical vector, locate values of \code{cut} or more standard deviations from the mean.
 ##' @title Locate outliers.
+##' Given a numerical vector, locate values of \code{cut} or more standard deviations from the mean.
+##'
 ##' @param x A numerical vector.
 ##' @param cut The cutpoint in sd units; defaults to 2.5.
 ##' @return A logical vector the length of \code{x}, TRUE wherever \code{x} is more extreme than \code{cut}.
@@ -11,8 +12,9 @@ outlierID <- function(x, cut=2.5) {
     retval
 }
 
-##' Given a numerical vector, replace values of \code{cut} or more standard deviations from the mean with NAs.
 ##' @title Replace outliers with NA.
+##' Given a numerical vector, replace values of \code{cut} or more standard deviations from the mean with NAs.
+##'
 ##' @param x A numerical vector.
 ##' @param cut The cutpoint in sd units; defaults to 2.5.
 ##' @return A numerical vector, a copy of \code{x} with outliers replace by NAs.
@@ -23,8 +25,9 @@ outlierTrim <- function(x, cut=2.5) {
     retval <- ifelse(id, NA, x)
 }
 
-##' Given a numerical vector, indicate number of outliers, and numbers in lower and upper tails.
 ##' @title Outlier summary.
+##' Given a numerical vector, indicate number of outliers, and numbers in lower and upper tails.
+##'
 ##' @param x A numerical vector.
 ##' @param cut The cutpoint in sd units; defaults to 2.5.
 ##' @return A 3-vector with named elements "total", "lower", and "upper" with values indicating the

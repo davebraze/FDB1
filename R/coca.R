@@ -1,3 +1,4 @@
+##' @title Read CoCA word frequency table.
 ##' @details
 ##' Mostly a convenience wrapper around \code{\link{read.table}} with reasonable defaults for reading the
 ##' Corpus of Contemporary American English word frequency file (\url{corpus.byu.edu}). The file
@@ -42,7 +43,6 @@
 ##'   \item \code{tcoca-tb7} Raw number of texts in COCA, BNC, SOAP, COHA, COCA genres and BNC genres: the basis for Columns tpcoca through tpb7
 ##' }
 ##'
-##' @title Read CoCA word frequency table.
 ##' @param file Sent to \code{\link{read.table}}.
 ##' @param sep The CoCA lexical frequency file is tab delimited. Value sent to \code{\link{read.table}}.
 ##' @param na.strings Sent to \code{\link{read.table}}.

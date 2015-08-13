@@ -2,7 +2,8 @@
 % Please edit documentation in R/outliers.R
 \name{outlierTrim}
 \alias{outlierTrim}
-\title{Replace outliers with NA.}
+\title{Replace outliers with NA.
+Given a numerical vector, replace values of \code{cut} or more standard deviations from the mean with NAs.}
 \usage{
 outlierTrim(x, cut = 2.5)
 }
@@ -15,6 +16,7 @@ outlierTrim(x, cut = 2.5)
 A numerical vector, a copy of \code{x} with outliers replace by NAs.
 }
 \description{
+Replace outliers with NA.
 Given a numerical vector, replace values of \code{cut} or more standard deviations from the mean with NAs.
 }
 \author{

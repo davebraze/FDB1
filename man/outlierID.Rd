@@ -2,7 +2,8 @@
 % Please edit documentation in R/outliers.R
 \name{outlierID}
 \alias{outlierID}
-\title{Locate outliers.}
+\title{Locate outliers.
+Given a numerical vector, locate values of \code{cut} or more standard deviations from the mean.}
 \usage{
 outlierID(x, cut = 2.5)
 }
@@ -15,6 +16,7 @@ outlierID(x, cut = 2.5)
 A logical vector the length of \code{x}, TRUE wherever \code{x} is more extreme than \code{cut}.
 }
 \description{
+Locate outliers.
 Given a numerical vector, locate values of \code{cut} or more standard deviations from the mean.
 }
 \author{

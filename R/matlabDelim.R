@@ -1,4 +1,4 @@
-##' Function for exporting data.frame to matlab-suitable tab delimited text file.
+##' @title Function for exporting data.frame to matlab-suitable tab delimited text file.
 ##'
 ##' matlabDelim generates 2 ascii files. The first is a tab delimited ascii data file that contains
 ##' only numerical values, or the missing value code 'NaN' (factors in DF are converted to integer

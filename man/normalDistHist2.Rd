@@ -2,7 +2,19 @@
 % Please edit documentation in R/distributionPlots.R
 \name{normalDistHist2}
 \alias{normalDistHist2}
-\title{Histograms for two theoretical normal distributions}
+\title{Plot histograms of two different theoretical normal distributions.
+
+Plot histograms of two different theoretical normal distributions, given Mean, SD and N for each.
+
+ToDo:
+\enumerate{
+    \item print parameters on each facet. See largeNumbers() below.
+    \item allow for overlaid histograms (single facet).
+    \item add label (geom_text()) for parameters and N to each facet.
+    \item add a vlines for means
+    \item optionally draw rectangles around mean+-Xsd for each distribution
+    \item optionally specify colors of histograms
+}}
 \usage{
 normalDistHist2(mn1, sd1, n1, mn2, sd2, n2, stack = FALSE, aspect = 2/5)
 }
@@ -28,8 +40,7 @@ used for its side-effect of creating a plot
 }
 \description{
 Plot histograms of two different theoretical normal distributions.
-}
-\details{
+
 Plot histograms of two different theoretical normal distributions, given Mean, SD and N for each.
 
 ToDo:
