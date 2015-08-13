@@ -12,7 +12,7 @@ is.numeral <- function(c) {
 }
 
 if(FALSE){
-    x <- c('a', 'IX', 'twelve', '0001', '2', '3e1', '-4', '5.5', NA, 'Inf')
+    x <- c('a', 'IX', 'twelve', '0001', '2', '3e1', '-4', '5.5', 'Inf', NA)
     data.frame(x,
                is.numeral(x),
                as.numeric(x))

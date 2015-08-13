@@ -8,16 +8,20 @@
 ##' @param na.rm Specify how to handle missing values.
 ##' @return Standard error of the mean for x, or each column of x.
 ##' @author David Braze \email{davebraze@@gmail.com}
+##' @aliases se seM
 ##' @export
 se <-
     function(x, na.rm=FALSE) {
-        if (is.matrix(x))
+        if (is.matrix(x)) {
             apply(x, 2, se, na.rm = na.rm)
-        else if (is.vector(x))
+        } else if (is.vector(x)) {
             sd(x, na.rm = na.rm)/sqrt(nobs(x))
-        else if (is.data.frame(x))
+        } else if (is.data.frame(x)) {
             sapply(x, sd, na.rm = na.rm)
-        else sd(as.vector(x), na.rm = na.rm)/sqrt(nobs(x))
-}
+        } else {
+            se(as.vector(x), na.rm=na.rm)
+        }
+    }
 
 
+seM <- se

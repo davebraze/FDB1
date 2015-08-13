@@ -1,6 +1,5 @@
 ##' @include is.numeral.R
 
-library(stringr)
 
 ##' Used by read.ELascii(). Not intended for end-users. Extract fixations, saccades, and blinks from a trial.
 ##' @title Used by read.ELascii(). Not intended for end-users.
@@ -12,15 +11,16 @@ library(stringr)
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 getEyelinkTrialData <- function(bounds, lines) {
     fix <- grep("^EFIX", lines[bounds[1]:bounds[2]], value=TRUE)
-    fix <- str_split(fix, pattern="[ \t]+")
+    fix <- stringr::str_split(fix, pattern="[ \t]+")
     fix <- data.frame(matrix(unlist(fix), ncol=length(fix[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
     toN <- sapply(fix, function(v) all(is.numeral(v)))
     fix <- data.frame(sapply(fix[!toN], as.factor, simplify=FALSE), sapply(fix[toN], as.numeric, simplify=FALSE))
+    ## TODO Catch case where xRes and yRes are included in the output. Set names appropriately.
     names(fix) <- c('event', 'eye', 'stime', 'etime', 'dur', 'xpos', 'ypos', 'pupil')
     fix$event <- gsub("^E", "", fix$event)
 
     sacc <- grep("^ESACC", lines[bounds[1]:bounds[2]], value=TRUE)
-    sacc <- str_split(sacc, pattern="[ \t]+")
+    sacc <- stringr::str_split(sacc, pattern="[ \t]+")
     sacc <- data.frame(matrix(unlist(sacc), ncol=length(sacc[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
     toN <- sapply(sacc, function(v) all(is.numeral(v)))
     sacc <- data.frame(sapply(sacc[!toN], as.factor, simplify=FALSE), sapply(sacc[toN], as.numeric, simplify=FALSE))
@@ -28,7 +28,7 @@ getEyelinkTrialData <- function(bounds, lines) {
     sacc$event <- gsub("^E", "", sacc$event)
 
     blink <- grep("^EBLINK", lines[bounds[1]:bounds[2]], value=TRUE)
-    blink <- str_split(blink, pattern="[ \t]+")
+    blink <- stringr::str_split(blink, pattern="[ \t]+")
     blink <- data.frame(matrix(unlist(blink), ncol=length(blink[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
     toN <- sapply(blink, function(v) all(is.numeral(v)))
     blink <- data.frame(sapply(blink[!toN], as.factor, simplify=FALSE), sapply(blink[toN], as.numeric, simplify=FALSE))
@@ -36,7 +36,7 @@ getEyelinkTrialData <- function(bounds, lines) {
     blink$event <- gsub("^E", "", blink$event)
 
     trialvar <- grep("TRIAL_VAR", lines[bounds[1]:bounds[2]], value=TRUE)
-    trialvar <- str_split(trialvar, pattern="[ \t]+")
+    trialvar <- stringr::str_split(trialvar, pattern="[ \t]+")
     trialvar <- t(matrix(unlist(trialvar), ncol=length(trialvar[[1]]), byrow=TRUE)[,5:6])
     hdr <- trialvar[1,]
     trialvar <- data.frame(rbind(trialvar[2,]), stringsAsFactors=FALSE)
@@ -47,7 +47,7 @@ getEyelinkTrialData <- function(bounds, lines) {
     ## TODO: Get sample level data put in separate list item (data.frame).
     ## browser()
     samp <- grep("^[0-9]+", lines[bounds[1]:bounds[2]], value=TRUE)
-    samp <- str_split(samp, pattern="[ \t]+")
+    samp <- stringr::str_split(samp, pattern="[ \t]+")
     samp <- data.frame(matrix(unlist(samp), ncol=length(samp[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
     ## NEED SOME ADDITIONAL HANDLING here to take care of '...' (when either left or right eye is
     ## not tracked) and similar composite fields
@@ -55,9 +55,12 @@ getEyelinkTrialData <- function(bounds, lines) {
     ## o recording mode is 'remote' or 'head mounted'
     ## o eye being recorded is 'left', 'right' or 'binocular'
     ## o crossing those paramenters leads to 6 different configurations
-    ##
-    ## toN <- sapply(samp, function(v) all(is.numeral(v)))
-    ## samp <- data.frame(sapply(fix[!toN], as.factor, simplify=FALSE), sapply(samp[toN], as.numeric, simplify=FALSE))
+    ## o For SAMPLE lines, there are 4 cases that need to be handled (not counting
+    ##   optional velocity and resolution fields). See section 4.92 of EL1000+ user manual.
+    ##   . binoc/HM recording, 8 fields (time, xposL, yposL, pupilL, xposR, yposR, pupilL, CR)
+    ##   . monoc/HM recording, 5 fields (time, xpos, ypos, pupil, CR)
+    ##   . binoc/remote recording, Not known at present
+    ##   . monoc/remote recording, 9 fields (time, xpos, ypos, pupil, CR, xtarg, ytarg, dist, IP field)
 
     ## TODO: Pick up events flagged in MSG lines like the following.
     ## MSG	15334285 52 !V ARECSTART 0 1950006-letters2.wav
@@ -73,47 +76,47 @@ getEyelinkTrialData <- function(bounds, lines) {
     ##
     ## Should these events be placed with trialvars, or in their own structure?
 
-    ## TODO: store trial start time, timestamp for START event (as a TRIAL_VAR?)
+    ## TODO: For each trial from START event record
+    ## o start time of eye movement recording, (timestamp from START event)
+    ## o eyes recorded, LEFT, RIGHT, BINOC
 
     retval <- list(fix=fix, sacc=sacc, blink=blink, trialvar=trialvar)
     retval
 }
-
-
 
 ##' SR Research provides a utility (EDF2ASC.exe) that dumps ASCII renderings of their proprietary
 ##' EDF data file format. This function reads those ASCII files and extracts eye-movement events
 ##' (fixations, saccades, blinks) and TRIAL_VARs from them.
 ##' @title Get events from SR Research ASCII data files.
 ##' @param file A string giving path/fname to input file (ELalscii file).
-##' @param tstartre A string containing regular expression that uniquely identifies beginning of trial.
-##' @param tendre A string containing regular expression that uniquely identifies end of trial.
+##' @param tStartRE A string containing regular expression that uniquely identifies beginning of trial.
+##' @param tEndRE A string containing regular expression that uniquely identifies end of trial.
 ##' @param eye Indicates which eye ("R"|"L") to get events from. Currently unused.
 ##' @return List with one element for the file header and one element for each trial. Each trial
 ##' element is itself a list of 4 elements: data.frames enumerating fixations, saccades, blinks and
 ##' TRIAL_VARs for the trial.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
-read.ELascii <- function(file, tstartre="TRIALID", tendre="TRIAL_RESULT", eye=NA) {
+read.ELascii <- function(file, tStartRE="TRIALID", tEndRE="TRIAL_RESULT", eye=NA) {
     f <- file(file, "r", blocking=FALSE)
     lines <- readLines(f, warn=TRUE, n=-1)
     close(f)
 
     ## get session information from file header
     header <- grep("^[*][*] ", lines, value=TRUE)
-    script <- unlist(str_split(grep("RECORDED BY", header, value=TRUE), "[ \t]+"))[4]
-    sessdate <- unlist(str_split(grep("DATE:", header, value=TRUE), ": "))[2]
-    srcfile <- unlist(str_split(grep("CONVERTED FROM", header, value=TRUE), " (FROM|using) "))[2]
+    script <- unlist(stringr::str_split(grep("RECORDED BY", header, value=TRUE), "[ \t]+"))[4]
+    sessdate <- unlist(stringr::str_split(grep("DATE:", header, value=TRUE), ": "))[2]
+    srcfile <- unlist(stringr::str_split(grep("CONVERTED FROM", header, value=TRUE), " (FROM|using) "))[2]
     srcfile <- basename(srcfile)
 
     ## get start and end lines for each trial block
-    tstart <- grep(tstartre, lines)
-    tend <- grep(tendre, lines)
-    stopifnot (length(tstart) == length(tend))
-    trialidx <- cbind(tstart, tend)
+    tStart <- grep(tStartRE, lines)
+    tEnd <- grep(tEndRE, lines)
+    stopifnot (length(tStart) == length(tEnd))
+    trialidx <- cbind(tStart, tEnd)
 
     ## get trial IDs
-    trialids <- unlist(str_split(grep("TRIALID", lines, value=TRUE), " TRIALID "))
+    trialids <- unlist(stringr::str_split(grep("TRIALID", lines, value=TRUE), " TRIALID "))
     trialids <- trialids[seq(2, length(trialids), 2)]
 
     ## get events for each trial
@@ -143,7 +146,7 @@ if(FALSE) {
 ##' .. content for \description{} (no empty lines) ..
 ##'
 ##' .. content for \details{} ..
-##' @title
+##' @title Generate an ET report, as data.frame.
 ##' @param gaze An object of class "ELascii".
 ##' @param type Which type of base report to generate. Ranges over c("FIX", "SACC", "TRIALVAR").
 ##' @return A data.frame containing the requested report.
@@ -169,14 +172,27 @@ makeReport <- function(gaze, type=c("FIX", "SACC", "TRIALVAR")) {
     retval
 }
 
-##' .. content for \description{} (no empty lines) ..
+##' Call "edf2asc" command line utility to do some work.
 ##'
-##' .. content for \details{} ..
-##' @title
+##' @details Call SR Research "edf2asc" command line utility to convert files.
+##'
+##' \enumerate{
+##'     \item The best way to get the edf2asc utility is to install the Eyelink Developers Kit: https://www.sr-support.com/showthread.php?6-EyeLink-Developers-Kit-for-Windows-%28Windows-Display-Software%29.
+##'     \item Documentation is in the EL1000+ manual, section 4.8 "Using ASC files".
+##'     \item Make sure edfapi library (e.g., edfapi.dll) is somewhere on the PATH.
+##' }
+##'
+##' @title Call "edf2asc" command line utility to do some work.
+##' @param edffiles Vector of *edf file names.
+##' @param e2afname Name of edf2asc executable (e.g., "edf2asc.exe", "edf2asc64.exe").
+##' @param e2apath Path to edf2asc executable. It will probably look something like
+##' "D:\winbin\SR Research\EyeLink\EDF_Access_API\Example" from "SR Research" on down.
 ##' @param files A character vector listing file names to be converted.
 ##' @return A character vector listing output files.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
-edf2asc <- function(files) {
-    ## call SR Research "edf2asc.exe" utility to convert files, with appropriate output options
+edf2asc <- function(edffiles, e2afname="edf2asc64.exe", e2apath="D:/winbin/SR Research/EyeLink/EDF_Access_API/Example") {
+    ## o use R function system() to make the call, but also see shell(), shell.exec() and, possibly, system2()
+    ## o see R function shQuote() for help building the command line string.
 }
+
 

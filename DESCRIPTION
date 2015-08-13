@@ -1,25 +1,25 @@
 Package: FDB1
 Type: Package
 Title: A brew of utility and convenience functions.
-Version: 0.6.4
-Date: 2015-01-28
+Version: 0.6.5
+Date: 2015-08-13
 Author: David Braze
 Maintainer: David Braze <davebraze@gmail.com>
-Description: A dubious brew of R functions. Some may even be useful.
+Description: A dubious brew of R code. Some of it may even be useful.
 License: MIT + file LICENSE
 Copyright: Copyright 2012-15, David Braze, unless otherwise attributed in
     individual functions or source files.
 Imports:
-    Hmisc,
-    gplots,
+    car,
     ggplot2,
+    gplots,
+    gridExtra,
+    Hmisc,
     plyr,
-    stringr,
-    car
+    stringr
 Collate:
     'A195.R'
     'aovtable.R'
-    'be.numeric.R'
     'betas.R'
     'blockRandomLists.R'
     'char2int.R'
@@ -27,6 +27,8 @@ Collate:
     'corrTable.R'
     'cosineDist.R'
     'distributionPlots.R'
+    'is.numeral.R'
+    'eyetrack.R'
     'factors.R'
     'fishers-z.R'
     'ggQQplot.R'
@@ -40,7 +42,7 @@ Collate:
     'nobs.R'
     'outliers.R'
     'print.aovtable.R'
-    'readELascii.R'
     'regtable.R'
     'se.R'
+    'seP.R'
     'series.R'

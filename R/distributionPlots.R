@@ -1,5 +1,3 @@
-## library(ggplot2)
-## library(plyr)
 
 ##' Plot histograms of two samples drawn from different Normal distributions, given Mean, SD and N for each.
 ##' @title Plot histograms for two samples drawn from Normal distributions.
@@ -23,12 +21,12 @@ normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2)
     idab <- c(id1,id2)
     ab <- c(a,b)
     df1 <- data.frame(idab, ab)
-    p0 <- ggplot(data=df1, aes(x=ab))
-    p0 <- p0 + geom_histogram(binwidth=binwidth, aes(fill=idab), color="black")
-    if(!stack) p0 <- p0 + facet_wrap(~idab)
-    else p0 <- p0 + facet_wrap(~idab,ncol=1)
-    p0 <- p0 + xlab("Value/Score") + ylab("Count")
-    p0 <- p0 + coord_fixed(ratio=aspect)
+    p0 <- ggplot2::ggplot(data=df1, ggplot2::aes(x=ab))
+    p0 <- p0 + ggplot2::geom_histogram(binwidth=binwidth, ggplot2::aes(fill=idab), color="black")
+    if(!stack) p0 <- p0 + ggplot2::facet_wrap(~idab)
+    else p0 <- p0 + ggplot2::facet_wrap(~idab,ncol=1)
+    p0 <- p0 + ggplot2::xlab("Value/Score") + ggplot2::ylab("Count")
+    p0 <- p0 + ggplot2::coord_fixed(ratio=aspect)
     p0
 }
 
@@ -72,13 +70,13 @@ normalDistHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, stack=FALSE, aspect=2/5)
     score <- rep(x, 2)
     df2 <- data.frame(id, count, score)
     ## browser()
-    p1 <- ggplot(data=df2, aes(y=count, x=score, fill=id))
-    p1 <- p1 + geom_bar(stat='identity', width=.1)
-    if(!stack) p1 <- p1 + facet_wrap(~id)
-    else p1 <- p1 + facet_wrap(~id,ncol=1)
+    p1 <- ggplot2::ggplot(data=df2, ggplot2::aes(y=count, x=score, fill=id))
+    p1 <- p1 + ggplot2::geom_bar(stat='identity', width=.1)
+    if(!stack) p1 <- p1 + ggplot2::facet_wrap(~id)
+    else p1 <- p1 + ggplot2::facet_wrap(~id,ncol=1)
     ## Can't seem to set bar width. I think it has to do with the fact that binwidth is 1
-    p1 <- p1 + xlab("Value/Score") + ylab("Count")
-    p1 <- p1 + coord_fixed(ratio=aspect)
+    p1 <- p1 + ggplot2::xlab("Value/Score") + ggplot2::ylab("Count")
+    p1 <- p1 + ggplot2::coord_fixed(ratio=aspect)
     p1
 }
 
@@ -109,11 +107,11 @@ gammaDistHist <- function(x=seq(0,.7,by=.01), df1=6, df2=25, mult=20, aspect=2/5
     freq <- c(freq1, freq1r)
     dist <- rep(c('a', 'b'), each=length(x))
     df3 <- data.frame(freq, bins, dist)
-    p1 <- ggplot(data=df3, aes(y=freq, x=bins, fill=dist))
-    p1 <- p1 + geom_bar(stat='identity', width=.1, color='black')
-    if(!stack) p1 <- p1 + facet_wrap(~dist)
-    else p1 <- p1 + facet_wrap(~dist, ncol=1)
-    p1 <- p1 + coord_fixed(ratio=aspect)
+    p1 <- ggplot2::ggplot(data=df3, ggplot2::aes(y=freq, x=bins, fill=dist))
+    p1 <- p1 + ggplot2::geom_bar(stat='identity', width=.1, color='black')
+    if(!stack) p1 <- p1 + ggplot2::facet_wrap(~dist)
+    else p1 <- p1 + ggplot2::facet_wrap(~dist, ncol=1)
+    p1 <- p1 + ggplot2::coord_fixed(ratio=aspect)
     p1
 }
 
@@ -232,32 +230,32 @@ sampling <- function(nplots=12, nsamp=100, pop.mean=100, pop.sd=15, binwidth=pop
     id <- rep(paste("X", 1:nplots, sep=""), each=nsamp) # an indicator variable
     df1 <- data.frame(sampv,id)
     ## build the histogram matrix
-    p1 <- ggplot(data=df1, aes(x=sampv, y=..count..))
-    p1 <- p1 + geom_histogram(binwidth=binwidth, fill=hist.fill.col, col=hist.line.col, alpha=hist.alpha) +
-        facet_wrap(~id, ncol=ceiling(sqrt(nplots)))
+    p1 <- ggplot2::ggplot(data=df1, ggplot2::aes(x=sampv, y=..count..))
+    p1 <- p1 + ggplot2::geom_histogram(binwidth=binwidth, fill=hist.fill.col, col=hist.line.col, alpha=hist.alpha) +
+        ggplot2::facet_wrap(~id, ncol=ceiling(sqrt(nplots)))
     ## p1 <- p1 + theme(axis.text.x=element_text(hjust=-.05, angle=-45)) # TODO: figure out how to use themes.
     ## add normal curves
     x=rep(seq(pop.mean-pop.sd*4,pop.mean+pop.sd*4,length=200), nplots)
     y=rep(dnorm(x,mean=pop.mean,sd=pop.sd), nplots)*(binwidth*nsamp) # pop. normal curve, scaled to sample via binwidth*samplesize
     id <- rep(paste("X", 1:nplots, sep=""), each=200) # indicator, TODO: pad with leading 0s (X01 instead of X1) so that sort order when plotted is better
     df2 <- data.frame(x,y,id)
-    p1 <- p1 + geom_line(data=df2,aes(x=x,y=y), col=line.col, alpha=line.alpha, size=line.size)
-    p1 <- p1+ggtitle(bquote(paste(.(nplots), " samples (",n == .(nsamp), ") from Pop. (", mu == .(pop.mean),"; ", sigma == .(pop.sd),  ")")))
+    p1 <- p1 + ggplot2::geom_line(data=df2,ggplot2::aes(x=x,y=y), col=line.col, alpha=line.alpha, size=line.size)
+    p1 <- p1+ggplot2::ggtitle(bquote(paste(.(nplots), " samples (",n == .(nsamp), ") from Pop. (", mu == .(pop.mean),"; ", sigma == .(pop.sd),  ")")))
     ## get ranges for x and y axes
-    r <- ggplot_build(p1) # ggplot_build() returns the object that is invisibly returned by ggplot2's print method, but without drawing the plot.
+    r <- ggplot2::ggplot_build(p1) # ggplot_build() returns the object that is invisibly returned by ggplot2's print method, but without drawing the plot.
     ## Annotate facets with sample summary stats.
     ## Assumes all facets are on same scale. TODO: adapt for free scales.
-    df1.sm <- ddply(df1, .(id), function(df) {data.frame(mean=mean(df$sampv), sd=sd(df$sampv), id=unique(df$id))})
+    df1.sm <- plyr::ddply(df1, .(id), function(df) {data.frame(mean=mean(df$sampv), sd=sd(df$sampv), id=unique(df$id))})
     xmin <- r$panel$ranges[[1]]$x.range[1]; xmax <- r$panel$ranges[[1]]$x.range[2]
     df1.sm$xloc <- locate(xmin, xmax, .90)
     ymin <- r$panel$ranges[[1]]$y.range[1]; ymax <- r$panel$ranges[[1]]$y.range[2]
     df1.sm$yloc1 <- locate(ymin, ymax, .95)
     df1.sm$yloc2 <- locate(ymin, ymax, .88)
-    p1 <- p1 + geom_text(data=df1.sm, inherit=F,
-                         aes(x=xloc, y=yloc1, label=paste("M =", sprintf("%.1f", mean))),
+    p1 <- p1 + ggplot2::geom_text(data=df1.sm, inherit=F,
+                         ggplot2::aes(x=xloc, y=yloc1, label=paste("M =", sprintf("%.1f", mean))),
                          size=2.5, hjust=1)
-    p1 <- p1 + geom_text(data=df1.sm, inherit=F,
-                         aes(x=xloc, y=yloc2, label=paste("SD =", sprintf("%.1f", sd))),
+    p1 <- p1 + ggplot2::geom_text(data=df1.sm, inherit=F,
+                         ggplot2::aes(x=xloc, y=yloc2, label=paste("SD =", sprintf("%.1f", sd))),
                          size=2.5, hjust=1)
     p1
 }
@@ -309,17 +307,17 @@ if (FALSE) {
 
     df3 <- rbind(df0,df1)
 
-    p23 <- ggplot(data=df3, aes(x=x,y=y)) + geom_point(color="blue", alpha=.4) + facet_wrap(~ set, nrow = 2)
+    p23 <- ggplot2::ggplot(data=df3, ggplot2::aes(x=x,y=y)) + ggplot2::geom_point(color="blue", alpha=.4) + ggplot2::facet_wrap(~ set, nrow = 2)
 
     ## Annotate facets with sample summary stats.
-    df3.r <- ddply(df3, .(set), function(df) {data.frame(r=cor(df[,2:3])[1,2], set=unique(df$set))})
-    p23build <- ggplot_build(p23)
+    df3.r <- plyr::ddply(df3, .(set), function(df) {data.frame(r=cor(df[,2:3])[1,2], set=unique(df$set))})
+    p23build <- ggplot2::ggplot_build(p23)
     xmin <- p23build$panel$ranges[[1]]$x.range[1]; xmax <- p23build$panel$ranges[[1]]$x.range[2]
     df3.r$xloc <- locate(xmin, xmax, .90)
     ymin <- p23build$panel$ranges[[1]]$y.range[1]; ymax <- p23build$panel$ranges[[1]]$y.range[2]
     df3.r$yloc1 <- locate(ymin, ymax, .95)
-    p23 <- p23 + geom_text(data=df3.r, inherit=F,
-                           aes(x=xloc, y=yloc1, label=paste("r =", sprintf("%.2f", r))),
+    p23 <- p23 + ggplot2::geom_text(data=df3.r, inherit=F,
+                           ggplot2::aes(x=xloc, y=yloc1, label=paste("r =", sprintf("%.2f", r))),
                            size=2.5, hjust=1)
     p23
 
@@ -342,17 +340,17 @@ if(FALSE){
     df3 <- data.frame(list(set=rep(LETTERS[1:4], each=n), X=rep(x,4), Y=c(y1,y2,y3,y4)))
 
 
-    p23 <- ggplot(data=df3, aes(x=X,y=Y)) + geom_point(color="grey40") + facet_wrap(~ set, nrow = 1)
+    p23 <- ggplot2::ggplot(data=df3, ggplot2::aes(x=X,y=Y)) + ggplot2::geom_point(color="grey40") + ggplot2::facet_wrap(~ set, nrow = 1)
 
     ## Annotate facets with sample summary stats.
-    df3.r <- ddply(df3, .(set), function(df) {data.frame(r=cor(df[,2:3])[1,2], set=unique(df$set))})
+    df3.r <- plyr::ddply(df3, .(set), function(df) {data.frame(r=cor(df[,2:3])[1,2], set=unique(df$set))})
     p23build <- ggplot_build(p23)
     xmin <- p23build$panel$ranges[[1]]$x.range[1]; xmax <- p23build$panel$ranges[[1]]$x.range[2]
     df3.r$xloc <- locate(xmin, xmax, .90)
     ymin <- p23build$panel$ranges[[1]]$y.range[1]; ymax <- p23build$panel$ranges[[1]]$y.range[2]
     df3.r$yloc1 <- locate(ymin, ymax, .95)
     ## p23 <- p23 + geom_text(data=df3.r, inherit=F,
-    ##                      aes(x=xloc, y=yloc1, label=paste("r =", sprintf("%.2f", r))),
+    ##                      ggplot2::aes(x=xloc, y=yloc1, label=paste("r =", sprintf("%.2f", r))),
     ##                      size=2.5, hjust=1)
     p23
 }

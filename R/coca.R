@@ -155,8 +155,8 @@ cocaLemmaSet <- function(lemma="run", WC=NA, data) {
 
 if (FALSE) {
     lemmas <- c("run", "hunt", "race")
-    ldply(lemmas, cocaLemmaSet, WC="verb", data=D)
-    ldply(lemmas, cocaLemmaSet, data=D)
+    plyr::ldply(lemmas, cocaLemmaSet, WC="verb", data=D)
+    plyr::ldply(lemmas, cocaLemmaSet, data=D)
 }
 
 ##' Summed wordform frequencies for a lemma.
@@ -193,8 +193,8 @@ if(FALSE) {
     cocaLemmaFreq("run", WC="verb", data=D)
     cocaLemmaFreq("run", WC=NA, data=D)
     lemmas <- c("run", "hunt", "race")
-    ldply(lemmas, cocaLemmaFreq, WC="verb", data=D)
-    ldply(lemmas, cocaLemmaFreq, WC=NA, data=D)
+    plyr::ldply(lemmas, cocaLemmaFreq, WC="verb", data=D)
+    plyr::ldply(lemmas, cocaLemmaFreq, WC=NA, data=D)
 }
 
 ##' Find lexical neighbors.

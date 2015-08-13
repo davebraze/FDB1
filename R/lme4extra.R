@@ -14,7 +14,6 @@
 ##' \url{http://stackoverflow.com/questions/13847936/in-r-plotting-random-effects-from-lmer-lme4-package-using-qqmath-or-dotplot}
 ##' @export
 ggCaterpillar <- function(re, QQ=TRUE, likeDotplot=TRUE) {
-    require(ggplot2)
     f <- function(x) {
         pv   <- attr(x, "postVar")
         cols <- 1:(dim(pv)[1])
@@ -27,23 +26,23 @@ ggCaterpillar <- function(re, QQ=TRUE, likeDotplot=TRUE) {
                            ind=gl(ncol(x), nrow(x), labels=names(x)))
 
         if(QQ) {  ## normal QQ-plot
-            p <- ggplot(pDf, aes(nQQ, y))
-            p <- p + facet_wrap(~ ind, scales="free")
-            p <- p + xlab("Standard normal quantiles") + ylab("Random effect quantiles")
+            p <- ggplot2::ggplot(pDf, ggplot2::aes(nQQ, y))
+            p <- p + ggplot2::facet_wrap(~ ind, scales="free")
+            p <- p + ggplot2::xlab("Standard normal quantiles") + ggplot2::ylab("Random effect quantiles")
         } else {  ## caterpillar dotplot
-            p <- ggplot(pDf, aes(ID, y)) + coord_flip()
+            p <- ggplot2::ggplot(pDf, ggplot2::aes(ID, y)) + ggplot2::coord_flip()
             if(likeDotplot) {  ## imitate dotplot() -> same scales for random effects
-                p <- p + facet_wrap(~ ind)
+                p <- p + ggplot2::facet_wrap(~ ind)
             } else {           ## different scales for random effects
-                p <- p + facet_grid(ind ~ ., scales="free_y")
+                p <- p + ggplot2::facet_grid(ind ~ ., scales="free_y")
             }
-            p <- p + xlab("Levels") + ylab("Random effects")
+            p <- p + ggplot2::xlab("Levels") + ggplot2::ylab("Random effects")
         }
 
         p <- p + theme(legend.position="none")
-        p <- p + geom_hline(yintercept=0)
-        p <- p + geom_errorbar(aes(ymin=y-ci, ymax=y+ci), width=0, colour="black")
-        p <- p + geom_point(aes(size=1.2), colour="blue")
+        p <- p + ggplot2::geom_hline(yintercept=0)
+        p <- p + ggplot2::geom_errorbar(ggplot2::aes(ymin=y-ci, ymax=y+ci), width=0, colour="black")
+        p <- p + ggplot2::geom_point(ggplot2::aes(size=1.2), colour="blue")
         return(p)
     }
 
