@@ -18,7 +18,7 @@ A vector of Logicals.
 Can each element of x reasonably be interpreted as a whole number?
 }
 \details{
-Takes a numeric vector and returns a Logical vector the same length
+Takes a numeric vector and returns a Logical vector the same length.
 }
 \author{
 Cribbed from example in \code{\link[base]{integer}}

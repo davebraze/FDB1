@@ -2,10 +2,7 @@
 % Please edit documentation in R/factors.R
 \name{levelOrder}
 \alias{levelOrder}
-\title{Reorder factor levels.
-Reorders the levels of factor f as specified in new.order, which must contain all and only the
-existing levels of f, but in the desired order. If new.order and levels(f) do not contain
-exactly the same elements, then do nothing.}
+\title{Reorder factor levels.}
 \usage{
 levelOrder(f, new.order)
 }
@@ -19,6 +16,8 @@ A factor.
 }
 \description{
 Reorder factor levels.
+}
+\details{
 Reorders the levels of factor f as specified in new.order, which must contain all and only the
 existing levels of f, but in the desired order. If new.order and levels(f) do not contain
 exactly the same elements, then do nothing.

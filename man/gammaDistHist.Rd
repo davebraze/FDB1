@@ -21,10 +21,10 @@ gammaDistHist(x = seq(0, 0.7, by = 0.01), df1 = 6, df2 = 25, mult = 20,
 \item{stack}{stack plots or no; defaults to FALSE (side-by-side plots)}
 }
 \value{
-used for side effect of creating a plot
+Used for side effect of creating a plot.
 }
 \description{
-Histogram of gamma distribution and its reverse.
+Histogram of gamma distribution.
 }
 \details{
 Histogram of gamma distribution and its reverse.

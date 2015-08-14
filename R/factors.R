@@ -16,6 +16,8 @@ fact2num <- function(f) {
 }
 
 ##' @title Coerce a vector of class "factor" to character
+##'
+##' @details
 ##' Coerces a vector of class factor to numeric. This function preserves level labels associated
 ##' with each element of f.
 ##'
@@ -31,6 +33,8 @@ fact2char <- function(f) {
 }
 
 ##' @title Reorder factor levels.
+##'
+##' @details
 ##' Reorders the levels of factor f as specified in new.order, which must contain all and only the
 ##' existing levels of f, but in the desired order. If new.order and levels(f) do not contain
 ##' exactly the same elements, then do nothing.

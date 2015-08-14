@@ -7,7 +7,7 @@
 is.numeral(c)
 }
 \arguments{
-\item{c}{: a vector of strings}
+\item{c}{A vector of strings.}
 }
 \value{
 a vector of logicals, NA where is.na(c)

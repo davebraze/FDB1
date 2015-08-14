@@ -36,6 +36,7 @@ normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2)
 
 ##' @title Plot histograms of two different theoretical normal distributions.
 ##'
+##' @details
 ##' Plot histograms of two different theoretical normal distributions, given Mean, SD and N for each.
 ##'
 ##' ToDo:
@@ -84,19 +85,20 @@ normalDistHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, stack=FALSE, aspect=2/5)
     p1
 }
 
-##' Histogram of gamma distribution and its reverse.
+##' @title Histogram of gamma distribution.
 ##'
+##' @details
 ##' Histogram of gamma distribution and its reverse.
 ##' TODO: use geom_histogram() instead of geom_bar() for consistency with other functions
 ##' TODO: label with (mean, median, mode)
-##' @title Histogram of gamma distribution.
+##'
 ##' @param x 'x' vector argument to \code{\link[stats]{dgamma}}
 ##' @param df1 'shape' argument to \code{\link[stats]{dgamma}}
 ##' @param df2 'rate' argument to \code{\link[stats]{dgamma}}
 ##' @param mult multiplier used to convert density to counts
 ##' @param aspect aspect ratio of plots; defaults to 2/5
 ##' @param stack stack plots or no; defaults to FALSE (side-by-side plots)
-##' @return used for side effect of creating a plot
+##' @return Used for side effect of creating a plot.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 gammaDistHist <- function(x=seq(0,.7,by=.01), df1=6, df2=25, mult=20, aspect=2/5, stack=TRUE) {

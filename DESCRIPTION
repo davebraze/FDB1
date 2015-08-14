@@ -33,6 +33,7 @@ Collate:
     'fishers-z.R'
     'ggQQplot.R'
     'invBoxCox.R'
+    'invLogit.R'
     'iplot.R'
     'is.odd.R'
     'is.wholenumber.R'

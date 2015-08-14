@@ -8,20 +8,20 @@ aovtable(formula = NULL, unit = NULL, cv = NULL, data = NULL,
   dbg = FALSE, ...)
 }
 \arguments{
-\item{formula}{: rhs of formula should be in partheses, () between any predictor and unit: y~(x1+x2)}
+\item{formula}{RHS of formula should be in partheses, () between any predictor and unit: y~(x1+x2)}
 
-\item{unit}{: factor for stratification units, typicall subject or item, used to build error term}
+\item{unit}{Factor for stratification units, typicall subject or item, used to build error term}
 
-\item{cv}{: say something here}
+\item{cv}{Say something here}
 
-\item{data}{: data.frame passed to \code{\link[stats]{aov}}}
+\item{data}{Data.frame passed to \code{\link[stats]{aov}}}
 
-\item{dbg}{: enable verbose output for debugging}
+\item{dbg}{Enable verbose output for debugging}
 
-\item{...}{: additional arguments passed to \code{\link[stats]{aov}}}
+\item{...}{Additional arguments passed to \code{\link[stats]{aov}}}
 }
 \value{
-an anova table (data.frame)
+An anova table (data.frame)
 }
 \description{
 Wrapper around \code{\link[stats]{aov}} for repeated measures anova.

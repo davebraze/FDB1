@@ -2,9 +2,7 @@
 % Please edit documentation in R/factors.R
 \name{fact2char}
 \alias{fact2char}
-\title{Coerce a vector of class "factor" to character
-Coerces a vector of class factor to numeric. This function preserves level labels associated
-with each element of f.}
+\title{Coerce a vector of class "factor" to character}
 \usage{
 fact2char(f)
 }
@@ -16,6 +14,8 @@ A vector of class "character".
 }
 \description{
 Coerce a vector of class "factor" to character
+}
+\details{
 Coerces a vector of class factor to numeric. This function preserves level labels associated
 with each element of f.
 }

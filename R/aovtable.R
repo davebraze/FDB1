@@ -5,16 +5,17 @@
 ##' @details
 ##' No details yet.
 ##'
-##' @param formula : rhs of formula should be in partheses, () between any predictor and unit: y~(x1+x2)
-##' @param unit : factor for stratification units, typicall subject or item, used to build error term
-##' @param cv : say something here
-##' @param data : data.frame passed to \code{\link[stats]{aov}}
-##' @param dbg : enable verbose output for debugging
-##' @param ... : additional arguments passed to \code{\link[stats]{aov}}
-##' @return an anova table (data.frame)
+##' @param formula RHS of formula should be in partheses, () between any predictor and unit: y~(x1+x2)
+##' @param unit Factor for stratification units, typicall subject or item, used to build error term
+##' @param cv Say something here
+##' @param data Data.frame passed to \code{\link[stats]{aov}}
+##' @param dbg Enable verbose output for debugging
+##' @param ... Additional arguments passed to \code{\link[stats]{aov}}
+##' @return An anova table (data.frame)
 ##' @author David Braze \email{davebraze@@gmail.com}
 ##' @seealso \code{\link[stats]{aov}}
 ##' @family aovtable
+##' @export
 aovtable <-
 function(formula=NULL, unit=NULL, cv=NULL, data=NULL, dbg=FALSE, ...) {
 

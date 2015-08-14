@@ -9,6 +9,7 @@
 ##' @param x A vector containing only 1s and 0s. NAs are silently dropped.
 ##' @return The standard error of a proportion.
 ##' @author David Braze \email{davebraze@@gmail.com}
+##' @export
 seP <- function(x) {
     x <- x[!is.na(x)]
     if(!all(x %in% 0:1)) {
