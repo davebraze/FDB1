@@ -12,6 +12,10 @@
 ##' trial.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 getEyelinkTrialData <- function(bounds, lines) {
+    if (!requireNamespace("stringr", quietly = TRUE)) {
+        stop("Package 'stringr' needed for this function to work. Please install it.", call. = FALSE)
+    }
+
     fix <- grep("^EFIX", lines[bounds[1]:bounds[2]], value=TRUE)
     fix <- stringr::str_split(fix, pattern="[ \t]+")
     fix <- data.frame(matrix(unlist(fix), ncol=length(fix[[1]]), byrow=TRUE), stringsAsFactors=FALSE)
@@ -103,6 +107,9 @@ getEyelinkTrialData <- function(bounds, lines) {
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 read.ELascii <- function(file, tStartRE="TRIALID", tEndRE="TRIAL_RESULT", eye=NA) {
+    if (!requireNamespace("ggplot2", quietly = TRUE)) {
+        stop("Package 'ggplot2' needed for this function to work. Please install it.", call. = FALSE)
+    }
     f <- file(file, "r", blocking=FALSE)
     lines <- readLines(f, warn=TRUE, n=-1)
     close(f)

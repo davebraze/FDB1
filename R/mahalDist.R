@@ -52,6 +52,9 @@ mahalDist <- function(m, scale=TRUE, use="complete.obs", center="mean") {
 ##' @seealso \code{\link[car]{qqPlot}}
 ##' @export
 mahalPlot <- function(X, envp=.95, col.point="blue", ...) {
+    if (!requireNamespace("car", quietly = TRUE)) {
+        stop("Package 'car' needed for this function to work. Please install it.", call. = FALSE)
+    }
     stopifnot("mahalDist" %in% class(X))
     car::qqPlot(X$D2, line="robust",
                 distribution="chisq", df=X$dim,

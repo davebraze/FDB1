@@ -18,6 +18,9 @@
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2))/2, stack=FALSE, aspect=2/5){
+    if (!requireNamespace("ggplot2", quietly = TRUE)) {
+        stop("Package 'ggplot2' needed for this function to work. Please install it.", call. = FALSE)
+    }
     a=rnorm(n1, mn1, sd1)
     b=rnorm(n2, mn2, sd2)
     id1 <- rep('a', length=length(a))
@@ -61,6 +64,9 @@ normalSampHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, binwidth=mean(c(sd1,sd2)
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 normalDistHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, stack=FALSE, aspect=2/5){
+    if (!requireNamespace("ggplot2", quietly = TRUE)) {
+        stop("Package 'ggplot2' needed for this function to work. Please install it.", call. = FALSE)
+    }
     range1 <- c(mn1-sd1*3.5, mn1+sd1*3.5)
     range2 <- c(mn2-sd2*3.5, mn2+sd2*3.5)
     xmin <- min(min(range1), min(range2))
@@ -102,7 +108,10 @@ normalDistHist2 <- function(mn1, sd1, n1, mn2, sd2, n2, stack=FALSE, aspect=2/5)
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 gammaDistHist <- function(x=seq(0,.7,by=.01), df1=6, df2=25, mult=20, aspect=2/5, stack=TRUE) {
-    dgamma1 <- dgamma(x, df1, df2, log = FALSE)
+     if (!requireNamespace("ggplot2", quietly = TRUE)) {
+        stop("Package 'ggplot2' needed for this function to work. Please install it.", call. = FALSE)
+    }
+   dgamma1 <- dgamma(x, df1, df2, log = FALSE)
     freq1 <- round(dgamma1*mult)
     dat1 <- unlist(mapply(rep, 1:length(freq1), freq1))
     print(mean(dat1))
@@ -232,6 +241,9 @@ normalProps <- function(vlines=TRUE, colors=c("gray", "orange", "blue"), xlab="z
 sampling <- function(nplots=12, nsamp=100, pop.mean=100, pop.sd=15, binwidth=pop.sd/3,
                          hist.fill.col='red', hist.line.col='black', hist.alpha=.5,
                          line.col='blue', line.size=1, line.alpha=.7) {
+    if (!requireNamespace("ggplot2", quietly = TRUE)) {
+        stop("Package 'ggplot2' needed for this function to work. Please install it.", call. = FALSE)
+    }
     sampv <- rnorm(nplots*nsamp, m=pop.mean, sd=pop.sd) # get samples
     id <- rep(paste("X", 1:nplots, sep=""), each=nsamp) # an indicator variable
     df1 <- data.frame(sampv,id)
