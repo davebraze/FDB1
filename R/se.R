@@ -22,11 +22,12 @@ se <-
         } else if (is.vector(x)) {
             sd(x, na.rm = na.rm)/sqrt(nobs(x))
         } else if (is.data.frame(x)) {
-            sapply(x, sd, na.rm = na.rm)
+            sapply(x, se, na.rm = na.rm)
         } else {
             se(as.vector(x), na.rm=na.rm)
         }
     }
 
 
+@export
 seM <- se
