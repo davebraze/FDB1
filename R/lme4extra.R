@@ -15,10 +15,6 @@
 ##' \url{http://stackoverflow.com/questions/13847936/in-r-plotting-random-effects-from-lmer-lme4-package-using-qqmath-or-dotplot}
 ##' @export
 ggCaterpillar <- function(re, QQ=TRUE, likeDotplot=TRUE) {
-    if (!requireNamespace("ggplot2", quietly = TRUE)) {
-        stop("Package 'ggplot2' needed for this function to work. Please install it.", call. = FALSE)
-    }
-
     f <- function(x) {
         pv   <- attr(x, "postVar")
         cols <- 1:(dim(pv)[1])

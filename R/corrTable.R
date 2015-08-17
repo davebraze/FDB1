@@ -17,9 +17,6 @@
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 corrTable <- function(M, type='pearson', file="", diag=FALSE) {
-    if (!requireNamespace("Hmsc", quietly = TRUE)) {
-        stop("Package 'Hmisc' needed for this function to work. Please install it.", call. = FALSE)
-    }
 
     rcor2 <- Hmisc::rcorr(as.matrix(M), type=type)
     retval <- rcor2$r

@@ -12,9 +12,6 @@
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 qqp <- function(v, dat) {
-    if (!requireNamespace("ggplot2", quietly = TRUE)) {
-        stop("Package 'ggplot2' needed for this function to work. Please install it.", call. = FALSE)
-    }
     mn <- mean(dat[[v]], na.rm=T) # maybe add mean and sd to lower-right corner of plot?
     sd <- sd(dat[[v]], na.rm=T)
     p <- ggplot2::ggplot(dat, ggplot2::aes_string(sample=v))  # NOTE: use of aes_string() in place of aes()
@@ -37,10 +34,6 @@ qqp <- function(v, dat) {
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @export
 ggQQplot <- function(vars, dat) {
-    if (!requireNamespace("ggplot2", quietly = TRUE)) {
-        stop("Package 'ggplot2' needed for this function to work. Please install it.", call. = FALSE)
-    }
-
     plist <- lapply(vars, FUN=qqp, dat=dat)
     do.call(gridExtra::grid.arrange, plist)
     ## qqpm <- do.call(grid.arrange, plist)
