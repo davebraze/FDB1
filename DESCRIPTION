@@ -1,7 +1,7 @@
 Package: FDB1
 Type: Package
 Title: A brew of utility and convenience functions.
-Version: 0.6.6
+Version: 0.6.7
 Date: 2015-08-18
 Author: David Braze
 Maintainer: David Braze <davebraze@gmail.com>
