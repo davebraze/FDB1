@@ -148,10 +148,11 @@ if(FALSE) {
 
 }
 
-##' .. content for \description{} (no empty lines) ..
-##'
-##' .. content for \details{} ..
 ##' @title Generate an ET report, as data.frame.
+##'
+##' @details
+##' No details yet.
+##'
 ##' @param gaze An object of class "ELascii".
 ##' @param type Which type of base report to generate. Ranges over c("FIX", "SACC", "TRIALVAR").
 ##' @return A data.frame containing the requested report.
@@ -191,7 +192,7 @@ makeReport <- function(gaze, type=c("FIX", "SACC", "TRIALVAR")) {
 ##' @param edffiles Vector of *edf file names.
 ##' @param e2afname Name of edf2asc executable (e.g., "edf2asc.exe", "edf2asc64.exe").
 ##' @param e2apath Path to edf2asc executable. It will probably look something like
-##' "D:\winbin\SR Research\EyeLink\EDF_Access_API\Example" from "SR Research" on down.
+##' "D:/winbin/SR Research/EyeLink/EDF_Access_API/Example" from "SR Research" on down.
 ##' @param files A character vector listing file names to be converted.
 ##' @return A character vector listing output files.
 ##' @author Dave Braze \email{davebraze@@gmail.com}

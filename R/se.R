@@ -29,5 +29,5 @@ se <-
     }
 
 
-@export
+##' @export
 seM <- se
