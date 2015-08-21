@@ -4,6 +4,6 @@ citEntry(entry = "Manual",
          note = paste("R package version", packageVersion("FDB1")),
          author = personList(as.person("David Braze")),
          institution = "Haskins Laboratories",
-         year = "2014",
+         year = sub("-.*", "", meta$Date),
          url = "https://github.com/davebraze/FDB1",
          textVersion = "")

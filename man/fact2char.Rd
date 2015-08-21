@@ -18,6 +18,8 @@ Coerce a vector of class "factor" to character
 \details{
 Coerces a vector of class factor to numeric. This function preserves level labels associated
 with each element of f.
+
+cf. > unclass(f)
 }
 \author{
 Dave Braze \email{davebraze@gmail.com}

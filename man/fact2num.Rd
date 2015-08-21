@@ -16,8 +16,10 @@ A vector of class "numeric".
 Coerce a vector of class "factor" to numeric.
 }
 \details{
-Coerces a vector of class factor to numeric. This function preserves underlying integer level
+Coerces a vector of class factor to numeric. This function preserves underlying integer
 associated with each element of f.
+
+cf. > unclass(f)
 }
 \author{
 Dave Braze \email{davebraze@gmail.com}

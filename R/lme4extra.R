@@ -49,3 +49,43 @@ ggCaterpillar <- function(re, QQ=TRUE, likeDotplot=TRUE) {
 
     lapply(re, f)
 }
+
+
+##' @title Empirical and implied probabilities for binomial outcome models.
+##'
+##' @details
+##' Returns a table containing columns:
+##' \enumerate{
+##'     \item First 4 columns as per summary(mod)$coefficients: Estimate, Std. Error, z value, Pr(>|z|)
+##'     \item 'count' number of 1s in response vector
+##'     \item 'n' length of response vector
+##'     \item 'prob.emp' empirical probabilities
+##'     \item 'prob.est.fe' model implied probabilities due to fixed effects only
+##'     \item 'prob.est.re' model implied probabilities for combined fixed and random effects
+##' }
+##'
+##' WARNING: this function is very fragile. It is easily broken.
+##'
+##' @param model A glmer object.
+##' @param classes A character vector containing names of vectors for classification.
+##' @param drop An integer vector indicating non-categorical terms so that they can be dropped.
+##' @return A table consisting of terms built from categorical variables and their linear combinations
+##' @author David Braze \email{davebraze@@gmail.com}
+##' @export
+glmerProb <- function(model, classes, drop=NA) {
+    ## compare model fit (fixed effect logits) and model-implied probabilities to empirical probabilities
+    predfe <- predict(model, type="response", re.form=NA)
+    predre <- predict(model, type="response", re.form=NULL)
+    model.d <- data.frame(model@frame, predfe, predre)
+    ep <- plyr::ddply(model.d, classes, summarise,
+                      count=sum(fpregres),        # number of 1s in response vector
+                      n=length(fpregres),         # length of response vector
+                      prob.emp=count/n,           # empirical probability
+                      prob.est.fe=mean(predfe),   # model implied probability due to fixed effects only
+                      prob.est.re=mean(predre))   # model implied probability for combined fixed and randome effects
+    mp <- summary(model)$coefficients
+    if(!is.na(drop)) {
+        mp <- mp[-drop,]       # drop non-categorical terms
+    }
+    data.frame(mp, ep)
+}
