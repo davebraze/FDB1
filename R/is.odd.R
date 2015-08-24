@@ -1,21 +1,35 @@
+##' @title Is n even?
+##'
+##' @details
+##' Test whether elements of a numeric vector are even. For whole numbers return TRUE or FALSE. For decimals return NA.
+##'
+##' @param n A numeric vector.
+##' @return A logical vector the same length as n. TRUE if n is an integer and is even, FALSE if n
+##' is an integer and not even, NA otherwise.
+##' @author David Braze \email{davebraze@@gmail.com}
+##' @export
+is.even <- function (n)
+{
+    n <- 1:10
+    n <- seq(1, 10, .5)
+    n[n %% 1 != 0] <- NA
+    retval <- n %% 2 ==0
+    retval
+}
+
+
+
 ##' @title Is n odd?
 ##'
 ##' @details
 ##' Test whether elements of numeric vector are odd. For whole numbers return TRUE or FALSE. For decimals return NA.
 ##'
 ##' @param n A numeric vector.
-##' @return TRUE if n is an integer and is odd, FALSE if n is an integer and not odd, NA otherwise.
+##' @return A logical vector the same length as n. TRUE if n is an integer and is even, FALSE if n
+##' is an integer and not even, NA otherwise.
 ##' @author David Braze \email{davebraze@@gmail.com}
 ##' @export
 is.odd <-
     function(n) {
-        if(n%%1){
-            NA
-        } else {
-            if(n%%2){
-                TRUE
-            } else {
-                FALSE
-            }
-        }
+        !is.even(n)
     }
