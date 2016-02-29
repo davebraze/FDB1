@@ -64,6 +64,7 @@
 ##' @export
 cocaReadFreq <- function(file, sep="\t", na.strings="  ", quote = "\"", header=TRUE, fill=TRUE, skip=2, simpleWC=TRUE, ...) {
     retval <- read.table(file, sep=sep, na.strings=na.strings, quote = quote, header=header, fill=fill, skip=skip, ...)
+    ## should switch to using readr::read_table() for efficiency
     if (simpleWC) {
         WC <- sapply(as.character(retval$c1), cocaSimpleWordClass)
         retval <- data.frame(WC, retval)
