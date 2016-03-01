@@ -3,6 +3,7 @@
 *~
 ^#.+#$
 *.bak
+R/\.Rhistory
 
 # Documentation generated files #
 #################################
