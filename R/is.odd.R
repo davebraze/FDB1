@@ -12,14 +12,18 @@
 ##' @export
 is.even <- function (n)
 {
-    n <- 1:10
-    n <- seq(1, 10, .5)
     n[n %% 1 != 0] <- NA
     retval <- n %% 2 ==0
     retval
 }
 
+if(FALSE) {
+    n <- 1:10
+    is.even(n)
 
+    m <- seq(1, 10, .5)
+    is.even(m)
+}
 
 ##' @title Is n odd?
 ##'
