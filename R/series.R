@@ -2,6 +2,8 @@
 
 ##' @title Find sequences of integers in numeric vector v.
 ##'
+##' @description Find sequences of integers in numeric vector v.
+##'
 ##' @details Takes a vector of whole numbers and returns a matrix with 3 columns: (1) integer at
 ##' beginning of series, (2) index pointing to beginning of series, (3) length of series
 ##'

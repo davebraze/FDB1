@@ -232,7 +232,7 @@ normalProps <- function(vlines=TRUE, colors=c("gray", "orange", "blue"), xlab="z
 sampling <- function(nplots=12, nsamp=100, pop.mean=100, pop.sd=15, binwidth=pop.sd/3,
                          hist.fill.col='red', hist.line.col='black', hist.alpha=.5,
                          line.col='blue', line.size=1, line.alpha=.7) {
-    sampv <- rnorm(nplots*nsamp, m=pop.mean, sd=pop.sd) # get samples
+    sampv <- rnorm(nplots*nsamp, mean=pop.mean, sd=pop.sd) # get samples
     id <- rep(paste("X", 1:nplots, sep=""), each=nsamp) # an indicator variable
     df1 <- data.frame(sampv,id)
     ## build the histogram matrix

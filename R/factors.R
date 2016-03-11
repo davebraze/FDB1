@@ -1,5 +1,7 @@
 ##' @title Coerce a vector of class "factor" to numeric.
 ##'
+##' @description Coerce a vector of class "factor" to numeric.
+##'
 ##' @details
 ##' Coerces a vector of class factor to numeric. This function preserves underlying integer
 ##' associated with each element of f.
@@ -18,6 +20,8 @@ fact2num <- function(f) {
 }
 
 ##' @title Coerce a vector of class "factor" to character
+##'
+##' @description Coerce a vector of class "factor" to character.
 ##'
 ##' @details
 ##' Coerces a vector of class factor to numeric. This function preserves level labels associated

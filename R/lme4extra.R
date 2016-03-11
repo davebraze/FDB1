@@ -1,13 +1,15 @@
 ##' @title Plot random effects from lmer fit.
 ##'
+##' @description Build a 'caterpillar' plot of lmer random effects.
+##'
 ##' @details
-##' Create ggplot based QQ plot or caterpillar plot for \code{\link{ranef}} from \code{\link{mer}}
+##' Create ggplot based QQ plot or caterpillar plot for \code{\link[lme4]{ranef}} from \code{\link[lme4]{merMod}}
 ##' object.
 ##'
 ##' @param re An object of class ranef.mer.
 ##' @param QQ If TRUE, create QQ plot. If FALSE create caterpillar plot.
 ##' @param likeDotplot Imitate dotplot() -> same scales for random effects.
-##' @return A \code{\link{ggplot2}} object.
+##' @return A \code{\link[ggplot2]{ggplot}} object.
 ##' @author
 ##' \url{http://stackoverflow.com/users/484139/caracal}
 ##' \url{http://stackoverflow.com/users/1857266/didzis-elferts}

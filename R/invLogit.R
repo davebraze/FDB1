@@ -9,7 +9,7 @@
 ##' @author Dave Braze \email{davebraze@@gmail.com}
 ##' @seealso
 ##' \code{\link[stats]{plogis}}
-##' \code{\link[stats]{exp}} (for converting logits to odds-ratios)
+##' \code{\link[base]{exp}} (for converting logits to odds-ratios)
 ##' @export
 invLogit <- function(x) {
     plogis(x)

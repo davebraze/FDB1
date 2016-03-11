@@ -1,5 +1,7 @@
 ##' @title Standard error of the mean.
 ##'
+##' @description Compute standard error of the mean of x.
+##'
 ##' @details
 ##' Returns the standard error of the mean of x, which can be either a vector, matrix or data.frame.
 ##' In the latter two cases, SEM is computed column-wise and a vector of values is returned. When x is

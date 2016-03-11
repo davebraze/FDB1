@@ -1,5 +1,7 @@
 ##' @title Number of non-missing values.
 ##'
+##' @description Count non-missing values in v.
+##'
 ##' @details
 ##' Returns the number of non-missing values in vector x. A convenience wrapper around sum(!is.na(x)).
 ##'

@@ -1,13 +1,13 @@
 Package: FDB1
 Type: Package
-Title: A brew of utility and convenience functions.
-Version: 0.6.7
-Date: 2015-08-18
+Title: A brew of utility and convenience functions
+Version: 0.6.8
+Date: 2016-02-11
 Author: David Braze
 Maintainer: David Braze <davebraze@gmail.com>
 Description: A dubious brew of R code. Some of it may even be useful.
 License: MIT + file LICENSE
-Copyright: Copyright 2012-15, David Braze, unless otherwise attributed in
+Copyright: Copyright 2012-16, David Braze, unless otherwise attributed in
     individual functions or source files.
 Imports:
     car,
@@ -46,3 +46,4 @@ Collate:
     'se.R'
     'seP.R'
     'series.R'
+RoxygenNote: 5.0.1
