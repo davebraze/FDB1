@@ -21,7 +21,10 @@
 ##' @seealso \code{\link[stats]{mahalanobis}}
 ##' @seealso \code{\link[stats]{cov}}
 ##' @export
-mahalDist <- function(m, scale=TRUE, use="complete.obs", center="mean") {
+mahalDist <- function(m,
+                      scale=TRUE,
+                      use="complete.obs",
+                      center="mean") {
     stopifnot(length(dim(m))==2,
               (center=="mean"|center=="median"))
     m <- as.matrix(m)
@@ -41,9 +44,12 @@ mahalDist <- function(m, scale=TRUE, use="complete.obs", center="mean") {
 ##' @title QQplot of squared mahalanobis distance against Chi-square distribution.
 ##' QQplot of squared mahalanobis distance against Chi-square distribution.
 ##'
+##' @param X An object returned by \code{\link[FDB1]{mahalDist}}.
+##' @param envp Width of confidence envelope passed to \code{\link[car]{qqPlot}}. Defaults to .95.
+##' @param col.point
+##' @param ... additional arguments passed to \code{\link[car]{qqPlot}}.
 ##' @param D2 Vector of squared mahalanobis distances as calculated, for example, by \code{\link{mahalDist}}.
 ##' @param dim Number of variables (dimensions) entering into D2.
-##' @param envp Width of confidence envelope passed to \code{\link[car]{qqPlot}}. Defaults to .95.
 ##' @param point.col Color for plotting points passed to \code{\link[car]{qqPlot}}. Defaults to "blue".
 ##' @return Used for the side effect of creating a plot.
 ##' @author Dave Braze \email{davebraze@@gmail.com}
@@ -51,7 +57,10 @@ mahalDist <- function(m, scale=TRUE, use="complete.obs", center="mean") {
 ##' @seealso \code{\link{mahalDist}}
 ##' @seealso \code{\link[car]{qqPlot}}
 ##' @export
-mahalPlot <- function(X, envp=.95, col.point="blue", ...) {
+mahalPlot <- function(X,
+                      envp=.95,
+                      col.point="blue",
+                      ...) {
     stopifnot("mahalDist" %in% class(X))
     car::qqPlot(X$D2, line="robust",
                 distribution="chisq", df=X$dim,

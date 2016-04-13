@@ -1,6 +1,6 @@
 ##' @title Read a 'merge' file (*.mer), as might be exported from filemaker.
 ##'
-##' @description Read a 'merge' file (*.mer), as might be exported from Filemaker.
+##' @description Read a filemaker 'merge' file (*.mer). Filemaker *.mer files are CSV files.
 ##'
 ##' @details
 ##' This is a wrapper around \code{\link{read.csv}} to simplify reading tables exported from

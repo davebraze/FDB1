@@ -3,17 +3,20 @@
 ##' @details
 ##' No details yet...
 ##'
-##' @param x
-##' @param quote
-##' @param digits
-##' @param print.mod
+##' @param x An aov() model.
+##' @param quote Print entries with surrounding quotes? Defualts to FALSE.
+##' @param digits Number of significant digits.
+##' @param print.mod Print model formula? Defaults to FALSE.
 ##' @return None. Used for its side effect.
 ##' @author David Braze \email{davebraze@@gmail.com}
 ##' @family aovtable
 ##' @seealso \code{\link[stats]{aov}}
 ##' @seealso \code{\link[base]{print}}
 print.aovtable <-
-function(x, quote=FALSE, digits=3, print.mod=FALSE) {
+    function(x,
+             quote=FALSE,
+             digits=3,
+             print.mod=FALSE) {
   if (is.null(x$table) || is.null(x$model))
     stop("print.aovtable(): x does not have proper structure.\n")
   if (!"aovtable" %in% class(x))

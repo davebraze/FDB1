@@ -9,18 +9,18 @@
 ##' @param response Response measure to be plotted on y axis.
 ##' @param fun Function for summarizing response measure, defaults to mean(x, na.rm=T).
 ##' @param type This and following params are as per plot() and par(), which see.
-##' @param legend
-##' @param leg.title
-##' @param trace.labels
+##' @param legend Include a legend?
+##' @param leg.title Legend title.
+##' @param trace.labels Individual trace labels
 ##' @param fixed
-##' @param xlab
-##' @param ylab
+##' @param xlab x label.
+##' @param ylab y label.
 ##' @param main
-##' @param ylim
-##' @param lty
-##' @param lwd
-##' @param col
-##' @param pch
+##' @param ylim y limits for plot
+##' @param lty Line types for traces.
+##' @param lwd Line widths for traces.
+##' @param col Color used for plotting.
+##' @param pch Vector of plotting symbols or characters.
 ##' @param xpd
 ##' @param leg.bg
 ##' @param leg.bty
@@ -28,19 +28,21 @@
 ##' @param leg.x
 ##' @param leg.y
 ##' @param xtick
-##' @param xaxt
-##' @param axes
+##' @param xaxt Passed to matplot()
+##' @param axes Passed to matplot()
 ##' @param ... other parameters that will be passed to matplot()
 ##' @return None. Used for its side effects.
 ##' @author David Braze \email{davebraze@@gmail.com}
+##' @TODO This one needs to be re-written from scratch!
 ##' @export
 iplot <-
-function (x.factor, trace.factor, response, fun = function(x){mean(x, na.rm=TRUE)}, type =
-c("l", "p", "b", "o"), legend = TRUE, leg.title = deparse(substitute(trace.factor)), trace.labels =
-NULL, fixed = FALSE, xlab = deparse(substitute(x.factor)), ylab = ylabel, main="", ylim =
-range(cells, na.rm = TRUE), lty = nc:1, lwd = 1, col = 1, pch = c(1:9, 0, letters), xpd = NULL,
-leg.bg = par("bg"), leg.bty = "n", point.cex=1, leg.x = 1, leg.y = ylim[2], xtick = FALSE, xaxt =
-par("xaxt"), axes = TRUE, ...)  {
+    function (x.factor, trace.factor, response, fun = function(x){mean(x, na.rm=TRUE)},
+              type = c("l", "p", "b", "o"), legend = TRUE,
+              leg.title = deparse(substitute(trace.factor)), trace.labels = NULL, fixed = FALSE,
+              xlab = deparse(substitute(x.factor)), ylab = ylabel, main="",
+              ylim = range(cells, na.rm = TRUE), lty = nc:1, lwd = 1, col = 1,
+              pch = c(1:9, 0, letters), xpd = NULL, leg.bg = par("bg"), leg.bty = "n", point.cex=1,
+              leg.x = 1, leg.y = ylim[2], xtick = FALSE, xaxt = par("xaxt"), axes = TRUE, ...)  {
 
   ylabel <- paste(deparse(substitute(fun)), "of ", deparse(substitute(response)))
   type <- match.arg(type)

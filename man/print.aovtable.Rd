@@ -6,6 +6,15 @@
 \usage{
 \method{print}{aovtable}(x, quote = FALSE, digits = 3, print.mod = FALSE)
 }
+\arguments{
+\item{x}{An aov() model.}
+
+\item{quote}{Print entries with surrounding quotes? Defualts to FALSE.}
+
+\item{digits}{Number of significant digits.}
+
+\item{print.mod}{Print model formula? Defaults to FALSE.}
+}
 \value{
 None. Used for its side effect.
 }

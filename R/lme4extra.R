@@ -16,7 +16,9 @@
 ##' @seealso Original code cribbed from here:
 ##' \url{http://stackoverflow.com/questions/13847936/in-r-plotting-random-effects-from-lmer-lme4-package-using-qqmath-or-dotplot}
 ##' @export
-ggCaterpillar <- function(re, QQ=TRUE, likeDotplot=TRUE) {
+ggCaterpillar <- function(re,
+                          QQ=TRUE,
+                          likeDotplot=TRUE) {
     f <- function(x) {
         pv   <- attr(x, "postVar")
         cols <- 1:(dim(pv)[1])
