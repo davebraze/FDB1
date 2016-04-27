@@ -9,12 +9,19 @@
 ##'
 ##' @param v A numeric vector containing only whole numbers.
 ##' @param step The step size and direction (distance between adjacent items) for identifying
-##' series. Note that the sign of the step matters. Use positive values for monotonically increasing
-##' series and negative values for monotonically decreasing series. Defaults to 1.
+##'     series. Note that the sign of the step matters. Use positive values for monotonically
+##'     increasing series and negative values for monotonically decreasing series. Defaults to
+##'     1. Use 0 for invariant series.
 ##' @param minseries The minimimum series length. Defaults to 2.
-##' @return numeric matrix with 3 columns and 1 row for each series.
-##' @author
-##' David Braze \email{davebraze@@gmail.com}
+##'
+##' @return numeric matrix with 1 row for each series, and three columns indicating:
+##' \enumerate{
+##'     \item first: Integer at beginning of series.
+##'     \item runstart: Index into code\{v} for start of series.
+##'     \item runlength: Length of series.
+##' }
+##'
+##' @author David Braze \email{davebraze@@gmail.com}
 ##' @export
 series <- function(v, step=1, minseries=2){
     if (any(is.na(v))) {
@@ -26,10 +33,10 @@ series <- function(v, step=1, minseries=2){
     if (!all(is.wholenumber(v))) stop("v must contain only whole numbers.")
     diffs <- diff(v)
     breaks <- (c(FALSE, diffs==step))
-    runlocs <- which(!breaks)
-    int <- v[runlocs]
-    runlens <- diff(c(runlocs, length(v)+1))
-    retval <- cbind(int, runlocs, runlens)
+    runstart <- which(!breaks)
+    first <- v[runstart]
+    runlengths <- diff(c(runstart, length(v)+1))
+    retval <- cbind(first, runstart, runlengths)
     retval <- retval[retval[,3]>=minseries,]
     if(!is.matrix(retval)) {
         cnames <- names(retval)
