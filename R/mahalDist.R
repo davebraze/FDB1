@@ -1,6 +1,8 @@
 ##' @title Get squared Mahalanobis distances for N observations in M dimensions.
 ##'
 ##' @details
+##' Deprecated in favor of FDButils::mahalDist().
+##'
 ##' Get squared Mahalanobis distances for N observations in M dimensions. This is a convenience wrapper
 ##' around \code{\link[stats]{mahalanobis}}, which see. Variables are optionally scaled before
 ##' distances are computed. Incomplete observations will return NA.
